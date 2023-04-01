@@ -35,7 +35,7 @@ As of now, we will release the data generation process, dataset, and training re
 
 > We conduct pre-training using deepspeed. Please note that when using ZeRO2, we use version `deepspeed==0.7.3`. If you use the latest version `0.8.3`, an `overflow` issue may occur. Our code supports checkpointing for resuming training.
 
-### 2.1 ZeRO2
+### ZeRO2
 
 > On 8 V100 GPUs, llama-13B with a maximum sequence length of 1024, the batch size per card can reach 3.
 
@@ -61,7 +61,7 @@ deepspeed --num_nodes=1 --num_gpus=8 train.py --deepspeed --deepspeed_config zer
     --pretrained_path="/llama/converted_llama13"
 ```
 
-### 2.2 ZeRO3
+### ZeRO3
 
 > On 8 V100 GPUs, LLaMA-13B with a maximum sequence length of 1024, the batch size per card can reach 32.
 
