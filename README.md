@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-<a href="" target="_blank"><img src="assets/cama_logo.jpeg" alt="ZJU-CaMA" style="width: 10%; min-width: 30px; display: block; margin: auto;"></a>
+<a href="" target="_blank"><img src="assets/cama_logo.jpeg" alt="ZJU-CaMA" style="width: 30%; min-width: 30px; display: block; margin: auto;"></a>
 </p>
 
 # CaMA: A Chinese-English Bilingual LLaMA Model
@@ -17,7 +17,7 @@ Features of CaMA:
 
 1) ***unsupervised further pre-training on Chinese-English bilingual data.***
 
-2) ***multiple IPT versions including full fine-tuning and parameter-efficient fine-tuning (e.g., Lora)***
+2) ***multiple IPT versions including full fine-tuning and parameter-efficient fine-tuning (e.g., Lora).***
 
 **Usage and License Notices**: Please note that CaMA is exclusively licensed for research purposes. The accompanying dataset is licensed under CC BY NC 4.0, which permits solely non-commercial usage. We strongly advise against employing models trained with this dataset for any purposes other than research.
 
@@ -31,7 +31,7 @@ Currently, CaMA is still in its developmental phase, and there are several limit
 
 As of now, we will release the data generation process, dataset, and training recipe, but we are yet to release the model weights, pending approval from the CaMA creators. However, we will release a live demo to help users better understand the scope and limitations of Alpaca, as well as to enable us to assess the model's performance on a broader audience.
 
-## Train LLaMA-13B on DeepSpeed Zero-2/3:
+## Train CaMA-13B on DeepSpeed Zero-2/3:
 
 > We conduct pre-training using deepspeed. Please note that when using ZeRO2, we use version `deepspeed==0.7.3`. If you use the latest version `0.8.3`, an `overflow` issue may occur. Our code supports checkpointing for resuming training.
 
