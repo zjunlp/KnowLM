@@ -11,7 +11,7 @@
 
 Welcome to the CaMA project repository! Our goal is to develop and distribute a Chinese-English bilingual LLaMA model. Our research is grateful to the community for providing feedback on CaMA and supporting us. Our model and live demo will be suspended until further notice.
 
-**This project is under fast development (due to the limted GPU, it will take a long time for pre-training) and the full code & checkpoints will be released soon**
+**This project is under fast development (due to the limted GPU, it will take a long time for pre-training) and the full code & checkpoints will be released soon.**
 
 Features of CaMA:
 
