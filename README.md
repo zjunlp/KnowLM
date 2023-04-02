@@ -23,7 +23,7 @@ Features of CaMA:
 
 ## Overview
 
-We performed unsupervised further pre-training on Chinese-English bilingual data (including the **latest Wikidata**) based on the LLaMA-13B weights. The data used included various Chinese Baidu Encyclopedia, Wudao corpora, and Wikipedia data. We trained for 4,000 steps on 32* V100 32G GPUs with a learning rate of 2e-5 and a batch size of 384, resulting in CaMA-13B. Our models have stronger Chinese language understanding and are updated continuously to incorporate recent knowledge.
+We performed unsupervised further pre-training on Chinese-English bilingual data (including the **latest Wikipedia**) based on the LLaMA-13B weights. The data used included various Chinese Baidu Encyclopedia, Wudao corpora, and Wikipedia data. We trained for 4,000 steps on 32* V100 32G GPUs with a learning rate of 2e-5 and a batch size of 384, resulting in CaMA-13B. Our models have stronger Chinese language understanding and are updated continuously to incorporate recent knowledge.
 
 On the CaMA-13B pre-trained weights, we further instruct-tuned  using a collection of existing self-instruction datasets in Chinese and English. And the dataset and preprocessing code were organized in the Chinese-English-instruction-dataset. The learning rate was set to 2e-5, and we trained for 2000 steps, resulting in Chat-CaMA. As for Chat-CaMA, we will provide multiple versions, including full fine-tuning and parameter-efficient fine-tuning (e.g., as Lora), for the community to use.
 
