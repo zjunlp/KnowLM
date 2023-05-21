@@ -73,10 +73,10 @@ All authors below contributed equally and the order is determined by random draw
 
 - Xiang Chen
 - Jintian Zhang
+- Xiaohan Wang
 - Honghao Gui
 - Zhen Bi
 - Shengyu Mao
-- Xiaohan Wang
 - Jing Chen
 - **Ningyu Zhang**
 - Huajun Chen
