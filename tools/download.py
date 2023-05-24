@@ -29,7 +29,7 @@ if __name__ == '__main__':
     check_args(args)
 
     download = []
-    if args.only_base or args.both: download.append("CaMA-13B")
+    if args.only_base or args.both: download.append("CaMA-13B-Diff")
     if args.only_lora or args.both: download.append("CaMA-13B-LoRA")
 
     for file in download:
