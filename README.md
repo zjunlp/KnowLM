@@ -1,7 +1,7 @@
 \[[**中文**](./README.md) | [**English**](./README_EN.md) \]
 
 <p align="center" width="100%">
-<a href="" target="_blank"><img src="assets/logo.jpeg" alt="ZJU-CaMA" style="width: 30%; min-width: 30px; display: block; margin: auto;"></a>
+<a href="" target="_blank"><img src="./assets/logo.jpg" alt="ZJU-CaMA" style="width: 30%; min-width: 30px; display: block; margin: auto;"></a>
 </p>
 
 # CaMA: A Chinese-English Bilingual LLaMA Model
