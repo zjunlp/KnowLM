@@ -6,7 +6,7 @@
 
 # CaMA: A Chinese-English Bilingual LLaMA Model
 
-伴随着ChatGPT的诞生，人工智能也迎来了“iPhone时刻”，各种大语言模型（Large Language Model，LLM）如雨后春笋般涌现，这股大模型的风也迅速席卷到除了自然语言处理的其他人工智能领域。但是训练这样一个模型需要极高的硬件成本，此外由于各种原因，开源的语言模型很少，支持中文的语言模型就更为稀缺了。直到LLaMA的开源，随后各式各样的、基于LLaMA的语言模型也层出不穷。而本项目也同样是基于LLaMA模型，为了进一步提供中文能力，且不破坏原来的分布，我们并没有对LLaMA进行任何更改，我们首先 **（1）使用中文语料首先对LLaMA（13B）进行进一步全量预训练，在尽可能保留原来的英文和代码能力的前提下，进一步提高模型对于中文理解能力和知识储备；** 接着 **（2）使用指令数据集对第一步的模型使用LoRA微调，来提高语言模型对于人类指令的理解**。
+伴随着ChatGPT的诞生，人工智能也迎来了“iPhone时刻”，各种大语言模型（Large Language Model，LLM）如雨后春笋般涌现，这股大模型的风也迅速席卷到除了自然语言处理的其他人工智能领域。但是训练这样一个模型需要极高的硬件成本，此外由于各种原因，开源的语言模型很少，支持中文的语言模型就更为稀缺了。直到LLaMA的开源，随后各式各样的、基于LLaMA的语言模型也层出不穷。而本项目也同样是基于LLaMA模型，为了进一步提供中文能力，且不破坏原来的分布，我们并没有对LLaMA进行任何更改，我们首先<b>（1）使用中文语料首先对LLaMA（13B）进行进一步全量预训练，在尽可能保留原来的英文和代码能力的前提下，进一步提高模型对于中文理解能力和知识储备；</b>接着<b>（2）使用指令数据集对第一步的模型使用LoRA微调，来提高语言模型对于人类指令的理解</b>。
 
 **本项目的特点如下：**
 
@@ -56,7 +56,7 @@
   <summary><b>翻译</b></summary>
 
 
-- **你很擅长将中文翻译成英文。将下面的句子翻译成英文：我们今天准备去西安看兵马俑。答案：**We are going to see the Terracotta Warriors in Xi'an today.:white_check_mark:
+  - <b>你很擅长将中文翻译成英文。将下面的句子翻译成英文：我们今天准备去西安看兵马俑。答案：</b>We are going to see the Terracotta Warriors in Xi'an today.:white_check_mark:
 
 - **You are good at translating English into Chinese. Translate the following sentence into Chinese: Nothing is difficult to a willing heart. Answer:** 什么都不难,只要心甘情愿。:white_check_mark:
 </details>
@@ -76,7 +76,7 @@
   <summary><b>指令理解</b></summary>
 
 
-- **你非常了解一些健康生活的习惯，请列举几个健康生活的建议：**1.每天坚持锻炼30分钟以上。  2.不吸烟，不酗酒。  3.少吃高脂肪食物。  4.多吃蔬菜和水果。  5.保证充足的睡眠。  6.保持良好的心情。  7.定期体检。  8.养成良好的卫生习惯。:white_check_mark:
+- <b>你非常了解一些健康生活的习惯，请列举几个健康生活的建议：</b>1.每天坚持锻炼30分钟以上。  2.不吸烟，不酗酒。  3.少吃高脂肪食物。  4.多吃蔬菜和水果。  5.保证充足的睡眠。  6.保持良好的心情。  7.定期体检。  8.养成良好的卫生习惯。:white_check_mark:
 
 - **我爱你的英文是什么？** 我爱你的英文是"i love you"。:arrow_left:
 
@@ -117,20 +117,19 @@
   \*/
 
   public static <T extends Comparable\<T\>\> void sort(T\[\] arr) {<br/>
-          if (arr == null || arr.length == 0) {<br/>
-              return;<br/>
-          }<br/>
-<br/>
-  int n = arr.length;<br/>
-  for (int i = 0; i < n - 1; i++) {<br/>
-  for (int j = 0; j < n - i - 1; j++) {<br/>
-  if (arr[j].compareTo(arr[j + 1]) > 0) {<br/>
-  T tmp = arr[j];<br/>
-  arr[j] = arr[j + 1];<br/>
-  arr[j + 1] = tmp;<br/>
-  }<br/>
-  }<br/>
-  }<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;if (arr == null || arr.length == 0) {<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;int n = arr.length;<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i < n - 1; i++) {<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 0; j < n - i - 1; j++) {<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (arr[j].compareTo(arr[j + 1]) > 0) {<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T tmp = arr[j];<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j] = arr[j + 1];<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j + 1] = tmp;<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
   }:white_check_mark:
 
 - **use python to write the bubble sort algorithm.**
@@ -169,7 +168,7 @@
 
   \# THE MAGIC UNICORN CORPORATION
 
-  The Magic Unicorn Corporation (MUC) is a large multinational corporation headquartered in New York City.  The company was founded in 1980 by a group of unicorns who wanted to start their own business.  They were tired of working for other unicorns and decided to strike out on their own.  Their first product was a line of unicorn-themed greeting cards.  The cards were a huge success, and the company grew rapidly.  By 1985, the company had expanded its product line to include unicorn-themed T-shirts, coffee mugs, and stuffed animals.  In 1987, the company went public.  Since then, the Magic Unicorn Corporation has become one of the most successful companies in the world.
+  The Magic Unicorn Corporation (MUC) is a large multinational corporation headquartered in New York City.  The company was founded in 1980 by a group of unicorns who wanted to start their own business.  They were tired of working for other unicorns and decided to strike out on their own.  Their first product was a line of unicorn-themed greeting cards.  The cards were a huge success, and the company grew rapidly.  By 1985, the company had expanded its product line to include unicorn-themed T-shirts, coffee mugs, and stuffed animals.  In 1987, the company went public.  Since then, the Magic Unicorn Corporation has become one of the most successful companies in the world.<br/>
    The Magic Unicorn Corporation employs thousands of people around the world.  Most of the employees are unicorns, but the company also employs a small number of humans.  Humans are hired to do jobs that unicorns cannot or will not do.  For example, humans are hired to clean up after unicorns.  Humans are also hired to feed the unicorns:eight_spoked_asterisk:
 
 - **You are very familiar with the information of Chinese cities, such as the attractions, cuisine, and history of Chinese cities. Please introduce the city of Hangzhou. Hangzhou** is the capital of Zhejiang Province in eastern China.  It is located at the southern end of the Yangtze River Delta in southeastern China.  It is one of the most famous tourist cities in China.  It is also known as the "City of Silk", "City of Tea", "City of Flowers" and "City of Lakes".  It has a population of 6.5 million people.  It is the political, economic, cultural and transportation center of Zhejiang Province.  It is also an important industrial base in China.  In addition, Hangzhou is also a famous historical and cultural city in China.  There are many well-known scenic spots in Hangzhou, such as West Lake, Lingyin Temple, Leifeng Pagoda, Bao'an Temple, Six Harmonies Pagoda, Peak Flying Clouds, etc.  Hangzhou is also known for its delicious cuisine.  Hangzhou cuisine is one of the eight major cuisines in China.  It is characterized by fresh, sweet, sour, salty, and mellow.  Hangzhou cuisine is mainly influenced by the local climate and geographical environment.  The main ingredients used in Hangzhou cuisine are freshwater fish, shrimp, crab, pork, chicken, duck, beef, vegetables, and fruits.  Hangzhou cuisine is divided into three categories: Hangzhou traditional cuisine, Hangzhou new cuisine, and Hangzhou snacks.  Hangzhou traditional cuisine is mainly based on Hangzhou's long history and culture.  Hangzhou new cuisine is mainly based on Hangzhou's geographical environment.  Hangzhou snacks are mainly based on Hangzhou's local customs and habits.  Hangzhou cuisine is rich in color, fragrance, taste, and nutrition.  Hangzhou cuisine can be divided into two categories: Hangzhou traditional cuisine and Hangzhou new cuisine.  Hangzhou traditional cuisine is mainly based on Hangzhou's long:eight_spoked_asterisk:
@@ -246,7 +245,7 @@
   <summary><b>代码能力</b></summary>
 
 
-- 使用python写一个二分查找的代码
+- **使用python写一个二分查找的代码**
 
   ```python
   def binary_search(arr, x):
