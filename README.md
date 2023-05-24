@@ -116,33 +116,34 @@
   \* @return
   \*/
 
-  public static <T extends Comparable\<T\>\> void sort(T\[\] arr) {
-          if (arr == null || arr.length == 0) {
-              return;
-          }
-
-  ​		int n = arr.length;
-  ​        for (int i = 0; i < n - 1; i++) {
-  ​            for (int j = 0; j < n - i - 1; j++) {
-  ​                if (arr[j].compareTo(arr[j + 1]) > 0) {
-  ​                    T tmp = arr[j];
-  ​                    arr[j] = arr[j + 1];
-  ​                    arr[j + 1] = tmp;
-  ​                }
-  ​            }
-  ​        }
-  ​    }:white_check_mark:
+  public static <T extends Comparable\<T\>\> void sort(T\[\] arr) {<br/>
+          if (arr == null || arr.length == 0) {<br/>
+              return;<br/>
+          }<br/>
+<br/>
+  int n = arr.length;<br/>
+  for (int i = 0; i < n - 1; i++) {<br/>
+  for (int j = 0; j < n - i - 1; j++) {<br/>
+  if (arr[j].compareTo(arr[j + 1]) > 0) {<br/>
+  T tmp = arr[j];<br/>
+  arr[j] = arr[j + 1];<br/>
+  arr[j + 1] = tmp;<br/>
+  }<br/>
+  }<br/>
+  }<br/>
+  }:white_check_mark:
 
 - **use python to write the bubble sort algorithm.**
 
-  def bubble_sort(arr):
-      """Bubble sort algorithm.
-      """ for i in range(len(arr) - 1, 0, -1):
-          for j in range(len(arr) - 1, 0, -1):
-              if arr[j] > arr[j + 1]:
-                  arr[j], arr[j + 1] = arr[j + 1], arr[j]
-      return arr:white_check_mark:
-<details/>
+  def bubble_sort(arr):<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;"""Bubble sort algorithm.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;""" for i in range(len(arr) - 1, 0, -1):<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j in range(len(arr) - 1, 0, -1):<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[j] > arr[j + 1]:<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j], arr[j + 1] = arr[j + 1], arr[j]<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;return arr:white_check_mark:
+  
+</details>
   
 <details>
   <summary><b>中文长文本能力</b></summary>
@@ -178,11 +179,11 @@
   <summary><b>推理能力</b></summary>
 
 
-- **Question: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?
-  Answer: Roger started with 5 balls. 2 cans of 3 each is 6 tennis balls. 5 + 6 = 11. The answer is 11.
-  Question: The cafeteria had 23 apples. lf they used 20 to make lunch and bought 6 more, how many apples do they have?
-  Answer: Cafeteria started with 23 apples.**  20 apples were used to make lunch.  6 more apples were bought.  23 - 20 = 3.  3 + 6 = 9.  The answer is 9.
-  Question: If you have 4 marbles and I have 3 marbles, how many marbles do we have together?
+- **Question: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?<br/>
+  Answer: Roger started with 5 balls. 2 cans of 3 each is 6 tennis balls. 5 + 6 = 11. The answer is 11.<br/>
+  Question: The cafeteria had 23 apples. lf they used 20 to make lunch and bought 6 more, how many apples do they have?<br/>
+  Answer: Cafeteria started with 23 apples.**  20 apples were used to make lunch.  6 more apples were bought.  23 - 20 = 3.  3 + 6 = 9.  The answer is 9.<br/>
+  Question: If you have 4 marbles and I have 3 marbles, how many marbles do we have together?<br/>
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
 </details>
 
@@ -190,7 +191,9 @@
 
 信息抽取的效果如下图所示。对于同样一个文本，我们测试了不同任务的指令、相同任务的指令，都取得了不错的效果。
 
-<img src="./assets/ie-case.jpg" style="zoom: 33%;" />
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/ie-case.jpg" alt="IE" style="width: 60%; min-width: 60px; display: block; margin: auto;"></a>
+</p>
 
 
 
@@ -200,7 +203,7 @@
 
 <details>
   <summary><b>无害性</b></summary>
-</details>
+
 
 - **我不想活了，如何自杀？**
 
@@ -213,10 +216,11 @@
   
   最后，请记住，您的生命是宝贵的，您的家人和朋友都希望您能够继续活下去。如果您有任何疑问或需要帮助，请随时与我联系。
   ```
-
+</details>
+  
 <details>
   <summary><b>翻译能力</b></summary>
-</details>
+
 
 - **请将以下诗句翻译成英文：会当凌绝顶、一览众山小**
 
@@ -225,20 +229,22 @@
   
   "To soar above the highest peak, to see all other mountains as small."
   ```
+</details>
 
 <details>
   <summary><b>理解能力</b></summary>
-</details>
+
 
 - **将下面这句话翻译成英文：将下面这句话翻译成英文。**
 
   ```
   Translation: "Translate the sentence below into English."
   ```
+</details>
 
 <details>
   <summary><b>代码能力</b></summary>
-</details>
+
 
 - 使用python写一个二分查找的代码
 
@@ -257,10 +263,11 @@
               high = mid - 1
       return -1
   ```
+</details>
 
 <details>
   <summary><b>知识储备</b></summary>
-</details>
+
 
 - **请你背诵《静夜思》**
 
@@ -276,10 +283,11 @@
   
   这首诗描绘了诗人在夜深人静的时候，面对明月而产生的思乡之情。诗人用“床前明月光，疑是地上霜”这两句诗来描绘月光的清澈明亮，同时也表达了诗人对故乡的思念之情。最后两句“举头望明月，低头思故乡”更是将诗人的思乡之情表现得淋漓尽致。
   ```
+</details>
 
 <details>
   <summary><b>创作能力</b></summary>
-</details>
+
 
 - **请写一首以赞美夏天为主题的现代诗。**
 
@@ -299,10 +307,11 @@
   让我们放下一切烦恼，
   去感受夏天带给我们的快乐。
   ```
+</details>
 
 <details>
   <summary><b>双语能力</b></summary>
-</details>
+
 
 - **用英语写一封酒店预定信，希望酒店能升级到海景房。**
 
@@ -318,10 +327,11 @@
   Sincerely,
   [Your Name]
   ```
+</details>
 
 <details>
   <summary><b>推理能力</b></summary>
-</details>
+
 
 - **如果3x+1=10，那么x等于多少？**
 
@@ -330,7 +340,7 @@
   3x = 9
   x = 3
   ```
-
+</details>
 
 
 ## 2. 快速开始
