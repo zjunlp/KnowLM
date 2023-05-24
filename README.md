@@ -54,12 +54,12 @@
 
 <details>
   <summary><b>翻译</b></summary>
-</details>
+
 
 - **你很擅长将中文翻译成英文。将下面的句子翻译成英文：我们今天准备去西安看兵马俑。答案：**We are going to see the Terracotta Warriors in Xi'an today.:white_check_mark:
 
 - **You are good at translating English into Chinese. Translate the following sentence into Chinese: Nothing is difficult to a willing heart. Answer:** 什么都不难,只要心甘情愿。:white_check_mark:
-
+</details>
   
 
 <details>
