@@ -380,7 +380,7 @@ python convert_llama_weights_to_hf.py --input_dir ./ --model_size 13B --output_d
 最后使用我们提供的脚本，位于`./tools/weight_diff.py`，执行下面的命令，将得到完整的`CaMA`权重：
 
 ```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff zjunlp/CaMA-13B --path_tuned ./CaMA
+python tools/weight_diff.py recover --path_raw ./converted --path_diff zjunlp/CaMA-13B-Diff --path_tuned ./CaMA
 ```
 
 最后完整的权重被保存在`./CaMA`文件夹中。
