@@ -354,7 +354,7 @@ pip install -r requirements.txt
 
 <h3 id="2-2">2.2 预训练模型权重获取与恢复</h3>
 
-> 由于meta官方没有完全开放出LLaMA的权重，因此我们将CaMA的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/CaMA-13B)。为了还原得到完整的CaMA权重，请按照下述步骤进行。
+> 由于meta官方没有完全开放出LLaMA的权重，因此我们将CaMA的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)。为了还原得到完整的CaMA权重，请按照下述步骤进行。
 
 **1. 下载LLaMA13B和CaMA-13B-Diff**
 
