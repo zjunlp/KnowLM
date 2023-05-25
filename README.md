@@ -583,12 +583,19 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 <h2 id="7">7. 其他</h2>
 
-<h3 id="7-1">7.1 贡献者</h3>
+<h3 id="7-1">7.1 贡献者（排名不分先后）</h3>
 
-<a href="https://github.com/zjunlp/cama/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=zjunlp/cama" />
-</a>
+基础模型：Xiang Chen, Jintian Zhang, Xiaozhuan Liang
 
+基础数据：Zhen Bi, Honghao Gui, Jing Chen, Ruinan Fang
+
+指令数据与训练：Xiaohan Wang, Shengyu Mao
+
+工具与视觉增强：Shuofei Qiao, Yixin Ou, Lei Li
+
+模型编辑与安全：Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li
+
+测试与演示：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi
 
 
 <h3 id="7-2">7.2 引用</h3>
