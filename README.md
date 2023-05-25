@@ -394,7 +394,7 @@ python tools/weight_diff.py recover --path_raw ./converted --path_diff zjunlp/Ca
 使用我们提供的脚本文件，位于`./tools/download.py`，执行下面的命令，得到LoRA权重（假设保存的路径位于`./LoRA`）：
 
 ```shell
-python tools/download.py --download_pth ./LoRA --only_lora
+python tools/download.py --download_path ./LoRA --only_lora
 ```
 
 最后完整的权重被保存在`./LoRA`文件夹中。
