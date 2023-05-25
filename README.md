@@ -484,7 +484,7 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 <h3 id="2-5">2.5 信息抽取Prompt</h3>
 
-对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，其中中文的Prompt位于[此处]()，英文的Prompt位于[此处]()。当然你也可以尝试使用自己的Prompt。
+对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，可以参考[此处](./examples/ie_prompt.py)。当然你也可以尝试使用自己的Prompt。
 
 
 
@@ -506,7 +506,7 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 <h3 id="3-2">3.2 预训练训练过程</h3>
 
-详细的数据处理代码和训练代码、完整的训练脚本、详细的训练情况可以在[./pretrain]()找到。
+详细的数据处理代码和训练代码、完整的训练脚本、详细的训练情况可以在[./pretrain](./pretrain)找到。
 
 在训练之前，我们首先需要对数据进行分词。我们设置的单个样本的最大长度是`1024`，而大多数的文档的长度都远远大于这个长度，因此我们需要对这些文档进行划分。我们设计了一个贪心算法来对文档进行切分，贪心的目标是在**保证每个样本都是完整的句子、分割的段数尽可能少的前提下，尽可能保证每个样本的长度尽可能长**。此外，由于数据源的多样性，我们设计了一套完整的数据预处理工具，可以对各个数据源进行处理然后合并。最后，由于数据量很大，如果直接将数据加载到内存，会导致硬件压力过大，于是我们参考了[DeepSpeed-Megatron](https://github.com/bigscience-workshop/Megatron-DeepSpeed/tree/main/tools)，使用`mmap`的方法对数据进行处理和加载，即将索引读入内存，需要的时候根据索引去硬盘查找。
 
