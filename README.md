@@ -587,7 +587,7 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 基础模型：Xiang Chen, Jintian Zhang, Xiaozhuan Liang
 
-基础数据：Zhen Bi, Honghao Gui, Jing Chen, Ruinan Fang
+基础数据：Zhen Bi, Honghao Gui, Jing Chen, Runnan Fang
 
 指令数据与训练：Xiaohan Wang, Shengyu Mao
 
