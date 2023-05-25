@@ -1,3 +1,4 @@
+\[ [中文]() | [English]() \]
 > 代码基于[Llama-X](https://github.com/AetherCortex/Llama-X)，Llama-X所使用的Huggingface提供的Trainer来进行训练（主要涉及的是全参数的指令微调），采用了Deepspeed的ZeRO-3策略，Llama-X额外提供数据预处理部分。因此对于全参数的指令微调，可以直接使用。
 >
 > 本代码更改了数据预处理部分使得其适配预训练任务。主要特点包括：
