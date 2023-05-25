@@ -448,6 +448,10 @@ python tools/download.py --download_pth ./LoRA --only_lora
    ```shell
    python examples/generate_finetune_web.py --base_model ./CaMA
    ```
+   下面是网页版的demo图：
+   <p align="center" width="100%">
+   <a href="" target="_blank"><img src="./assets/finetune_web.jpg" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
+   </p>
 
 **3. LoRA模型使用**
 
@@ -457,6 +461,10 @@ python tools/download.py --download_pth ./LoRA --only_lora
 python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 ```
 
+下面是网页版的demo图：
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/lora_web.png" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
+</p>
 其中`instruction`是必填参数，`input`是可选参数。对于一般任务而言（如1.3中提供的例子），可以直接将输入填写到`instruction`；对于信息抽取任务而言（如1.2提供的例子），请将指令填写到`instruction`，将待抽取的句子填写到`input`。我们在`2.5`小节中提供了信息抽取的`prompt`。
 
 如果您想批量测试，请修改`examples/generate_lora.py`文件，更改`case`中的例子和超参数即可。
