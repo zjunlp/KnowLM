@@ -12,7 +12,7 @@
 通过下面的命令来安装相应的包。需要注意的是，在数据预处理阶段使用了`nltk`包，可以参考[此处](https://blog.csdn.net/weixin_43409402/article/details/100012485)进行安装。
 
 ```shell
-conda create -—name train python=3.9 -y
+conda create —n train python=3.9 -y
 conda activate train
 git clone https://github.com/zjunlp/CaMA.git
 conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch
