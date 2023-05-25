@@ -555,6 +555,9 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
   
 
 ## 5. 未来计划
+- 训练并发布全量指令微调版本
+- 更新LoRA指令微调
+- ......
 
 
 
