@@ -14,7 +14,7 @@ pip install -r requirements.txt
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python finetune.py --data_path /your/data/path --base_model /your/path/to/cama
 ```
 如果希望在命令行中修改训练超参数，可以直接在命令后添加相应的参数即可。
-关于如何获取和复原CaMA-13B的权重，请参考[此处]()。关于训练的数据格式，请参考[alpaca-lora](https://github.com/tloen/alpaca-lora/blob/main/alpaca_data.json)，下面是一个简单的例子：
+关于如何获取和复原CaMA-13B的权重，请参考[此处](https://github.com/zjunlp/CaMA/tree/main#22-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E8%8E%B7%E5%8F%96%E4%B8%8E%E6%81%A2%E5%A4%8D)。关于训练的数据格式，请参考[alpaca-lora](https://github.com/tloen/alpaca-lora/blob/main/alpaca_data.json)，下面是一个简单的例子：
 ```python
 [
   {"instruction": "", "input":"", "output":""},
