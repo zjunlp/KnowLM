@@ -1,0 +1,9 @@
+transformers
+sentencepiece==0.1.97
+tqdm==4.65.0
+deepspeed
+fire
+nltk==3.8.1
+accelerate
+wandb
+tensorboardX
