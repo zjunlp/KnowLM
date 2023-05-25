@@ -15,6 +15,7 @@
 - 对信息抽取（Information Extraction，IE）任务，包括NER、RE、IE进行优化，可以使用人类指令来完成信息抽取任务
 - 开源了预训练模型的权重、指令微调的LoRA权重
 - 开源了全量预训练脚本（提供大型语料的转换、构建和加载），LoRA指令微调脚本
+所有权重均已上传huggingface。CaMA的diff权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)，LoRA权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-LoRA)。
 
 ## 目录
 
