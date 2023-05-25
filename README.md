@@ -373,6 +373,7 @@
 ```shell
 python tools/download.py --download_path ./CaMA-Diff --only_base
 ```
+> :exclamation:注意，如果下载的时候出现了中断，请重复执行上面的命令即可，huggingface提供了断点传输。
 
 **2. 使用huggingface提供的转换脚本**
 
@@ -434,7 +435,7 @@ python tools/download.py --download_path ./LoRA --only_lora
 
    即可得到1.3中的结果。
 
-即可得到1.3中的结果。
+
 
 **2. 预训练模型使用**
 
