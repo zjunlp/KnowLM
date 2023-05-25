@@ -31,7 +31,7 @@ cases = [
     "Can you help me write a formal email to a potential business partner proposing a joint venture? Your answer:",
     "using java to sort an unsorted array. Answer:",
     "这是我为我的学生申请浙江大学博士的推荐信：",
-    "窗前明月光，疑是地上霜。",
+    "床前明月光，疑是地上霜。",
     "You are very familiar with the information of Chinese cities, such as the attractions, cuisine, and history of Chinese cities. Please introduce the city of Hangzhou. Hangzhou",
     "你阅读过李白的所有诗歌。李白的《将进酒》的原文是",
     "You are now a doctor. Here are some tips for a healthy life. 1.",
