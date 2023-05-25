@@ -15,7 +15,7 @@ Our code is based on [alpaca-lora](https://github.com/tloen/alpaca-lora) with mo
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python finetune.py --data_path /your/data/path --base_model /your/path/to/cama
 ```
 If you want to modify the training hyperparameters in the command line, you can simply add the corresponding parameters after the command.
-For instructions on how to obtain and restore the weights of `CaMA-13B`, please refer to this [link]([../README_EN.md](https://github.com/zjunlp/CaMA/blob/main/README_EN.md#22-pretraining-model-weight-acquisition-and-restoration)).Regarding the data format for training, please refer to [alpaca-lora](https://github.com/tloen/alpaca-lora/blob/main/alpaca_data.json). Here is a simple example:
+For instructions on how to obtain and restore the weights of `CaMA-13B`, please refer to this [link]([../README_EN.md](https://github.com/zjunlp/CaMA/blob/main/README_EN.md#22-pretraining-model-weight-acquisition-and-restoration)). Regarding the data format for training, please refer to [alpaca-lora](https://github.com/tloen/alpaca-lora/blob/main/alpaca_data.json). Here is a simple example:
 ```python
 [
   {"instruction": "", "input":"", "output":""},
