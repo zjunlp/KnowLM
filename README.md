@@ -346,8 +346,9 @@
 <h2 id="2">2. 快速开始</h2>
 
 <h3 id="2-1">2.1 环境配置</h3>
-```shell
 
+```shell
+pip install -r requirements.txt
 ```
 
 
