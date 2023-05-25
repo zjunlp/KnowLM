@@ -354,7 +354,7 @@
 
 > 由于meta官方没有完全开放出LLaMA的权重，因此我们将CaMA的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/CaMA-13B)。为了还原得到完整的CaMA权重，请按照下述步骤进行。
 
-**1. 下载LLaMA13B**
+**1. 下载LLaMA13B和CaMA-13B-Diff**
 
 请点击[此处](https://forms.gle/jk851eBVbX1m5TAv5)向`meta`申请`LLaMA`的官方预训练权重。此处我们使用的是`13B`规格的模型，因此仅需下载`13B`版本即可。下载完成后的文件目录如下：
 
@@ -367,6 +367,11 @@
 |-- llama.sh
 |-- tokenizer.model
 |-- tokenizer_checklist.chk
+```
+
+请使用如下命令下载CaMA-diff文件（假设下载后保存在`./CaMA-Diff`文件夹中）：
+```shell
+python tools/download.py --download_path ./CaMA-Diff --only_base
 ```
 
 **2. 使用huggingface提供的转换脚本**
@@ -382,7 +387,7 @@ python convert_llama_weights_to_hf.py --input_dir ./ --model_size 13B --output_d
 最后使用我们提供的脚本，位于`./tools/weight_diff.py`，执行下面的命令，将得到完整的`CaMA`权重：
 
 ```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff zjunlp/CaMA-13B-Diff --path_tuned ./CaMA
+python tools/weight_diff.py recover --path_raw ./converted --path_diff ./CaMA-Diff --path_tuned ./CaMA
 ```
 
 最后完整的权重被保存在`./CaMA`文件夹中。
