@@ -593,12 +593,12 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 <h3 id="7-2">7.2 引用</h3>
 
-如果你使用到了我们的仓库，请引用它：
+如果你使用到了我们的仓库，请引用下列相关论文：
 
 ```bibtex
-@misc{cama,
-  author = {Xiang Chen, Jintian Zhang, Honghao Gui, Zhen Bi, Shengyu Mao, Xiaohan Wang, Jing Chen Ningyu Zhang, Huajun Chen},
-  title = {CaMA: A Chinese-English Bilingual LLaMA Model},
+@article{cama,
+  author = {Jintian Zhang, Xiaohan Wang, Honghao Gui, Xiang Chen, Yinuo Jiang, Zhen Bi, Jing Chen, Shengyu Mao, Xiaozhuan Liang, Yixin Ou, Ruinan Fang, Zekun Xi, Huajun Chen, Ningyu Zhang},
+  title = {DeepKE-LLM: A Large Language Model Based Knowledge Extraction Toolkit},
   year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
