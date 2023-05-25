@@ -348,6 +348,9 @@
 <h3 id="2-1">2.1 环境配置</h3>
 
 ```shell
+conda create -n cama python=3.9 -y
+conda activate cama
+pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
 ```
 
