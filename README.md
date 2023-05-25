@@ -541,7 +541,7 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 <h3 id="3-4">3.4 指令微调训练过程</h3>
 
-目前大多数的微调脚本都是基于[alpaca-lora](https://github.com/tloen/alpaca-lora/)，因此此处不再赘述。我们的详细的指令微调训练参数、训练脚本可以在[./finetune/lora]()找到。
+目前大多数的微调脚本都是基于[alpaca-lora](https://github.com/tloen/alpaca-lora/)，因此此处不再赘述。我们的详细的指令微调训练参数、训练脚本可以在[./finetune/lora](./finetune/lora)找到。
 
  
 
