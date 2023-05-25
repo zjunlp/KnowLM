@@ -1,5 +1,11 @@
 \[ [中文]() | [English]() \]
 # LoRA指令微调
+## 环境配置
+使用下面的命令配置环境：
+```shell
+pip install -r requirements.txt
+```
+## 运行
 我们的代码基于[alpaca-lora](https://github.com/tloen/alpaca-lora)进行修改，仅修改了训练的超参数。我们在一个Node上（8张32GB的V100显卡）进行训练。所有的训练超参数都在已经在训练代码中体现。请根据自己的硬件情况修改训练参数，包括`warmup_steps` `micro_batch_size`等参数。使用下面的命令开始训练：
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python finetune.py --data_path /your/data/path --base_model /your/path/to/cama
