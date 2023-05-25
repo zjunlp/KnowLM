@@ -1,4 +1,4 @@
-\[ **中文** | [English](./README_EN.md) \]
+:speaking_head: \[ **中文** | [English](./README_EN.md) \]
 # LoRA指令微调
 ## 环境配置
 使用下面的命令配置环境：
