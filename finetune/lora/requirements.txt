@@ -1,0 +1,8 @@
+gradio
+bitsandbytes==0.37.2
+datasets
+sentencepiece
+fire
+accelerate==0.17.1
+transformers==4.28.1
+peft==0.2.0
