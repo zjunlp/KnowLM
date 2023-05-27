@@ -589,7 +589,7 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
 
 <h2 id="7">7. Others</h2>
 
-<h3 id="7-1">7.1 Contributors（in random order）</h3>
+<h3 id="7-1">7.1 Contributors（In Random Order）</h3>
 
 Pretraining：Xiang Chen, Jintian Zhang, Xiaozhuan Liang
 
