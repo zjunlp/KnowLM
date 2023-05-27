@@ -610,12 +610,18 @@ If you use our repository, please cite the following related papers:
 
 ```bibtex
 @article{cama,
-  author = {Jintian Zhang, Xiaohan Wang, Honghao Gui, Xiang Chen, Yinuo Jiang, Zhen Bi, Jing Chen, Shengyu Mao, Shuofei Qiao, Xiaozhuan Liang, Yixin Ou, Ruinan Fang, Zekun Xi, Xin Xu, Shumin Deng, Huajun Chen, Ningyu Zhang},
+  author = {Jintian Zhang, Xiaohan Wang, Honghao Gui, Xiang Chen, Yinuo Jiang, Zhen Bi, Jing Chen, Shengyu Mao, Shuofei Qiao, Xiaozhuan Liang, Yixin Ou, Runnan Fang, Zekun Xi, Xin Xu, Shumin Deng, Huajun Chen, Ningyu Zhang},
   title = {DeepKE-LLM: A Large Language Model Based Knowledge Extraction Toolkit},
   year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/}},
+}
+@article{gui2023instructie,
+  title={InstructIE: A Chinese Instruction-based Information Extraction Dataset},
+  author={Gui, Honghao and Zhang, Jintian and Ye, Hongbin and Zhang, Ningyu},
+  journal={arXiv preprint arXiv:2305.11527},
+  year={2023}
 }
 ```
 
