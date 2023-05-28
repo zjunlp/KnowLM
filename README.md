@@ -594,7 +594,7 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 指令数据与训练：Xiaohan Wang, Shengyu Mao
 
-工具与视觉增强：Shuofei Qiao, Yixin Ou, Lei Li
+工具与多模态增强：Shuofei Qiao, Yixin Ou, Lei Li
 
 模型编辑与安全：Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li
 
