@@ -418,6 +418,8 @@ The final complete weights are saved in the `./LoRA` folder.
 
 **1. Reproduce the results in Section 1**
 
+> The cases in `Section 1` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
+
 1. If you want to reproduce the results in section `1.1`(**pretraining cases**), please run the following command (assuming that the complete pre-training weights of `CaMA` have been obtained according to the steps in section `2.2`, and the CaMA weight is saved in the `./CaMA` folder):
 
    ```shell
