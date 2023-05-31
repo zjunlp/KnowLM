@@ -609,7 +609,7 @@ python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
 
 ```bibtex
 @article{cama,
-  author = {Jintian Zhang, Ningyu Zhang, Xiaohan Wang, Honghao Gui, Xiang Chen, Yinuo Jiang, Zhen Bi, Jing Chen, Shengyu Mao, Shuofei Qiao, Xiaozhuan Liang, Yixin Ou, Runnan Fang, Zekun Xi, Xin Xu, Shumin Deng, Huajun Chen},
+  author = {Jintian Zhang, Ningyu Zhang, Xiaohan Wang, Honghao Gui, Xiang Chen, Yinuo Jiang, Zhen Bi, Jing Chen, Shengyu Mao, Shuofei Qiao, Xiaozhuan Liang, Yixin Ou, Runnan Fang, Zekun Xi, Xin Xu, Huajun Chen},
   title = {DeepKE-LLM: A Large Language Model Based Knowledge Extraction Toolkit},
   year = {2023},
   publisher = {GitHub},
