@@ -19,6 +19,9 @@ With the birth of ChatGPT, artificial intelligence has also entered the "iPhone 
 
 All weights have been uploaded to Hugging Face. The CaMA differential weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-Diff), and the LoRA weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-LoRA).
 
+## NEWS
+- \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
+
 ## Contents
 
 - Cases
@@ -399,8 +402,8 @@ python tools/weight_diff.py recover --path_raw ./converted --path_diff ./CaMA-Di
 ```
 
 The final complete CaMA weights are saved in the `./CaMA` folder.
+> ❗NOTE. We do not provide an MD5 for verifying the successful merge of the `CaMA-13B` because the weights are divided into six files. We employ the same validation strategy as [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), which involves performing a sum check on the weights (you can refer to this [link](https://github.com/zjunlp/CaMA/blob/main/tools/weight_diff.py#L106)). **If you have successfully merged the files without any errors, it indicates that you have obtained the correct pre-trained model.**
 
-​    
 
 <h3 id="2-3">2.3 Instruction tuning LoRA weight acquisition</h3>
 
