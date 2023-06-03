@@ -18,6 +18,9 @@
 
 所有权重均已上传huggingface。CaMA的diff权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)，LoRA权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-LoRA)。
 
+## NEWS
+- \[**2023/06**\] 发布第一版预训练权重与第一版LoRA权重
+
 ## 目录
 
 - 模型效果
