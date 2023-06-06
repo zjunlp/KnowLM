@@ -195,7 +195,7 @@
 信息抽取的效果如下图所示。对于同样一个文本，我们测试了不同任务的指令、相同任务的指令，都取得了不错的效果。
 
 <p align="center" width="100%">
-<a href="" target="_blank"><img src="./assets/ie-case.jpg" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
+<a href="" target="_blank"><img src="./assets/ie-case-zh.jpg" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
 </p>
 
 
