@@ -196,7 +196,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
 The effectiveness of information extraction is illustrated in the following figure. We tested different instructions for different tasks as well as the same instructions for the same task, and achieved good results for all of them.
 
 <p align="center" width="100%">
-<a href="" target="_blank"><img src="./assets/ie-case.jpg" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
+<a href="" target="_blank"><img src="./assets/ie-case-zh.jpg" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
 </p>
 
 
