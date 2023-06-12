@@ -373,7 +373,7 @@ pip install -r requirements.txt
 |-- tokenizer_checklist.chk
 ```
 
-请使用如下命令下载ZhiXi-Diff文件（假设下载后保存在`./zhixi-diff`文件夹中）：
+请使用如下命令下载ZhiXi-13B-Diff文件（假设下载后保存在`./zhixi-diff`文件夹中）：
 ```shell
 python tools/download.py --download_path ./zhixi-diff --only_base
 ```
@@ -401,13 +401,13 @@ python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-d
 
 <h3 id="2-3">2.3 指令微调LoRA权重获取</h3>
 
-使用我们提供的脚本文件，位于`./tools/download.py`，执行下面的命令，得到LoRA权重（假设保存的路径位于`./LoRA`）：
+使用我们提供的脚本文件，位于`./tools/download.py`，执行下面的命令，得到LoRA权重（假设保存的路径位于`./lora`）：
 
 ```shell
-python tools/download.py --download_path ./LoRA --only_lora
+python tools/download.py --download_path ./lora --only_lora
 ```
 
-最后完整的权重被保存在`./LoRA`文件夹中。
+最后完整的权重被保存在`./lora`文件夹中。
 
 
 
