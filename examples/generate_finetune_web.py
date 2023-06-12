@@ -137,8 +137,8 @@ def main(
                 label="Output"
             )
         ],
-        title="CaMA Finetune",
-        description="CaMA Finetune是基于LLaMA-13B使用中英双语进行二次全量预训练的模型。如果测试的效果不理想，请更改解码参数，或者尝试其他prompt，模型对于参数的选择和prompt的选择比较敏感。如果希望获得更多信息，请参考[CaMA](https://github.com/zjunlp/cama)。",
+        title="ZhiXi Finetune",
+        description="ZhiXi Finetune是基于LLaMA-13B使用中英双语进行二次全量预训练的模型。如果测试的效果不理想，请更改解码参数，或者尝试其他prompt，模型对于参数的选择和prompt的选择比较敏感。如果希望获得更多信息，请参考[KnowLLM](https://github.com/zjunlp/knowllm)。",
 
     ).queue().launch(server_name="0.0.0.0", share=share_gradio)
 
