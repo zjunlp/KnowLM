@@ -1,4 +1,4 @@
-:speaking_head: \[ **中文** | [English](./README.md) \]
+:speaking_head: \[ **中文** | [English](./README_EN.md) \]
 
 # 深知大模型系列
 
