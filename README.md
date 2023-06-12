@@ -454,7 +454,7 @@ We offer two methods: the first one is **command-line interaction**, and the sec
 1. Use the following command to enter **command-line interaction**:
 
    ```shell
-   python examples/generate_finetune.py --base_model ./CaMA --interactive
+   python examples/generate_finetune.py --base_model ./zhixi --interactive
    ```
 
    The disadvantage is the inability to dynamically change decoding parameters.
@@ -462,7 +462,7 @@ We offer two methods: the first one is **command-line interaction**, and the sec
 2. Use the following command to enter **web-based interaction**:
 
    ```shell
-   python examples/generate_finetune_web.py --base_model ./CaMA
+   python examples/generate_finetune_web.py --base_model ./zhixi
    ```
    Here is a screenshot of the web-based interaction:
    <p align="center" width="100%">
@@ -474,7 +474,7 @@ We offer two methods: the first one is **command-line interaction**, and the sec
 Here, we provide a web-based interaction method. Use the following command to access the web:
 
 ```shell
-python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
+python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 ```
 
 Here is a screenshot of the web-based interaction:
@@ -492,7 +492,7 @@ If you want to perform batch testing, please modify the `examples/generate_lora.
 
 For information extraction tasks such as named entity recognition (NER), event extraction (EE), and relation extraction (RE), we provide some prompts for ease of use. You can refer to this [link](./examples/ie_prompt.py) for examples. Of course, you can also try using your own prompts.
 
-Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where CaMA-13B-LoRA is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
+Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where ZhiXi-13B-LoRA is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
 
 
 <h2 id="3">3. Training Details</h2>
