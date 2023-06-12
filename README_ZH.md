@@ -450,7 +450,7 @@ python tools/download.py --download_path ./LoRA --only_lora
 1. 命令行方法，使用下面的命令进入命令行交互：
 
    ```shell
-   python examples/generate_finetune.py --base_model ./CaMA --interactive
+   python examples/generate_finetune.py --base_model ./zhixi --interactive
    ```
 
    缺点是无法动态的更改解码参数。
@@ -458,7 +458,7 @@ python tools/download.py --download_path ./LoRA --only_lora
 2. 网页版方法，使用下面的命令进入网页版：
 
    ```shell
-   python examples/generate_finetune_web.py --base_model ./CaMA
+   python examples/generate_finetune_web.py --base_model ./zhixi
    ```
    下面是网页版的demo图：
    <p align="center" width="100%">
@@ -470,7 +470,7 @@ python tools/download.py --download_path ./LoRA --only_lora
 此处我们提供了网页版的方法，使用下面的命令进入网页版：
 
 ```shell
-python examples/generate_lora_web.py --base_model ./CaMA --lora_weights ./LoRA
+python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 ```
 
 下面是网页版的demo图：
