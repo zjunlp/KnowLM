@@ -387,15 +387,15 @@ python tools/download.py --download_path ./zhixi-diff --only_base
 python convert_llama_weights_to_hf.py --input_dir ./ --model_size 13B --output_dir ./converted
 ```
 
-**3. 使用脚本恢复CaMA 13B**
+**3. 使用脚本恢复ZhiXi 13B**
 
-最后使用我们提供的脚本，位于`./tools/weight_diff.py`，执行下面的命令，将得到完整的`CaMA`权重：
+最后使用我们提供的脚本，位于`./tools/weight_diff.py`，执行下面的命令，将得到完整的`ZhiXi`权重：
 
 ```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff ./CaMA-Diff --path_tuned ./CaMA
+python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff --path_tuned ./zhixi
 ```
 
-最后完整的权重被保存在`./CaMA`文件夹中。
+最后完整的权重被保存在`./zhixi`文件夹中。
 > ❗对于是否合并成功，我们没有提供`MD5`，原因是因为权重被分成了六个文件。我们采用的验证策略和[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca)一样，对权重进行求和校验（可以参考[此处](https://github.com/zjunlp/CaMA/blob/main/tools/weight_diff.py#L106)），如果您合并的过程**没有出现任何错误，则表明您已经获得了正确的预训练模型。**
 
 
