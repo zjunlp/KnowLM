@@ -14,7 +14,7 @@ With the birth of ChatGPT, artificial intelligence has also entered the "iPhone 
 - We have also made the full pre-training script available, which includes transformations, construction, and loading of large-scale corpora, as well as the LoRA instruction fine-tuning script.
 
 
-All weights have been uploaded to Hugging Face. The CaMA differential weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-Diff), and the LoRA weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-LoRA).
+All weights have been uploaded to Hugging Face. The ZhiXi differential weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-Diff), and the LoRA weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-LoRA).
 
 ## NEWS
 - \[**June 2023**\] The project has changed to the knowledge-aware large language model series.
@@ -362,7 +362,7 @@ pip install -r requirements.txt
 
 > Since the Meta has not fully released the weights of LLaMA, we have computed the difference between the CaMA weights and the LLaMA weights and uploaded them [here](https://huggingface.co/zjunlp/CaMA-13B-Diff). To restore the complete CaMA weights, please follow the steps outlined below.
 
-**1. Download LLaMA 13B and CaMA-13B-Diff**
+**1. Download LLaMA 13B and ZhiXi-13B-Diff**
 
 Please click [here](https://forms.gle/jk851eBVbX1m5TAv5) to apply for the official pre-training weights of LLaMA from `meta`. In this case, we are using the `13B` version of the model, so you only need to download the `13B` version. Once downloaded, the file directory will be as follows:
 
@@ -377,9 +377,9 @@ Please click [here](https://forms.gle/jk851eBVbX1m5TAv5) to apply for the offici
 |-- tokenizer_checklist.chk
 ```
 
-You can use the following command to download the `CaMA-diff` file (assuming it is saved in the `./CaMA-Diff` folder):
+You can use the following command to download the `ZhiXi-13B-Diff` file (assuming it is saved in the `./zhixi-diff` folder):
 ```shell
-python tools/download.py --download_path ./CaMA-Diff --only_base
+python tools/download.py --download_path ./zhixi-diff --only_base
 ```
 > :exclamation:Noted. If the download is interrupted, please repeat the command mentioned above. HuggingFace provides the functionality of resumable downloads, allowing you to resume the download from where it was interrupted.
 
@@ -391,16 +391,16 @@ To convert the original LLaMA-13B model into the HuggingFace format, you can use
 python convert_llama_weights_to_hf.py --input_dir ./ --model_size 13B --output_dir ./converted
 ```
 
-**3. Restore CaMA 13B**
+**3. Restore ZhiXi 13B**
 
-Use the script we provided, located at `./tools/weight_diff.py`, execute the following command, and you will get the complete `CaMA` weight:
+Use the script we provided, located at `./tools/weight_diff.py`, execute the following command, and you will get the complete `ZhiXi` weight:
 
 ```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff ./CaMA-Diff --path_tuned ./CaMA
+python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff --path_tuned ./zhixi
 ```
 
-The final complete CaMA weights are saved in the `./CaMA` folder.
-> ❗NOTE. We do not provide an MD5 for verifying the successful merge of the `CaMA-13B` because the weights are divided into six files. We employ the same validation strategy as [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), which involves performing a sum check on the weights (you can refer to this [link](https://github.com/zjunlp/CaMA/blob/main/tools/weight_diff.py#L106)). **If you have successfully merged the files without any errors, it indicates that you have obtained the correct pre-trained model.**
+The final complete ZhiXi weights are saved in the `./zhixi` folder.
+> ❗NOTE. We do not provide an MD5 for verifying the successful merge of the `ZhiXi-13B` because the weights are divided into six files. We employ the same validation strategy as [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), which involves performing a sum check on the weights (you can refer to this [link](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L106)). **If you have successfully merged the files without any errors, it indicates that you have obtained the correct pre-trained model.**
 
 
 <h3 id="2-3">2.3 Instruction tuning LoRA weight acquisition</h3>
