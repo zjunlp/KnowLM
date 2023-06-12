@@ -14,7 +14,13 @@ With the birth of ChatGPT, artificial intelligence has also entered the "iPhone 
 - We have also made the full pre-training script available, which includes transformations, construction, and loading of large-scale corpora, as well as the LoRA instruction fine-tuning script.
 
 
-All weights have been uploaded to Hugging Face. The ZhiXi differential weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-Diff), and the LoRA weights can be found [here](https://huggingface.co/zjunlp/CaMA-13B-LoRA).
+All weights have been uploaded to HuggingFace🤗.
+| Model Name       | Train Method    | Weight Type          | Size     | Download Link                           | Notes                                                         |
+| -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
+| ZhiXi-13B-Diff | Full Pretraining   | Differential Weights | 46GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [Baidu]() | Restoring the pre-trained weights (i.e. **ZhiXi-13B**) needs to match the weights of `LLaMA-13B`, please refer to [here](#2-2) for specific instructions. |
+| ZhiXi-13B-LoRA | LoRA Instruction-tuning | LoRA Weights              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [Baidu]() | It needs to be used with **ZhiXi-13B**. For specific instructions, please refer to [here](#2-4).          |
+| ZhiXi-7B Series   | Coming soon     | Coming soon            | Coming soon | Coming soon                           | Coming soon                                                 |
+
 
 ## NEWS
 - \[**June 2023**\] The project has changed to the knowledge-aware large language model series.
