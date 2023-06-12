@@ -12,7 +12,7 @@
 - 开源了预训练模型的权重、指令微调的LoRA权重
 - 开源了全量预训练脚本（提供大型语料的转换、构建和加载），LoRA指令微调脚本
 
-所有权重均已上传huggingface。CaMA的diff权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)，LoRA权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-LoRA)。
+所有权重均已上传huggingface。ZhiXi的diff权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)，LoRA权重位于[此处](https://huggingface.co/zjunlp/CaMA-13B-LoRA)。
 
 ## NEWS
 - \[**2023/06**\] 发布第一版预训练权重与第一版LoRA权重
@@ -488,7 +488,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，可以参考[此处](./examples/ie_prompt.py)。当然你也可以尝试使用自己的Prompt。
 
-这里也有一个简单的使用CaMA-13B-LoRA完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
+这里也有一个简单的使用ZhiXi-13B-LoRA完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
 
 <h2 id="3">3. 训练细节</h2>
 
