@@ -1,8 +1,5 @@
 :speaking_head: \[ [中文](./README_ZH.md) | **English** \]
 
-<p align="center" width="100%">
-<a href="" target="_blank"><img src="./assets/logo.jpg" alt="ZJU-CaMA" style="width: 30%; min-width: 30px; display: block; margin: auto;"></a>
-</p>
 
 # Knowledge-aware Large Language Model Series.
 
