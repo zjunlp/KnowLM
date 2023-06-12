@@ -396,7 +396,7 @@ python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-d
 ```
 
 最后完整的权重被保存在`./zhixi`文件夹中。
-> ❗对于是否合并成功，我们没有提供`MD5`，原因是因为权重被分成了六个文件。我们采用的验证策略和[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca)一样，对权重进行求和校验（可以参考[此处](https://github.com/zjunlp/CaMA/blob/main/tools/weight_diff.py#L106)），如果您合并的过程**没有出现任何错误，则表明您已经获得了正确的预训练模型。**
+> ❗对于是否合并成功，我们没有提供`MD5`，原因是因为权重被分成了六个文件。我们采用的验证策略和[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca)一样，对权重进行求和校验（可以参考[此处](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L106)），如果您合并的过程**没有出现任何错误，则表明您已经获得了正确的预训练模型。**
 
 
 <h3 id="2-3">2.3 指令微调LoRA权重获取</h3>
