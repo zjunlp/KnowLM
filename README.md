@@ -351,8 +351,8 @@ The effectiveness of information extraction is illustrated in the following figu
 <h3 id="2-1">2.1 Environment Configuration</h3>
 
 ```shell
-conda create -n cama python=3.9 -y
-conda activate cama
+conda create -n zhixi python=3.9 -y
+conda activate zhixi
 pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
 ```
@@ -360,7 +360,7 @@ pip install -r requirements.txt
 
 <h3 id="2-2">2.2 Pretraining model weight acquisition and restoration</h3>
 
-> Since the Meta has not fully released the weights of LLaMA, we have computed the difference between the CaMA weights and the LLaMA weights and uploaded them [here](https://huggingface.co/zjunlp/CaMA-13B-Diff). To restore the complete CaMA weights, please follow the steps outlined below.
+> Since the Meta has not fully released the weights of LLaMA, we have computed the difference between the ZhiXi weights and the LLaMA weights and uploaded them [here](https://huggingface.co/zjunlp/CaMA-13B-Diff). To restore the complete ZhiXi weights, please follow the steps outlined below.
 
 **1. Download LLaMA 13B and ZhiXi-13B-Diff**
 
