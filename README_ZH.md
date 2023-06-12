@@ -347,8 +347,8 @@
 <h3 id="2-1">2.1 环境配置</h3>
 
 ```shell
-conda create -n cama python=3.9 -y
-conda activate cama
+conda create -n zhixi python=3.9 -y
+conda activate zhixi
 pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
 ```
@@ -356,9 +356,9 @@ pip install -r requirements.txt
 
 <h3 id="2-2">2.2 预训练模型权重获取与恢复</h3>
 
-> 由于meta官方没有完全开放出LLaMA的权重，因此我们将CaMA的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)。为了还原得到完整的CaMA权重，请按照下述步骤进行。
+> 由于meta官方没有完全开放出LLaMA的权重，因此我们将ZhiXi的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)。为了还原得到完整的ZhiXi权重，请按照下述步骤进行。
 
-**1. 下载LLaMA13B和CaMA-13B-Diff**
+**1. 下载LLaMA13B和ZhiXi-13B-Diff**
 
 请点击[此处](https://forms.gle/jk851eBVbX1m5TAv5)向`meta`申请`LLaMA`的官方预训练权重。此处我们使用的是`13B`规格的模型，因此仅需下载`13B`版本即可。下载完成后的文件目录如下：
 
@@ -373,9 +373,9 @@ pip install -r requirements.txt
 |-- tokenizer_checklist.chk
 ```
 
-请使用如下命令下载CaMA-diff文件（假设下载后保存在`./CaMA-Diff`文件夹中）：
+请使用如下命令下载ZhiXi-Diff文件（假设下载后保存在`./zhixi-diff`文件夹中）：
 ```shell
-python tools/download.py --download_path ./CaMA-Diff --only_base
+python tools/download.py --download_path ./zhixi-diff --only_base
 ```
 > :exclamation:注意，如果下载的时候出现了中断，请重复执行上面的命令即可，huggingface提供了断点传输。
 
