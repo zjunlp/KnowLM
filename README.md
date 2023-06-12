@@ -8,7 +8,7 @@ With the rapid development of deep learning technology, large language models su
 
 **The features of this project are as follows:**
 
-- We conducted full pre-training on LLaMA using the Chinese pre-training corpus we built, which improved the model's understanding of Chinese.
+- Focusing on knowledge and large models, we use the constructed Chinese pre-training corpora to perform full-scale pre-training on multiple large models such as LLaMA, Falcon, etc., thereby enhancing the models' understanding of Chinese.
 - We utilized our Chinese instruction dataset, consisting of approximately 1.4 million samples, and performed LoRA fine-tuning to enhance the model's comprehension of human instructions.
 - We optimized the Information Extraction (IE) tasks, including Named Entity Recognition (NER), Relation Extraction (RE), and Event Extraction (EE), by utilizing human instructions to accomplish information extraction tasks.
 - We have open-sourced the weights of the pre-trained model and the LoRA weights used for instruction fine-tuning.
