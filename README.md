@@ -405,13 +405,13 @@ The final complete ZhiXi weights are saved in the `./zhixi` folder.
 
 <h3 id="2-3">2.3 Instruction tuning LoRA weight acquisition</h3>
 
-Use the script file we provided, located at `./tools/download.py`, execute the following command to get the LoRA weight (assuming the saved path is located at `./LoRA`):
+Use the script file we provided, located at `./tools/download.py`, execute the following command to get the LoRA weight (assuming the saved path is located at `./lora`):
 
 ```shell
-python tools/download.py --download_path ./LoRA --only_lora
+python tools/download.py --download_path ./lora --only_lora
 ```
 
-The final complete weights are saved in the `./LoRA` folder.
+The final complete weights are saved in the `./lora` folder.
 
 
 
@@ -421,26 +421,26 @@ The final complete weights are saved in the `./LoRA` folder.
 
 > The cases in `Section 1` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
 
-1. If you want to reproduce the results in section `1.1`(**pretraining cases**), please run the following command (assuming that the complete pre-training weights of `CaMA` have been obtained according to the steps in section `2.2`, and the CaMA weight is saved in the `./CaMA` folder):
+1. If you want to reproduce the results in section `1.1`(**pretraining cases**), please run the following command (assuming that the complete pre-training weights of `ZhiXi` have been obtained according to the steps in section `2.2`, and the ZhiXi weight is saved in the `./zhixi` folder):
 
    ```shell
-   python examples/generate_finetune.py --base_model ./CaMA
+   python examples/generate_finetune.py --base_model ./zhixi
    ```
 
    The result in section `1.1` can be obtained.
 
-2. If you want to reproduce the results in section `1.2`(**information extraction cases**), please run the following command (assuming that the LoRA weights of `CaMA` have been obtained according to the steps in section `2.3`, and the LoRA weights is saved in the `./LoRA` folder):
+2. If you want to reproduce the results in section `1.2`(**information extraction cases**), please run the following command (assuming that the LoRA weights of `ZhiXi` have been obtained according to the steps in section `2.3`, and the LoRA weights is saved in the `./lora` folder):
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./CaMA --lora_weights ./LoRA --run_ie_cases
+   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_ie_cases
    ```
 
    The result in section `1.2` can be obtained.
 
-3. If you want to reproduce the results in section `1.3`(**general ablities cases**), please run the following command (assuming that the LoRA weights of `CaMA` have been obtained according to the steps in section `2.3`, and the LoRA weights is saved in the `./LoRA` folder):
+3. If you want to reproduce the results in section `1.3`(**general ablities cases**), please run the following command (assuming that the LoRA weights of `ZhiXi` have been obtained according to the steps in section `2.3`, and the LoRA weights is saved in the `./lora` folder):
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./CaMA --lora_weights ./LoRA --run_general_cases
+   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_general_cases
    ```
 
    The result in section `1.3` can be obtained.
