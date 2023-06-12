@@ -200,8 +200,8 @@ def main(
                 label="Output",
             )
         ],
-        title="CaMA",
-        description="CaMA是基于LLaMA-13B，先使用中英双语进行全量预训练，然后使用指令数据集进行LoRA微调（我们专门针对信息抽取进行优化）。如果希望获得更多信息，请参考[CaMA](https://github.com/zjunlp/cama)。如果出现重复或者效果不佳，请调整repeatition_penalty、beams两个参数。",  # noqa: E501
+        title="知析",
+        description="知析（ZhiXi）是基于LLaMA-13B，先使用中英双语进行全量预训练，然后使用指令数据集进行LoRA微调（我们专门针对信息抽取进行优化）。如果希望获得更多信息，请参考[KnowLLM](https://github.com/zjunlp/knowllm)。如果出现重复或者效果不佳，请调整repeatition_penalty、beams两个参数。",  # noqa: E501
     ).queue().launch(server_name="0.0.0.0", share=share_gradio)
 
 
