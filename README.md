@@ -1,7 +1,7 @@
 :speaking_head: \[ [中文](./README_ZH.md) | **English** \]
 
 
-# Knowledge-aware Large Language Model Series.
+# Knowledge-aware Large Language Model-Series.
 
 With the birth of ChatGPT, artificial intelligence has also entered the "iPhone moment," where various large language models (LLMs) have sprung up like mushrooms. The wave of these large models has quickly swept through artificial intelligence fields beyond natural language processing. However, training such a model requires extremely high hardware costs, and open-source language models are scarce due to various reasons, making Chinese language models even more scarce. It wasn't until the open-sourcing of LLaMA that a variety of language models based on LLaMA started to emerge. This project is also based on the LLaMA model. To further enhance Chinese language capabilities without compromising its original language distribution, we first <b>(1) perform additional pre-training on LLaMA (13B) using Chinese corpora, aiming to improve the model's Chinese comprehension and knowledge base while preserving its original English and code abilities to the greatest extent possible;</b> then, <b>(2) we fine-tune the model from the first step using an instruction dataset to enhance the language model's understanding of human instructions.</b>
 
