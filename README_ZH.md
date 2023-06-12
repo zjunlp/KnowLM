@@ -417,26 +417,26 @@ python tools/download.py --download_path ./LoRA --only_lora
 
 > 第1节中的例子均在V100上进行推理，如若在其他设备上进行推理，结果可能有出入，请多次运行或修改解码参数。
 
-1. 若希望**复现预训练**的结果，请运行如下命令（假设已经根据2.2的步骤得到了完整的预训练权重，模型保存在`./CaMA`文件夹中）：
+1. 若希望**复现预训练**的结果，请运行如下命令（假设已经根据2.2的步骤得到了完整的预训练权重，模型保存在`./zhixi`文件夹中）：
 
    ```shell
-   python examples/generate_finetune.py --base_model ./CaMA
+   python examples/generate_finetune.py --base_model ./zhixi
    ```
 
    即可得到1.1中的结果。
 
-2. 若希望**复现信息抽取**的结果，请运行如下命令（假设已经根据2.3的步骤得到了完整的LoRA权重，并保存在`./LoRA`文件夹中）：
+2. 若希望**复现信息抽取**的结果，请运行如下命令（假设已经根据2.3的步骤得到了完整的LoRA权重，并保存在`./lora`文件夹中）：
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./CaMA --lora_weights ./LoRA --run_ie_cases
+   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_ie_cases
    ```
 
    即可得到1.2中的结果。
 
-3. 若希望**复现通用能力**的结果，请运行如下命令（假设已经根据2.3的步骤得到了完整的LoRA权重，并保存在`./LoRA`文件夹中）：
+3. 若希望**复现通用能力**的结果，请运行如下命令（假设已经根据2.3的步骤得到了完整的LoRA权重，并保存在`./lora`文件夹中）：
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./CaMA --lora_weights ./LoRA --run_general_cases
+   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_general_cases
    ```
 
    即可得到1.3中的结果。
