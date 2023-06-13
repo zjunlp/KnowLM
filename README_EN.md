@@ -19,13 +19,6 @@ With the rapid development of deep learning technology, large language models su
 - The weights of the pre-training model and LoRA's instruction fine-tuning are open-sourced.
 - The full-scale pre-training script (providing conversion, construction, and loading of large corpora) and LoRA instruction fine-tuning script are open-sourced.
 
-**The models currently released:**
-
-<p align="center">
-    <br>
-    <img src="./assets/zx.png" width="400" height="130"/>
-    <br>
-</p>
 
 All weights have been uploaded to HuggingFace🤗.
 | Model Name       | Train Method    | Weight Type          | Size     | Download Link                           | Notes                                                         |
