@@ -6,7 +6,7 @@
     <br>
 </p>
 
-# Knowledgable Large Language Model-Series.
+# Knowledgable Large Language Model Series.
 
 With the rapid development of deep learning technology, large language models such as ChatGPT have achieved significant success in the field of natural language processing. However, these large models still face some challenges and issues in learning and understanding knowledge, including the difficulty of knowledge updating, and issues with potential errors and biases within the model, known as knowledge fallacies. The Deep Model series aims to release a series of open-source large models to mitigate these knowledge fallacy issues. The first phase of this project released a knowledge extraction large model based on LLaMA, named Zhishi. To provide Chinese capabilities without disrupting the original model's distribution, we firstly <b>(1) use Chinese corpora for the full-scale pre-training of LLaMA (13B), in order to improve the model's understanding of Chinese and knowledge reserve as much as possible while retaining its original English and code capabilities;</b> Then <b>(2) we fine-tune the model from the first step using an instruction dataset, to enhance the language model's understanding of human extraction instructions.</b>
 - ❗Please note! This project is still in development, and we anticipate releasing the stable version shortly. We are uploading model weights to BaiduPan and GoogleDrive.
