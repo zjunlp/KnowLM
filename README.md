@@ -1,7 +1,7 @@
 :speaking_head: \[ **中文** | [English](./README_EN.md) \]
 <p align="center">
     <br>
-    <img src="./assets/知析(4).png" width="600"/>
+    <img src="./assets/知析 (4).png" width="600"/>
     <br>
 </p>
 # 深知大模型系列
