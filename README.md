@@ -14,8 +14,8 @@ With the rapid development of deep learning technology, large language models su
 **The features of this project are as follows:**
 
 - Centered on knowledge and large models, a full-scale pre-training of the large model, such as LLaMA, is conducted using the built Chinese pre-training corpus, which improves the model's understanding of Chinese.
-- Based on the technology of **KG2Instructions**, the knowledge extraction tasks, including NER (Named Entity Recognition), RE (Relation Extraction), and IE (Information Extraction), are optimized and can be completed using human instructions.
-- Using the built Chinese instruction dataset (approximately 1.4 million samples), LoRA (Loss Reweighting with Auxiliary tasks) fine-tuning is used to enhance the model's understanding of human instructions.
+- Based on the technology of **KG2Instructions**, the knowledge extraction tasks, including NER, RE, and IE, are optimized and can be completed using human instructions.
+- Using the built Chinese instruction dataset (approximately 1400K), LoRA fine-tuning is used to enhance the model's understanding of human instructions.
 - The weights of the pre-training model and LoRA's instruction fine-tuning are open-sourced.
 - The full-scale pre-training script (providing conversion, construction, and loading of large corpora) and LoRA instruction fine-tuning script are open-sourced.
 
