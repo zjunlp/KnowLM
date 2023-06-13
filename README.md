@@ -1,7 +1,7 @@
 :speaking_head: \[ **中文** | [English](./README_EN.md) \]
 <p align="center">
     <br>
-    <img src="./assets/zx.png" width="350"/>
+    <img src="./assets/zx.png" width="450" height="200"/>
     <br>
 </p>
 
