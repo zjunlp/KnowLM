@@ -569,8 +569,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 - 我们的指令微调并没有使用全量指令微调，而是使用了LoRA的方式进行微调；
 - 我们的模型暂不支持多轮对话；
 - 尽管我们致力于模型输出的有用性、合理性、无害性，但是在一些场景下，仍然会不可避免的出现有毒的输出；
-
-- 预训练不充分，我们准备了大量的预训练语料，但是没有完全跑完；
+- 预训练不充分，我们准备了大量的预训练语料，但是没有完全跑完（没有足够的计算资源!）；
 
 - ······
 
@@ -580,6 +579,8 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 - 训练并发布全量指令微调版本
 - 更新LoRA指令微调
+- 集成更多大模型 (如Llama-7b, Falcon-7b)，因GPU资源有限，模型仍在缓慢训练和优化中
+- 基于更多数据集如 [Mol-Instructions](https://github.com/zjunlp/Mol-Instructions)使模型具备一些新能力
 - ......
 
 
