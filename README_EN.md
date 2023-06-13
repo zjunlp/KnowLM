@@ -2,7 +2,7 @@
 
 <p align="center">
     <br>
-    <img src="./assets/zx.png" width="350"/>
+    <img src="./assets/zx.png" width="550" height="180"/>
     <br>
 </p>
 
@@ -651,3 +651,9 @@ We are very grateful to the following open source projects for their help:
 - [Vicuna](https://vicuna.lmsys.org/)
 
 - [Llama-X](https://github.com/AetherCortex/Llama-X)
+
+<p align="center">
+    <br>
+    <img src="./assets/知析 (8).png" width="300"/>
+    <br>
+</p>
