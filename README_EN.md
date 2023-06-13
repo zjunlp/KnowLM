@@ -613,7 +613,7 @@ Tool learning and Multimodal：Shuofei Qiao, Yixin Ou, Lei Li
 
 Model Editing and Safety：Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li
 
-Model Testing and Deployment：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi
+Model Testing and Deployment：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li
 
 
 <h3 id="7-2">7.2 Citation</h3>
