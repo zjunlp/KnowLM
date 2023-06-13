@@ -586,6 +586,8 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
 
 - Instruction tuning using full tuning instead of LoRA version is being trained and will be released soon. 
 - New instruction tuning weights using LoRA will be updated shortly.
+- New models (Llama-7b, Falcon-7b) are being trained (We have limited GPUs!).
+- New abilities such as molecule and protein generation with [Mol-Instructions](https://github.com/zjunlp/Mol-Instructions), a large-scale biomolecules instruction dataset for large language models.
 - ......
 
 
