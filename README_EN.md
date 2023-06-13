@@ -13,12 +13,19 @@ With the rapid development of deep learning technology, large language models su
 
 **The features of this project are as follows:**
 
-- Focusing on knowledge and large models, we use the constructed Chinese pre-training corpora to perform full-scale pre-training on multiple large models such as LLaMA, Falcon, etc., thereby enhancing the models' understanding of Chinese.
-- We utilized our Chinese instruction dataset, consisting of approximately 1.4 million samples, and performed LoRA fine-tuning to enhance the model's comprehension of human instructions.
-- We optimized the Information Extraction (IE) tasks, including Named Entity Recognition (NER), Relation Extraction (RE), and Event Extraction (EE), by utilizing human instructions to accomplish information extraction tasks.
-- We have open-sourced the weights of the pre-trained model and the LoRA weights used for instruction fine-tuning.
-- We have also made the full pre-training script available, which includes transformations, construction, and loading of large-scale corpora, as well as the LoRA instruction fine-tuning script.
+- Centered on knowledge and large models, a full-scale pre-training of the large model, such as LLaMA, is conducted using the built Chinese pre-training corpus, which improves the model's understanding of Chinese.
+- Based on the technology of **KG2Instructions**, the knowledge extraction tasks, including NER (Named Entity Recognition), RE (Relation Extraction), and IE (Information Extraction), are optimized and can be completed using human instructions.
+- Using the built Chinese instruction dataset (approximately 1.4 million samples), LoRA (Loss Reweighting with Auxiliary tasks) fine-tuning is used to enhance the model's understanding of human instructions.
+- The weights of the pre-training model and LoRA's instruction fine-tuning are open-sourced.
+- The full-scale pre-training script (providing conversion, construction, and loading of large corpora) and LoRA instruction fine-tuning script are open-sourced.
 
+**The models currently released:**
+
+<p align="center">
+    <br>
+    <img src="./assets/zx.png" width="400" height="130"/>
+    <br>
+</p>
 
 All weights have been uploaded to HuggingFace🤗.
 | Model Name       | Train Method    | Weight Type          | Size     | Download Link                           | Notes                                                         |
