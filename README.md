@@ -608,7 +608,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 模型编辑与安全：Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li
 
-测试与演示：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi
+测试与演示：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li
 
 
 <h3 id="7-2">7.2 引用</h3>
