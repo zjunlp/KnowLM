@@ -646,3 +646,9 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 - [Vicuna](https://vicuna.lmsys.org/)
 
 - [Llama-X](https://github.com/AetherCortex/Llama-X)
+
+<p align="center">
+    <br>
+    <img src="./assets/知析 (8).png" width="300" />
+    <br>
+</p>
