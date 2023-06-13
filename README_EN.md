@@ -1,5 +1,10 @@
 :speaking_head: \[ [中文](./README.md) | **English** \]
 
+<p align="center">
+    <br>
+    <img src="./assets/zx.png" width="400"/>
+    <br>
+</p>
 
 # Knowledgable Large Language Model-Series.
 
