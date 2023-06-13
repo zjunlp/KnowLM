@@ -2,7 +2,7 @@
 
 <p align="center">
     <br>
-    <img src="./assets/zx.png" width="460" height="130"/>
+    <img src="./assets/知析 (8).png" width="460" height="130"/>
     <br>
 </p>
 
@@ -652,8 +652,8 @@ We are very grateful to the following open source projects for their help:
 
 - [Llama-X](https://github.com/AetherCortex/Llama-X)
 
-<p align="center">
+<!--<p align="center">
     <br>
     <img src="./assets/知析 (8).png" width="300"/>
     <br>
-</p>
+</p>-->
