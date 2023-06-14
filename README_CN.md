@@ -7,7 +7,7 @@
 
 
 随着深度学习技术的快速发展，大型语言模型如ChatGPT在自然语言处理领域已经取得了显著的成就。然而，这些大型模型在学习和理解知识方面仍然存在一些挑战和问题，包括知识更新的困难，以及模型中潜在的错误和偏差等知识谬误问题。深知大模型系列旨在发布一系列开源大模型减轻知识谬误问题。本项目一期发布了基于Llama的针对**知识抽取的大模型知析**。为了提供中文能力且不破坏原来模型的分布，我们首先<b>（1）使用中文语料首先对LLaMA（13B）进行进一步全量预训练，在尽可能保留原来的英文和代码能力的前提下，进一步提高模型对于中文理解能力和知识储备；</b>接着<b>（2）使用指令数据集对第一步的模型微调，来提高语言模型对于人类抽取指令的理解</b>。
-- ❗请注意本项目仍在迭代优化中，模型权重会定期更新，并正在**上传百度网盘和谷歌云盘存储的权重**！
+- ❗请注意本项目仍在迭代优化中，模型权重会定期更新，并正在**上传百度网盘的权重**！
 
 **本项目的特点如下：**
 
@@ -20,7 +20,7 @@
 所有权重均已上传🤗HuggingFace。
 | 模型名称       | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
 | -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
-| ZhiXi-13B-Diff | 全量预训练   | 与LLaMA-13B作差的权重 | 46GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [百度网盘]() <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
+| ZhiXi-13B-Diff | 全量预训练   | 与LLaMA-13B作差的权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [百度网盘]() <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
 | ZhiXi-13B-LoRA | LoRA指令微调 | LoRA权重              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [百度网盘]() <br/> [谷歌云盘](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link)  | 需要搭配ZhiXi-13B进行使用，具体使用说明参考[此处](#2-4)          |
 | ZhiXi-7B系列   | 即将发布     | 即将发布              | 即将发布 | 即将发布                           | 即将发布                                                     |
 
