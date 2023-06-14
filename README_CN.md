@@ -21,7 +21,7 @@
 | 模型名称       | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
 | -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
 | ZhiXi-13B-Diff | 全量预训练   | 与LLaMA-13B作差的权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [百度网盘]() <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
-| ZhiXi-13B-LoRA | LoRA指令微调 | LoRA权重              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [百度网盘]() <br/> [谷歌云盘](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link)  | 需要搭配ZhiXi-13B进行使用，具体使用说明参考[此处](#2-4)          |
+| ZhiXi-13B-LoRA | LoRA指令微调 | LoRA权重              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [百度网盘](https://pan.baidu.com/s/1_32ZXU6p3MCjp5kEJ90-Xw?pwd=ij9g) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link)  | 需要搭配ZhiXi-13B进行使用，具体使用说明参考[此处](#2-4)          |
 | ZhiXi-7B系列   | 即将发布     | 即将发布              | 即将发布 | 即将发布                           | 即将发布                                                     |
 
 ## NEWS
