@@ -9,7 +9,7 @@
 # Knowledgable Large Language Model Series.
 
 With the rapid development of deep learning technology, large language models such as ChatGPT have achieved significant success in the field of natural language processing. However, these large models still face some challenges and issues in learning and understanding knowledge, including the difficulty of knowledge updating, and issues with potential errors and biases within the model, known as knowledge fallacies. The Deep Model series aims to release a series of open-source large models to mitigate these knowledge fallacy issues. The first phase of this project released a knowledge extraction large model based on LLaMA, named Zhishi. To provide Chinese capabilities without disrupting the original model's distribution, we firstly <b>(1) use Chinese corpora for the full-scale pre-training of LLaMA (13B), in order to improve the model's understanding of Chinese and knowledge reserve as much as possible while retaining its original English and code capabilities;</b> Then <b>(2) we fine-tune the model from the first step using an instruction dataset, to enhance the language model's understanding of human extraction instructions.</b>
-- ❗Please note! This project is still in development, and we anticipate releasing the stable version shortly. We are uploading model weights to BaiduPan.
+- ❗Please note! This project is still in development, and we anticipate releasing the stable version shortly. 
 
 **The features of this project are as follows:**
 
@@ -23,8 +23,8 @@ With the rapid development of deep learning technology, large language models su
 All weights have been uploaded to HuggingFace🤗.
 | Model Name       | Train Method    | Weight Type          | Size     | Download Link                           | Notes                                                         |
 | -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
-| ZhiXi-13B-Diff | Full Pretraining   | Differential Weights | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [BaiduPan]() <br/> [GoogleDrive](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link)| Restoring the pre-trained weights (i.e. **ZhiXi-13B**) needs to match the weights of `LLaMA-13B`, please refer to [here](#2-2) for specific instructions. |
-| ZhiXi-13B-LoRA | LoRA Instruction-tuning | LoRA Weights              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/>  [BaiduPan](https://pan.baidu.com/s/1_32ZXU6p3MCjp5kEJ90-Xw?pwd=ij9g) <br/> [GoogleDrive](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link) | It needs to be used with **ZhiXi-13B**. For specific instructions, please refer to [here](#2-4).          |
+| ZhiXi-13B-Diff | Full Pretraining   | Differential Weights | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [GoogleDrive](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link)| Restoring the pre-trained weights (i.e. **ZhiXi-13B**) needs to match the weights of `LLaMA-13B`, please refer to [here](#2-2) for specific instructions. |
+| ZhiXi-13B-LoRA | LoRA Instruction-tuning | LoRA Weights              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/>  [GoogleDrive](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link) | It needs to be used with **ZhiXi-13B**. For specific instructions, please refer to [here](#2-4).          |
 | ZhiXi-7B Series   | Coming soon     | Coming soon            | Coming soon | Coming soon                           | Coming soon                                                 |
 
 
