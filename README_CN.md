@@ -17,7 +17,7 @@
 - 开源了预训练模型的权重、指令微调的LoRA权重
 - 开源了全量预训练脚本（提供大型语料的转换、构建和加载），LoRA指令微调脚本
 
-所有权重均已上传🤗HuggingFace。
+所有权重均已上传🤗HuggingFace。需要注意的是，下面的所有效果均是以`ZhiXi-13B-Diff`为基础的，如果下载的是`ZhiXi-13B-Diff-fp16`，效果可能会存在出入。
 | 模型名称       | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
 | -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
 | ZhiXi-13B-Diff | 全量预训练   | 与LLaMA-13B作差的fp32权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
