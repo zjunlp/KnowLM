@@ -391,6 +391,12 @@ pip install -r requirements.txt
 ```shell
 python tools/download.py --download_path ./zhixi-diff --only_base
 ```
+
+如果想下载`fp16`格式的diff权重，请使用下面的命令（假设下载后保存到`./zhixi-diff-fp16`文件夹中）：
+```shell
+python tools/download.py --download_path ./zhixi-diff --only_base --fp16
+```
+
 > :exclamation:注意，如果下载的时候出现了中断，请重复执行上面的命令即可，huggingface提供了断点传输。
 
 **2. 使用huggingface提供的转换脚本**
@@ -410,6 +416,12 @@ python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-d
 ```
 
 最后完整的权重被保存在`./zhixi`文件夹中。
+
+如果您下载的diff权重版本是`fp16`格式，请使用下面的命令即可得到，需要注意的是与`fp32`得到的权重略有差异：
+
+```shell
+python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff-fp16 --path_tuned ./zhixi --is_fp16 True
+```
 > ❗对于是否合并成功，我们没有提供`MD5`，原因是因为权重被分成了六个文件。我们采用的验证策略和[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca)一样，对权重进行求和校验（可以参考[此处](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L106)），如果您合并的过程**没有出现任何错误，则表明您已经获得了正确的预训练模型。**
 
 
