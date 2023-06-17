@@ -58,7 +58,7 @@ def recover(
     path_raw,
     path_diff,
     path_tuned: Optional[str] = None,
-    is_fp16 = False,
+    is_fp16=False,
     device="cpu",
     check_integrity_naively=True,
 ):
