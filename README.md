@@ -20,7 +20,7 @@ With the rapid development of deep learning technology, large language models su
 - The full-scale pre-training script (providing conversion, construction, and loading of large corpora) and LoRA instruction fine-tuning script are open-sourced.
 
 
-All weights have been uploaded to HuggingFace🤗.
+All weights have been uploaded to HuggingFace🤗. It should be noted that all the following effects are based on `ZhiXi-13B-Diff`. If you have downloaded `ZhiXi-13B-Diff-fp16`, there may be some variations in the effects.
 | Model Name       | Train Method    | Weight Type          | Size     | Download Link                           | Notes                                                         |
 | -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
 | ZhiXi-13B-Diff | Full Pretraining   | Differential Weights | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [GoogleDrive](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link)| Restoring the pre-trained weights (i.e. **ZhiXi-13B**) needs to match the weights of `LLaMA-13B`, please refer to [here](#2-2) for specific instructions. |
@@ -396,6 +396,12 @@ You can use the following command to download the `ZhiXi-13B-Diff` file (assumin
 ```shell
 python tools/download.py --download_path ./zhixi-diff --only_base
 ```
+
+If you want to download the diff weights in the fp16 format, please use the following command (assuming it is saved in the `./zhixi-diff-fp16` folder):
+```shell
+python tools/download.py --download_path ./zhixi-diff-fp16 --only_base --fp16
+```
+
 > :exclamation:Noted. If the download is interrupted, please repeat the command mentioned above. HuggingFace provides the functionality of resumable downloads, allowing you to resume the download from where it was interrupted.
 
 **2. Use the conversion script provided by huggingface**
@@ -415,6 +421,12 @@ python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-d
 ```
 
 The final complete ZhiXi weights are saved in the `./zhixi` folder.
+
+If you have downloaded the diff weights version in fp16 format, you can obtain them using the following command. Please note that there might be slight differences compared to the weights obtained in fp32 format:
+```shell
+python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff-fp16 --path_tuned ./zhixi
+```
+
 > ❗NOTE. We do not provide an MD5 for verifying the successful merge of the `ZhiXi-13B` because the weights are divided into six files. We employ the same validation strategy as [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), which involves performing a sum check on the weights (you can refer to this [link](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L106)). **If you have successfully merged the files without any errors, it indicates that you have obtained the correct pre-trained model.**
 
 
