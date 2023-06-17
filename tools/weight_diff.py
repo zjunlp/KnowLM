@@ -58,6 +58,7 @@ def recover(
     path_raw,
     path_diff,
     path_tuned: Optional[str] = None,
+    is_fp16 = False,
     device="cpu",
     check_integrity_naively=True,
 ):
@@ -82,13 +83,13 @@ def recover(
     model_raw: transformers.PreTrainedModel = transformers.AutoModelForCausalLM.from_pretrained(
         path_raw,
         device_map={"": torch.device(device)},
-        torch_dtype=torch.float32,
+        torch_dtype=torch.float32 if not is_fp16 else torch.float16,
         low_cpu_mem_usage=True,
     )
     model_recovered: transformers.PreTrainedModel = transformers.AutoModelForCausalLM.from_pretrained(
         path_diff,
         device_map={"": torch.device(device)},
-        torch_dtype=torch.float32,
+        torch_dtype=torch.float32 if not is_fp16 else torch.float16,
         low_cpu_mem_usage=True,
     )
     # tokenizer_raw: transformers.PreTrainedTokenizer = transformers.AutoTokenizer.from_pretrained(
@@ -104,7 +105,7 @@ def recover(
         # This is not a rigorous, cryptographically strong integrity check :)
         allsum = sum(state_dict_recovered[key].sum() for key in state_dict_recovered)
         assert torch.allclose(
-            allsum, torch.full_like(allsum, fill_value=94052.2891), atol=1e-2, rtol=0
+            allsum, torch.full_like(allsum, fill_value=94052.2891 if not is_fp16 else 94046.1875), atol=1e-2, rtol=0
         ), "Naive integrity check failed. This could imply that some of the checkpoint files are corrupted."
 
     if path_tuned is not None:
