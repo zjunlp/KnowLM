@@ -427,7 +427,7 @@ If you have downloaded the diff weights version in fp16 format, you can obtain t
 python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff-fp16 --path_tuned ./zhixi
 ```
 
-> ❗NOTE. We do not provide an MD5 for verifying the successful merge of the `ZhiXi-13B` because the weights are divided into six files. We employ the same validation strategy as [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), which involves performing a sum check on the weights (you can refer to this [link](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L106)). **If you have successfully merged the files without any errors, it indicates that you have obtained the correct pre-trained model.**
+> ❗NOTE. We do not provide an MD5 for verifying the successful merge of the `ZhiXi-13B` because the weights are divided into six files. We employ the same validation strategy as [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), which involves performing a sum check on the weights (you can refer to this [link](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L108)). **If you have successfully merged the files without any errors, it indicates that you have obtained the correct pre-trained model.**
 
 
 <h3 id="2-3">2.3 Instruction tuning LoRA weight acquisition</h3>
