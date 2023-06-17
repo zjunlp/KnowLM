@@ -11,6 +11,7 @@ def add_argument():
     parser.add_argument('--download_path', type=str, default='./CaMA', help="storage directory")
     parser.add_argument('--only_lora', action='store_true', default=False)
     parser.add_argument('--only_base', action='store_true', default=False)
+    parser.add_argument('--fp16', action='store_ture', default=False)
     parser.add_argument('--both', action='store_true', default=False)
     args = parser.parse_args()
     return args
@@ -29,8 +30,12 @@ if __name__ == '__main__':
     check_args(args)
 
     download = []
-    if args.only_base or args.both: download.append("CaMA-13B-Diff")
-    if args.only_lora or args.both: download.append("CaMA-13B-LoRA")
+    if args.only_base or args.both: 
+        if args.fp16: 
+            download.append("ZhiXi-13B-Diff-fp16")
+        else: 
+            download.append("ZhiXi-13B-Diff")
+    if args.only_lora or args.both: download.append("ZhiXi-13B-LoRA")
 
     for file in download:
         _print(f"downloading {file}......")
