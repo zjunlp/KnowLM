@@ -210,7 +210,8 @@ The effectiveness of information extraction is illustrated in the following figu
 <a href="" target="_blank"><img src="./assets/ie-case-new_logo-en.png" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
 </p>
 
-Compared to other Large Language Models (such as ChatGPT) on Information Extraction tasks, shown in figure.
+Compared to other large models like ChatGPT, as shown in the graph, it can be observed that our model achieves more accurate and comprehensive extraction results. However, we have also identified some extraction errors in ZhiXi. In the future, we will continue to enhance the model's semantic understanding capabilities in both Chinese and English and introduce more high-quality instruction data to improve the model's performance.
+
 <p align="center" width="100%">
 <a href="" target="_blank"><img src="./assets/casevschatgpt.png" width="600" height="900"></a>
 </p>
@@ -379,7 +380,7 @@ pip install -r requirements.txt
 
 <h3 id="2-2">2.2 Pretraining model weight acquisition and restoration</h3>
 
-> Since the Meta has not fully released the weights of LLaMA, we have computed the difference between the ZhiXi weights and the LLaMA weights and uploaded them [here](https://huggingface.co/zjunlp/CaMA-13B-Diff). To restore the complete ZhiXi weights, please follow the steps outlined below.
+> Since the Meta has not fully released the weights of LLaMA, we have computed the difference between the ZhiXi weights and the LLaMA weights and uploaded them [here](https://huggingface.co/zjunlp/zhixi-13b-diff). To restore the complete ZhiXi weights, please follow the steps outlined below.
 
 **1. Download LLaMA 13B and ZhiXi-13B-Diff**
 
@@ -571,11 +572,11 @@ In addition, we manually constructed a general Chinese dataset and translated it
 
 | Dataset           | Number |
 | -------------------- | ---- |
-| COT Datasets (Chinese, English)        |   202333   |
-| General Datasets (Chinese, English) |   105216   |
-| Code Datasets (Chinese, English) |   44688   |
-| Information Extraction Datasets (English)   |   537429   |
-| Information Extraction Datasets (Chinese)   |   486768   |
+| COT Datasets (Chinese, English)        |   202,333   |
+| General Datasets (Chinese, English) |   105,216   |
+| Code Datasets (Chinese, English) |   44,688   |
+| Information Extraction Datasets (English)   |   537,429   |
+| Information Extraction Datasets (Chinese)   |   486,768   |
 
 **KG2Instruction and other instruction fine-tuning datasets** `flow diagram`
 <p align="center" width="100%">
