@@ -1,4 +1,4 @@
-:speaking_head: \[ **中文** | [English](./README.md) \]
+:speaking_head: \[ **中文** | [English](./README_EN.md) \]
 <p align="center">
     <br>
     <img src="./assets/知析 (10).png" width="400" height="120"/>
