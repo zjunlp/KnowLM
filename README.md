@@ -601,6 +601,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 - 更新LoRA指令微调
 - 集成更多大模型 (如Llama-7b, Falcon-7b)，因GPU资源有限，模型仍在缓慢训练和优化中
 - 基于更多数据集如 [Mol-Instructions](https://github.com/zjunlp/Mol-Instructions)使模型具备一些新能力
+- llama.cpp支持
 - ......
 
 
