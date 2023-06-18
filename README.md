@@ -205,7 +205,10 @@
 <p align="center" width="100%">
 <a href="" target="_blank"><img src="./assets/ie-case-new_logo-zh.png" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
 </p>
-与其他大模型（如ChatGPT）在信息抽取任务的效果比较，如图所示。
+
+与其他大模型（如ChatGPT）在信息抽取任务的效果比较，如图所示。可以发现其取得了较为准确和完备的抽取效果。此外，我们也发现智析仍会出现一些抽取错误，我们会在未来继续增强底座模型的中英文语义理解能力并引入更多高质量的指令数据以提升模型性能。
+
+
 <p align="center" width="100%">
 <a href="" target="_blank"><img src="./assets/casevschatgpt.png" width="600" height="900"></a>
 </p>
@@ -374,7 +377,7 @@ pip install -r requirements.txt
 
 <h3 id="2-2">2.2 预训练模型权重获取与恢复</h3>
 
-> 由于meta官方没有完全开放出LLaMA的权重，因此我们将ZhiXi的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/CaMA-13B-Diff)。为了还原得到完整的ZhiXi权重，请按照下述步骤进行。
+> 由于meta官方没有完全开放出LLaMA的权重，因此我们将ZhiXi的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/zhixi-13b-diff)。为了还原得到完整的ZhiXi权重，请按照下述步骤进行。
 
 **1. 下载LLaMA13B和ZhiXi-13B-Diff**
 
@@ -565,11 +568,11 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 | 数据集类型           | 条数 |
 | -------------------- | ---- |
-| COT（中英文）        |   202333   |
-| 通用数据集（中英文） |   105216   |
-| 代码数据集（中英文） |   44688   |
-| 英文指令抽取数据集   |   537429   |
-| 中文指令抽取数据集   |   486768   |
+| COT（中英文）        |   202,333   |
+| 通用数据集（中英文） |   105,216   |
+| 代码数据集（中英文） |   44,688   |
+| 英文指令抽取数据集   |   537,429   |
+| 中文指令抽取数据集   |   486,768   |
 
 **KG2Instruction及其他指令微调数据集** `流程示意图`
 <p align="center" width="100%">
