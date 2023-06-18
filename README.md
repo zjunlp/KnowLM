@@ -6,18 +6,18 @@
     <br>
 </p>
 
-# Knowledgable Large Language Model Series.
+# Knowledgable Large Language Models Framework.
 
 With the rapid development of deep learning technology, large language models such as ChatGPT have achieved significant success in the field of natural language processing. However, these large models still face some challenges and issues in learning and understanding knowledge, including the difficulty of knowledge updating, and issues with potential errors and biases within the model, known as knowledge fallacies. The Deep Model series aims to release a series of open-source large models to mitigate these knowledge fallacy issues. The first phase of this project released a knowledge extraction large model based on LLaMA, named Zhishi. To provide Chinese capabilities without disrupting the original model's distribution, we firstly <b>(1) use Chinese corpora for the full-scale pre-training of LLaMA (13B), in order to improve the model's understanding of Chinese and knowledge reserve as much as possible while retaining its original English and code capabilities;</b> Then <b>(2) we fine-tune the model from the first step using an instruction dataset, to enhance the language model's understanding of human extraction instructions.</b>
 - ❗Please note! This project is still in development, and we anticipate releasing the stable version shortly. 
 
 **The features of this project are as follows:**
 
-- Centered on knowledge and large models, a full-scale pre-training of the large model, such as LLaMA, is conducted using the built Chinese pre-training corpus, which improves the model's understanding of Chinese.
+- Centered on knowledge and large models, a full-scale pre-training of the large model, such as LLaMA, is conducted using the built Chinese&English pre-training corpus.
 - Based on the technology of **KG2Instructions**, the knowledge extraction tasks, including NER, RE, and IE, are optimized and can be completed using human instructions.
 - Using the built Chinese instruction dataset (approximately 1400K), LoRA fine-tuning is used to enhance the model's understanding of human instructions.
 - The weights of the pre-training model and LoRA's instruction fine-tuning are open-sourced.
-- The full-scale pre-training script (providing conversion, construction, and loading of large corpora) and LoRA instruction fine-tuning script are open-sourced.
+- The **full-scale pre-training code** (providing conversion, construction, and loading of large corpora) and **LoRA instruction fine-tuning code** are open-sourced (support multi-machine multi-GPU).
 
 
 All weights have been uploaded to HuggingFace🤗. It should be noted that all the following effects are based on `ZhiXi-13B-Diff`. If you have downloaded `ZhiXi-13B-Diff-fp16`, there may be some variations in the effects.
