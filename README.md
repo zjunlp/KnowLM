@@ -207,9 +207,13 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
 The effectiveness of information extraction is illustrated in the following figure. We tested different instructions for different tasks as well as the same instructions for the same task, and achieved good results for all of them.
 
 <p align="center" width="100%">
-<a href="" target="_blank"><img src="./assets/ie-case-en.jpg" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
+<a href="" target="_blank"><img src="./assets/ie-case-new_logo-en.png" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
 </p>
 
+Compared to other Large Language Models (such as ChatGPT) on Information Extraction tasks, shown in figure.
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/casevschatgpt.png" width="600" height="900"></a>
+</p>
 
 
 <h3 id="1-3">1.3 General Ablities Cases</h3>
@@ -573,7 +577,10 @@ In addition, we manually constructed a general Chinese dataset and translated it
 | Information Extraction Datasets (English)   |   537429   |
 | Information Extraction Datasets (Chinese)   |   486768   |
 
-
+**KG2Instruction and other instruction fine-tuning datasets** `flow diagram`
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/kg2instructions-en.png"style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
+</p>
 
 <h3 id="3-4">3.4 Training Process (Instruction tuning)</h3>
 
