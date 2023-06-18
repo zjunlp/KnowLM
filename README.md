@@ -30,7 +30,7 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
 
 
 ## NEWS
-- \[**June 2023**\] The project has changed to the knowledge-aware large language model series.
+- \[**June 2023**\] The project name has been changed from CaMA to KnowLM.
 - \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
 
 ## Contents
