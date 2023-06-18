@@ -203,7 +203,11 @@
 信息抽取的效果如下图所示。对于同样一个文本，我们测试了不同任务的指令、相同任务的指令，都取得了不错的效果。
 
 <p align="center" width="100%">
-<a href="" target="_blank"><img src="./assets/ie-case-zh.jpg" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
+<a href="" target="_blank"><img src="./assets/ie-case-new_logo-zh.png" alt="IE" style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
+</p>
+与其他大模型（如ChatGPT）在信息抽取任务的效果比较，如图所示。
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/casevschatgpt.png" width="600" height="900"></a>
 </p>
 
 
@@ -567,7 +571,10 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 | 英文指令抽取数据集   |   537429   |
 | 中文指令抽取数据集   |   486768   |
 
-
+**KG2Instruction及其他指令微调数据集** `流程示意图`
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/kg2instructions-zh.jpg"style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
+</p>
 
 <h3 id="3-4">3.4 指令微调训练过程</h3>
 
