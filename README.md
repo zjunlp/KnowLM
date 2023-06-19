@@ -42,6 +42,7 @@
   - [模型权重获取(预训练与LoRA)](#2-2)
   - [模型使用](#2-4)
   - [信息抽取Prompt](#2-5)
+  - [ZhiXi-13B-LoRA与ZhiXi-13B权重合并](#2-6)
 - [训练细节](#3)
   - [预训练数据与训练脚本](#3-1)
   - [指令微调数据与训练脚本](#3-3)
@@ -534,6 +535,14 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 > （2）使用LoRA的指令微调阶段。该阶段让模型能够理解人类的指令并输出合适的内容。
 
 ![](./assets/main_new.jpg)
+
+<h3 id="2-6">2.6 ZhiXi-13B-LoRA与ZhiXi-13B的合并</h3>
+
+如果希望将`ZhiXi-13B-LoRA`与`ZhiXi-13B`进行合并，您可以使用下面的命令进行合并，输出的模型权重保存在`./zhixi-sft`文件夹中：
+
+```shell
+python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
+```
 
 <h3 id="3-1">3.1 预训练数据集构建</h3>
 
