@@ -535,7 +535,7 @@ Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/Instruct
 >
 >  (2) Instruction tuning stage using LoRA. This stage enables the model to understand human instructions and generate appropriate responses.
 
-![](./assets/main.jpg)
+![](./assets/main_new.jpg)
 
 <h3 id="3-1">3.1 Dataset Construction (Pretraining)</h3>
 
