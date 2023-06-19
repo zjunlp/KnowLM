@@ -526,6 +526,14 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 这里也有一个简单的使用ZhiXi-13B-LoRA完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
 
+<h3 id="2-6">2.6 ZhiXi-13B-LoRA与ZhiXi-13B的合并</h3>
+
+如果希望将`ZhiXi-13B-LoRA`与`ZhiXi-13B`进行合并，您可以使用下面的命令进行合并，输出的模型权重保存在`./zhixi-sft`文件夹中：
+
+```shell
+python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
+```
+
 <h2 id="3">3. 训练细节</h2>
 
 > 下图展示了我们的训练的整个流程和数据集构造。整个训练过程分为两个阶段：
@@ -536,13 +544,6 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 ![](./assets/main_new.jpg)
 
-<h3 id="2-6">2.6 ZhiXi-13B-LoRA与ZhiXi-13B的合并</h3>
-
-如果希望将`ZhiXi-13B-LoRA`与`ZhiXi-13B`进行合并，您可以使用下面的命令进行合并，输出的模型权重保存在`./zhixi-sft`文件夹中：
-
-```shell
-python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
-```
 
 <h3 id="3-1">3.1 预训练数据集构建</h3>
 
