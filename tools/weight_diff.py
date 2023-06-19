@@ -113,6 +113,52 @@ def recover(
         tokenizer_raw.save_pretrained(path_tuned)
     return model_recovered
 
+@torch.inference_mode()
+def merge(
+    path_zhixi,
+    path_lora,
+    path_sfted: Optional[str] = None,
+    is_fp16=False,
+    device="cpu",
+):
+    """Merge the released lora weight with the pretrained zhixi to be a single hf format model for further lora training or full-finetuning
+
+    This function is given for you to run.
+
+    Things to do before running this:
+        1. Getting the pretrained zhixi model. Follow this guide:
+            https://github.com/zjunlp/KnowLM
+        2. Make sure you cloned the released lora weight into your local machine. The lora weight is located at:
+            https://huggingface.co/zjunlp/zhixi-13b-lora/tree/main
+        3. Run this function with the correct paths. E.g.,
+            python weight_diff.py merge --path_zhixi <path_to_step_1_dir> --path_lora <path_to_step_2_dir> --path_sfted <path_to_output_dir>
+
+    Additional notes:
+        - If things run too slowly, and you have an 80G GPU lying around, let GPU go brrr by setting `--device "cuda"`.
+        - If you want to save the recovered weights, set `--path_sfted <your_path_sfted>`.
+            Next time you can load the recovered weights directly from `<your_path_sfted>`.
+    """
+    tokenizer_tuned = transformers.LlamaTokenizer.from_pretrained(path_zhixi)
+    model_zhixi = transformers.LlamaForCausalLM.from_pretrained(
+        path_zhixi,
+        device_map={"": torch.device(device)},
+        torch_dtype=torch.float32 if not is_fp16 else torch.float16,
+        low_cpu_mem_usage=True,
+    )
+    model_lora = PeftModel.from_pretrained(
+        model_zhixi,
+        path_lora,
+        device_map={"": torch.device(device)},
+        torch_dtype=torch.float32 if not is_fp16 else torch.float16,
+        low_cpu_mem_usage=True,
+    )
+    
+    model_sfted = model_lora.merge_and_unload()
+
+    if path_sfted is not None:
+        transformers.LlamaForCausalLM.save_pretrained(model_sfted, path_sfted)
+        tokenizer_tuned.save_pretrained(path_sfted)
+    return model_sfted
 
 def main(task, **kwargs):
     globals()[task](**kwargs)
