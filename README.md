@@ -401,7 +401,7 @@ python tools/download.py --download_path ./zhixi-diff --only_base
 
 如果想下载`fp16`格式的diff权重，请使用下面的命令（假设下载后保存到`./zhixi-diff-fp16`文件夹中）：
 ```shell
-python tools/download.py --download_path ./zhixi-diff --only_base --fp16
+python tools/download.py --download_path ./zhixi-diff-fp16 --only_base --fp16
 ```
 
 > :exclamation:注意，如果下载的时候出现了中断，请重复执行上面的命令即可，huggingface提供了断点传输。
