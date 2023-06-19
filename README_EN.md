@@ -37,16 +37,16 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
 
 ## Contents
 
-- Cases
+- [Cases](#1)
   - [Pretraining Cases](#1-1)
   - [Information Extraction Cases](#1-2)
   - [General Ability Cases](#1-3)
-- Quick Start
+- [Quick Start](#2)
   - [Environment Configuration](#2-1)
   - [Model Weight(Pretrain and LoRA)](#2-2)
   - [Model Usage Guide](#2-4)
   - [Information Extraction Prompt](#2-5)
-- Training Details
+- [Training Details](#3)
   - [Pertraining data and Pretraining scripts](#3-1)
   - [Instruction data and Instruction-tuning scripts](#3-3)
 - [Limitations](#4)
