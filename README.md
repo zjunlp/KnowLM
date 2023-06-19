@@ -531,7 +531,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 >
 > （2）使用LoRA的指令微调阶段。该阶段让模型能够理解人类的指令并输出合适的内容。
 
-![](./assets/main.jpg)
+![](./assets/main_new.jpg)
 
 <h3 id="3-1">3.1 预训练数据集构建</h3>
 
