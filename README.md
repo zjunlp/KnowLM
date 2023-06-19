@@ -611,7 +611,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 <h2 id="6">6. FAQ</h2>
 
-- 问题：解码的时候出现了 怎么办？
+- 问题：解码的时候出现了�怎么办？
 
   答案：如果是解码的句子中间出现了这个符号，建议重新更换输入；如果是句子的结尾输出，则可以增大输出长度来解决。
 
