@@ -46,6 +46,7 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
   - [Model Weight(Pretrain and LoRA)](#2-2)
   - [Model Usage Guide](#2-4)
   - [Information Extraction Prompt](#2-5)
+  - [Combining ZhiXi-13B-LoRA Weights with ZhiXi-13B Weights](#2-6)
 - [Training Details](#3)
   - [Pertraining data and Pretraining scripts](#3-1)
   - [Instruction data and Instruction-tuning scripts](#3-3)
@@ -528,6 +529,12 @@ For information extraction tasks such as named entity recognition (NER), event e
 
 Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where ZhiXi-13B-LoRA is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
 
+<h3 id="2-6">2.6 Combining ZhiXi-13B-LoRA Weights with ZhiXi-13B Weights</h3>
+
+If you wish to merge `ZhiXi-13B-LoRA` with `ZhiXi-13B`, you can use the following command for merging, and the output model weights will be saved in the "./zhixi-sft" folder:
+```shell
+python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
+```
 
 <h2 id="3">3. Training Details</h2>
 
