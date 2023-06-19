@@ -401,7 +401,7 @@ python tools/download.py --download_path ./zhixi-diff --only_base
 
 如果想下载`fp16`格式的diff权重，请使用下面的命令（假设下载后保存到`./zhixi-diff-fp16`文件夹中）：
 ```shell
-python tools/download.py --download_path ./zhixi-diff --only_base --fp16
+python tools/download.py --download_path ./zhixi-diff-fp16 --only_base --fp16
 ```
 
 > :exclamation:注意，如果下载的时候出现了中断，请重复执行上面的命令即可，huggingface提供了断点传输。
@@ -611,7 +611,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 <h2 id="6">6. FAQ</h2>
 
-- 问题：解码的时候出现了�怎么办？
+- 问题：解码的时候出现了 怎么办？
 
   答案：如果是解码的句子中间出现了这个符号，建议重新更换输入；如果是句子的结尾输出，则可以增大输出长度来解决。
 
