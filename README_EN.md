@@ -35,6 +35,9 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
 - \[**June 2023**\] The project name has been changed from `CaMA` to `KnowLM`.
 - \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
 
+## Why it's called ZhiXi (智析)?
+In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced language understanding capabilities. "Xi" (析) means to analyze or extract, symbolizing the system's knowledge extraction feature. Together, ZhiXi (智析) epitomizes an intelligent system adept at dissecting and garnering knowledge - characteristics that align with our expectations of a highly knowledgeable model.
+
 ## Contents
 
 - [Cases](#1)
