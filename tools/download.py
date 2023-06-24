@@ -11,7 +11,7 @@ def add_argument():
     parser.add_argument('--download_path', type=str, default='./CaMA', help="storage directory")
     parser.add_argument('--only_lora', action='store_true', default=False)
     parser.add_argument('--only_base', action='store_true', default=False)
-    parser.add_argument('--fp16', action='store_ture', default=False)
+    parser.add_argument('--fp16', action='store_true', default=False)
     parser.add_argument('--both', action='store_true', default=False)
     args = parser.parse_args()
     return args
