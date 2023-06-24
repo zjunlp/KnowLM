@@ -126,13 +126,13 @@ def main(
 
     if not interactive:
         print(f"{'='*30}INFO{'='*31}")
-        print("cama-13b loaded successfully, the next is case :)")
+        print("zhixi-13b loaded successfully, the next is case :)")
         print(f"{'='*30}START{'='*30}")
         for inputs in cases:
             print(f"Output: {evaluate(input=inputs)}")
     else:
         print(f"{'='*30}INFO{'='*31}")
-        print("cama-13b loaded successfully, please input prompt :)")
+        print("zhixi-13b loaded successfully, please input prompt :)")
         print("if you want to exit, please input exit :)")
         print(f"{'='*30}START{'='*30}")
         while True:
