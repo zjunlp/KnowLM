@@ -524,6 +524,12 @@ The `instruction` is a required parameter, while `input` is an optional paramete
 
 If you want to perform batch testing, please modify the `examples/generate_lora.py` file and update the examples and hyperparameters in the variable `cases`.
 
+According to different task requirements, we have the following suggestions for adjusting decoding strategies and their associated hyperparameters:
+
+1. If you want more diverse and creative outputs, consider using top-k or top-p (nucleus) sampling with a relatively higher `top_k` or `top_p`, and possibly a higher `temperature`.
+2. If you want more focused and high-quality outputs (e.g., information extraction), consider using beam search with a moderate beam width, or top-k or top-p sampling with a lower `top_k` or `top_p`, and a lower `temperature`.
+3. Remember to experiment and fine-tune. Depending on your use case, it may be beneficial to iterate and experiment with different strategies and hyperparameters to find the optimal combination.
+
 
 
 <h3 id="2-5">2.5 Information Extraction Prompt</h3>
