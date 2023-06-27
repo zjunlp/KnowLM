@@ -518,6 +518,12 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 如果您想批量测试，请修改`examples/generate_lora.py`文件，更改`case`中的例子和超参数即可。
 
+根据不同的任务需求，我们对解码策略及其相关超参数的调整建议如下:
+
+1. 如果您想要更多样化和创造性的输出，请考虑使用 `top_k` 或 `top_p` 相对较高的top-k或top-p 采样策略，并可以使用更高的 `temperature`；
+2. 如果您想要更高质量的输出(例如，信息抽取)，请考虑使用beam search解码策略（适当调整 `num_beam` 参数），或者使用较低 `top_k` 或 `top_p` 的top-k或top-p采样策略，并结合较低的 `temperature` 参数；
+3. 根据您的需要，可以迭代和试验不同的解码策略和超参数以找到最佳组合。
+
 
 
 <h3 id="2-5">2.5 信息抽取Prompt</h3>
