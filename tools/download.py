@@ -13,6 +13,7 @@ def add_argument():
     parser.add_argument('--only_base', action='store_true', default=False)
     parser.add_argument('--fp16', action='store_true', default=False)
     parser.add_argument('--both', action='store_true', default=False)
+    parser.add_argument('--llama', action='store_true', default=False)
     args = parser.parse_args()
     return args
 
@@ -27,6 +28,10 @@ def check_args(args):
 
 if __name__ == '__main__':
     args = add_argument()
+    if args.llama:
+        snapshot_download(repo_id=f"decapoda-research/llama-13b-hf", local_dir="./llama-13b")
+        _print("done!")
+        exit()
     check_args(args)
 
     download = []
