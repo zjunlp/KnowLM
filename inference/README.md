@@ -1,3 +1,4 @@
+:speaking_head: \[ **中文** | [English](./README_EN.md) \]
 # vLLM Serving
 
 [vLLM](https://github.com/vllm-project/vllm) 实现了简单高效加速LLM推理和服务的框架。为此，我们集成vLLM来提高KnowLM系列模型的推理速度和服务响应速度。
