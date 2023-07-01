@@ -530,7 +530,39 @@ According to different task requirements, we have the following suggestions for 
 2. If you want more focused and high-quality outputs (e.g., information extraction), consider using beam search with a moderate `num_beam`, or top-k or top-p sampling with a lower `top_k` or `top_p`, and a lower `temperature`.
 3. Remember to experiment and fine-tune. Depending on your use case, it may be beneficial to iterate and experiment with different strategies and hyperparameters to find the optimal combination.
 
+**4. vLLM API server**
 
+We interagte [vLLM](https://github.com/vllm-project/vllm) for accelerating LLM inference and providing efficient API service. Use the following command to launch vLLM API server at `http://localhost:8090`.
+
+```shell
+max_num_batched_tokens=8000
+
+CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
+    --port 8090 \
+    --model data/zhixi-13B \
+    --use-np-weights \
+    --max-num-batched-tokens $max_num_batched_tokens \
+    --dtype half \
+    --tensor-parallel-size 2
+```
+
+Query the service using POST request:
+
+```shell
+curl -X POST "http://10.82.77.35:8090/generate" \
+  -H 'Content-Type: application/json' \
+  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
+```
+
+You could get the following response:
+
+```shell
+{
+  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
+  "num_output_tokens_cf":65,
+  "error":null
+}
+```
 
 <h3 id="2-5">2.5 Information Extraction Prompt</h3>
 

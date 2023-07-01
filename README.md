@@ -524,7 +524,39 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 2. 如果您想要更高质量的输出(例如，信息抽取)，请考虑使用beam search解码策略（适当调整 `num_beam` 参数），或者使用较低 `top_k` 或 `top_p` 的top-k或top-p采样策略，并结合较低的 `temperature` 参数；
 3. 根据您的需要，可以迭代和试验不同的解码策略和超参数以找到最佳组合。
 
+**4. vLLM API服务**
 
+为了加速LLM推理和提供高效的API服务，我们集成了[vLLM](https://github.com/vllm-project/vllm)。请使用以下命令在 `http://localhost:8090` 上启动vLLM的API服务。
+
+```shell
+max_num_batched_tokens=8000
+
+CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
+    --port 8090 \
+    --model data/zhixi-13B \
+    --use-np-weights \
+    --max-num-batched-tokens $max_num_batched_tokens \
+    --dtype half \
+    --tensor-parallel-size 2
+```
+
+通过POST请求发起服务请求：
+
+```shell
+curl -X POST "http://10.82.77.35:8090/generate" \
+  -H 'Content-Type: application/json' \
+  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
+```
+
+你将得到以下结果：
+
+```shell
+{
+  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
+  "num_output_tokens_cf":65,
+  "error":null
+}
+```
 
 <h3 id="2-5">2.5 信息抽取Prompt</h3>
 
