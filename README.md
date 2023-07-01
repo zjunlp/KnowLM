@@ -543,7 +543,7 @@ CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
 通过POST请求发起服务请求：
 
 ```shell
-curl -X POST "http://10.82.77.35:8090/generate" \
+curl -X POST "http://127.0.0.1:8090/generate" \
   -H 'Content-Type: application/json' \
   -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
 ```
