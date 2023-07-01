@@ -1,7 +1,8 @@
 import time
 from typing import Any, List, Optional, Union
 
-from transformers import AutoTokenizer, PreTrainedTokenizer, PreTrainedTokenizerFast
+from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast
+from transformers import LlamaTokenizer
 
 from vllm.config import (CacheConfig, ModelConfig, ParallelConfig,
                          SchedulerConfig)
@@ -26,7 +27,7 @@ def get_tokenizer(
 ) -> Union[PreTrainedTokenizer, PreTrainedTokenizerFast]:
     """Gets a tokenizer for the given model name via Huggingface."""
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name, *args, **kwargs)
+    tokenizer = LlamaTokenizer.from_pretrained(model_name, *args, **kwargs)
     tokenizer.pad_token_id = 0
     tokenizer.bos_token_id = 1
     tokenizer.eos_token_id = 2

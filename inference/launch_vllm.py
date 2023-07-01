@@ -1,18 +1,13 @@
 import os
 
-import torch
-import uvicorn
 from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, Request
 from transformers import AutoTokenizer, AutoConfig, AutoModelForCausalLM, pipeline
 from queue import Queue
-import json
 from typing import List, Dict, Optional
 import time
 import asyncio
 import argparse
-from types import SimpleNamespace
-import subprocess
 import threading
 from dataclasses import dataclass
 from vllm import EngineArgs, SamplingParams
@@ -193,7 +188,11 @@ class FastAPIServer:
         return generation, num_output_tokens, error
 
     async def generate(self, request_dict: Dict):
-        prompt = request_dict['inputs']
+        global prompter
+
+        instruction = request_dict['instruction']
+        input = request_dict['input']
+        prompt = prompter.generate_prompt(instruction=instruction, input=input)
         sampling_config = request_dict['parameters']
 
         req_id = self.add_request(prompt, sampling_config)
@@ -221,7 +220,6 @@ async def is_ready(request: Request):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, required=True)
-    parser.add_argument('--host', type=str, default='localhost')
     parser.add_argument('--template_path', type=str, default='data/templates/alpaca.json')
     EngineArgs.add_cli_args(parser)
     args = parser.parse_args()
@@ -234,7 +232,7 @@ if __name__ == "__main__":
     server = FastAPIServer(loop, vllm_args)
 
     from uvicorn import Config, Server
-    config = Config(app=app, loop=loop, host=args.host,
+    config = Config(app=app, loop=loop, host='0.0.0.0',
                     port=args.port, log_level="info")
     uvicorn_server = Server(config)
 
