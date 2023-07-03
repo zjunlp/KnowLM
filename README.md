@@ -45,6 +45,7 @@
   - [模型使用](#2-4)
   - [信息抽取Prompt](#2-5)
   - [ZhiXi-13B-LoRA与ZhiXi-13B权重合并](#2-6)
+  - [MD5码](#2-7)
 - [训练细节](#3)
   - [预训练数据与训练脚本](#3-1)
   - [指令微调数据与训练脚本](#3-3)
@@ -572,6 +573,44 @@ curl -X POST "http://127.0.0.1:8090/generate" \
 
 ```shell
 python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
+```
+
+<h3 id="2-7">2.7 MD5码</h3>
+
+> 我们在此处提供了`zhixi-13b-diff` `zhixi-13b-diff-fp16` `zhixi-13b-lora` `zhixi-13b-base`的`MD5`码用于校验下载的权重和合并后的权重是否正确
+
+<h4 id="2-7-1">2.7.1 ZhiXi-13b-Diff</h4>
+
+```shell
+
+```
+
+<h4 id="2-7-2">2.7.2 ZhiXi-13b-Diff-fp16</h4>
+
+```shell
+37322209a703e24bb0b06d2742901741  pytorch_model-00001-of-00003.bin
+6fcc5659bf10c2b335dc846acc6a1870  pytorch_model-00002-of-00003.bin
+03ed19e6106f7228f6a5c103a8684450  pytorch_model-00003-of-00003.bin
+```
+
+<h4 id="2-7-3">2.7.3 ZhiXi-13b-LoRA</h4>
+
+```shell
+
+```
+
+<h4 id="2-7-4">2.7.4 ZhiXi-13b-base</h4>
+
+如果您使用的是`fp16`格式的`diff`，则下面提供的是`zhixi-13b-base-fp16`的`md5`码：
+```shell
+bad379562a2ee8381683c1badd952951  pytorch_model-00001-of-00003.bin
+f354f1a5a7c65ab378f03d293e9b1715  pytorch_model-00002-of-00003.bin
+41a79e11206adeec872d6188cb62904a  pytorch_model-00003-of-00003.bin
+```
+
+如果您使用的是`fp32`格式的`diff`，则下面提供的是`zhixi-13b-base`的`md5`码：
+```shell
+
 ```
 
 <h2 id="3">3. 训练细节</h2>
