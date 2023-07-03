@@ -20,7 +20,7 @@
 - 开源了**全量预训练脚本**（提供大型语料的转换、构建和加载）和**LoRA指令微调脚本**（支持多机多卡）
 
 所有权重均已上传🤗HuggingFace。需要注意的是，下面的所有效果均是以`ZhiXi-13B-Diff`为基础的，如果下载的是`ZhiXi-13B-Diff-fp16`，效果可能会存在出入！
-| 模型名称       | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
+|<span style="display:inline-block;width:100px">模型名称</span>| 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
 | -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
 | ZhiXi-13B-Diff | 全量预训练   | LLaMA-13B作差的fp32权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 13B大模型底座V1，恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
 | ZhiXi-13B-Diff-fp16 | 全量预训练   | LLaMA-13B作差的fp16权重 | 24GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff-fp16) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1LYm-HUSSQ5Rl8nqZcswdiSpcP9xYTXaO?usp=sharing) | 13B大模型底座V1，与`ZhiXi-13B-Diff`的主要区别是采用`fp16`格式存储，可以减小内存占用，但是与我们实际训练得到的**权重稍有差异，性能会稍有影响，** 具体使用说明请参考[此处](#2-2) |
