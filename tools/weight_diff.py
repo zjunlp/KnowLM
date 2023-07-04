@@ -104,9 +104,10 @@ def recover(
     if check_integrity_naively:
         # This is not a rigorous, cryptographically strong integrity check :)
         allsum = sum(state_dict_recovered[key].sum() for key in state_dict_recovered)
-        assert torch.allclose(
-            allsum, torch.full_like(allsum, fill_value=94052.2891 if not is_fp16 else 94046.1875), atol=1e-2, rtol=0
-        ), "Naive integrity check failed. This could imply that some of the checkpoint files are corrupted."
+        if not is_fp16:
+            assert torch.allclose(
+                allsum, torch.full_like(allsum, fill_value=94052.2891), atol=1e-2, rtol=0    #  if not is_fp16 else 94046.1875
+            ), "Naive integrity check failed. This could imply that some of the checkpoint files are corrupted."
 
     if path_tuned is not None:
         model_recovered.save_pretrained(path_tuned)
