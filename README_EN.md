@@ -50,6 +50,7 @@ In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced la
   - [Model Usage Guide](#2-4)
   - [Information Extraction Prompt](#2-5)
   - [Combining ZhiXi-13B-LoRA Weights with ZhiXi-13B Weights](#2-6)
+  - [MD5](#2-7)
 - [Training Details](#3)
   - [Pertraining data and Pretraining scripts](#3-1)
   - [Instruction data and Instruction-tuning scripts](#3-3)
@@ -576,6 +577,53 @@ If you wish to merge `ZhiXi-13B-LoRA` with `ZhiXi-13B`, you can use the followin
 ```shell
 python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
 ```
+
+<h3 id="2-7">2.7 MD5</h3>
+
+<h4 id="2-7-1">2.7.1 ZhiXi-13b-Diff</h4>
+
+```shell
+83cc5089df3eb400c99d9947b8c4f97b  pytorch_model-00001-of-00006.bin
+d264f13f961a0d2a5ba97c1c7f8b58e2  pytorch_model-00002-of-00006.bin
+ac6d767ac50fcc0828ac860c3be4dfad  pytorch_model-00003-of-00006.bin
+55736b822e100f1f0cb35e9ddb3b4471  pytorch_model-00004-of-00006.bin
+0dc1f2a6d02fe7db41a6fa72c7cff138  pytorch_model-00005-of-00006.bin
+c92a59383e10e2c4c3688a82856f6cba  pytorch_model-00006-of-00006.bin
+```
+
+<h4 id="2-7-2">2.7.2 ZhiXi-13b-Diff-fp16</h4>
+
+```shell
+37322209a703e24bb0b06d2742901741  pytorch_model-00001-of-00003.bin
+6fcc5659bf10c2b335dc846acc6a1870  pytorch_model-00002-of-00003.bin
+03ed19e6106f7228f6a5c103a8684450  pytorch_model-00003-of-00003.bin
+```
+
+<h4 id="2-7-3">2.7.3 ZhiXi-13b-LoRA</h4>
+
+```shell
+308f8424b1b6ac8dff343716dd78cde7  adapter_model.bin
+```
+
+<h4 id="2-7-4">2.7.4 ZhiXi-13b-base</h4>
+
+If you are using `zhixi-13b-diff-fp16`, the following is the MD5 code for `zhixi-13b-base-fp16`.
+```shell
+bad379562a2ee8381683c1badd952951  pytorch_model-00001-of-00003.bin
+f354f1a5a7c65ab378f03d293e9b1715  pytorch_model-00002-of-00003.bin
+41a79e11206adeec872d6188cb62904a  pytorch_model-00003-of-00003.bin
+```
+
+If you are using `zhixi-13b-diff-fp32`, the following is the MD5 code for `zhixi-13b-base`.
+```shell
+b19e56ec888b44bfe5c1db49eb4a3195  pytorch_model-00001-of-00006.bin
+39e23c61754719cfab9c0199d9abaccb  pytorch_model-00002-of-00006.bin
+e164b3a17698d7b842274aadd74567eb  pytorch_model-00003-of-00006.bin
+a535e330204f68bce6245914a6d460e5  pytorch_model-00004-of-00006.bin
+009a4913710db64ae94ac62dffd784c6  pytorch_model-00005-of-00006.bin
+c7c5750106a5724de3f0cb7a7151723a  pytorch_model-00006-of-00006.bin
+```
+
 
 <h2 id="3">3. Training Details</h2>
 
