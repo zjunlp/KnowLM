@@ -2,7 +2,7 @@
 
 <p align="center">
     <br>
-    <img src="./assets/知析 (10).png" width="400" height="120"/>
+    <img src="./assets/KnowLM.png" width="400" height="120"/>
     <br>
 </p>
 
