@@ -596,7 +596,7 @@ python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path
 <h4 id="2-7-3">2.7.3 ZhiXi-13b-LoRA</h4>
 
 ```shell
-
+308f8424b1b6ac8dff343716dd78cde7  adapter_model.bin
 ```
 
 <h4 id="2-7-4">2.7.4 ZhiXi-13b-base</h4>
