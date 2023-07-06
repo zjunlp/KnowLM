@@ -582,7 +582,12 @@ python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path
 <h4 id="2-7-1">2.7.1 ZhiXi-13b-Diff</h4>
 
 ```shell
-
+83cc5089df3eb400c99d9947b8c4f97b  pytorch_model-00001-of-00006.bin
+d264f13f961a0d2a5ba97c1c7f8b58e2  pytorch_model-00002-of-00006.bin
+ac6d767ac50fcc0828ac860c3be4dfad  pytorch_model-00003-of-00006.bin
+55736b822e100f1f0cb35e9ddb3b4471  pytorch_model-00004-of-00006.bin
+0dc1f2a6d02fe7db41a6fa72c7cff138  pytorch_model-00005-of-00006.bin
+c92a59383e10e2c4c3688a82856f6cba  pytorch_model-00006-of-00006.bin
 ```
 
 <h4 id="2-7-2">2.7.2 ZhiXi-13b-Diff-fp16</h4>
