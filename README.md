@@ -615,7 +615,12 @@ f354f1a5a7c65ab378f03d293e9b1715  pytorch_model-00002-of-00003.bin
 
 如果您使用的是`fp32`格式的`diff`，则下面提供的是`zhixi-13b-base`的`md5`码：
 ```shell
-
+b19e56ec888b44bfe5c1db49eb4a3195  pytorch_model-00001-of-00006.bin
+39e23c61754719cfab9c0199d9abaccb  pytorch_model-00002-of-00006.bin
+e164b3a17698d7b842274aadd74567eb  pytorch_model-00003-of-00006.bin
+a535e330204f68bce6245914a6d460e5  pytorch_model-00004-of-00006.bin
+009a4913710db64ae94ac62dffd784c6  pytorch_model-00005-of-00006.bin
+c7c5750106a5724de3f0cb7a7151723a  pytorch_model-00006-of-00006.bin
 ```
 
 <h2 id="3">3. 训练细节</h2>
