@@ -174,7 +174,8 @@ def train():
     print(resume_from_checkpoint)
     trainer.train(resume_from_checkpoint=model_args.resume_path if model_args.resume_path != None else False)
     trainer.save_state()
-    safe_save_model_for_hf_trainer(trainer=trainer, output_dir=training_args.output_dir)
+    # safe_save_model_for_hf_trainer(trainer=trainer, output_dir=training_args.output_dir)
+    trainer.save_model(output_dir=training_args.output_dir)
 
 
 if __name__ == "__main__":
