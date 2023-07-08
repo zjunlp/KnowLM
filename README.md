@@ -26,8 +26,8 @@
 | ZhiXi-13B-Diff-fp16 | 全量预训练   | LLaMA-13B作差的fp16权重 | 24GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff-fp16) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1LYm-HUSSQ5Rl8nqZcswdiSpcP9xYTXaO?usp=sharing) | 13B大模型底座V1，与`ZhiXi-13B-Diff`的主要区别是采用`fp16`格式存储，可以减小内存占用，但是与我们实际训练得到的**权重稍有差异，性能会稍有影响，** 具体使用说明请参考[此处](#2-2) |
 | ZhiXi-13B-LoRA | LoRA指令微调 | LoRA权重              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link)  | 13B抽取大模型lora权重，需要搭配ZhiXi-13B进行使用，具体使用说明参考[此处](#2-4)          |
 | ZhiXi-7B   | 即将发布     | 即将发布              | 即将发布 | 即将发布                           | 7B抽取大模型                                                    |
-| KnowLM-7B   | 训练中     |  训练中             |  训练中  |  训练中                          | 7B大模型V2                                                     |
-| KnowLM-13B   |  训练中     |  训练中          |  训练中  |  训练中                       | 13B大模型V2                                                  |
+| KnowLM-7B   | 全量预训练     |  全量权重             |  训练中  |  训练中                          | 7B大模型V2                                                     |
+| KnowLM-13B   |  全量预训练     |  全量权重          |  训练中  |  训练中                       | 13B大模型V2                                                  |
 
 ## NEWS
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
