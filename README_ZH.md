@@ -1,4 +1,4 @@
-:speaking_head: \[ **中文** | [English](./README_EN.md) \]
+:speaking_head: \[ **中文** | [English](./README.md) \]
 <p align="center">
     <br>
     <img src="./assets/KnowLM.png" width="400" height="120"/>
