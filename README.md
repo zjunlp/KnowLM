@@ -1,4 +1,4 @@
-:speaking_head: \[ [中文](./README.md) | **English** \]
+:speaking_head: \[ [中文](./README_ZH.md) | **English** \]
 
 <p align="center">
     <br>
