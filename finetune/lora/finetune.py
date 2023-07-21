@@ -219,7 +219,7 @@ def train(
         data_paths = []
         data_path = data_path if data_path[-1] == "/" else data_path+"/"
         for i in os.listdir(data_path):
-            data_paths.append(os.path.join(data_path), i)
+            data_paths.append(os.path.join(data_path, i))
         print(f"data includes: {data_paths}")
         data = load_dataset("json", data_files=data_paths)
 
