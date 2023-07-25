@@ -28,4 +28,7 @@ CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
     --max-num-batched-tokens $max_num_batched_tokens \
     --dtype half \
     --tensor-parallel-size 2
+    --template_path your/path/to/template
 ```
+
+It should be noted that `--template_path` is located in `finetune/lora/templates/alpaca.json`, you can click this [link](https://github.com/zjunlp/KnowLM/blob/main/finetune/lora/templates/alpaca.json).
