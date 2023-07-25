@@ -28,5 +28,8 @@ CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
     --use-np-weights \
     --max-num-batched-tokens $max_num_batched_tokens \
     --dtype half \
-    --tensor-parallel-size 2
+    --tensor-parallel-size 2 \
+    --template_path your/path/to/template
 ```
+
+需要注意的是，上面的`--template_path`位于`KnowLM`根目录下`finetune/lora/templates/alpaca.json`。
