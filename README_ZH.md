@@ -43,6 +43,20 @@
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
 - \[**2023/06**\] 发布第一版预训练权重与第一版LoRA权重
 
+## KnowLM
+<p align="center">
+    <br>
+    <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
+    <br>
+</p>
+
+这是KnowLM框架的总览图。主要有三个技术路线：
+1. 基于知识编辑技术对齐大模型内过时、错误及价值观不正确的知识，解决知识谬误问题
+2. 基于知识图谱等结构化数据的知识提示生成和知识增强约束技术，解决知识抽取和推理问题
+3. 基于知识动态交互和反馈实现工具组合学习及多智能体协作，解决大模型具身认知问题
+
+我们为三个技术路线开发了对应的工具，分别为[EasyEdit](https://github.com/zjunlp/easyedit)、[EasyInstruct](https://github.com/zjunlp/easyinstruct)和EasyAgent(开发中)。欢迎大家使用。
+
 ## 目录
 
 - [模型效果](#1)
