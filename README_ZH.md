@@ -31,9 +31,9 @@
 
 | 指令类型                        | 数量    | 下载地址                                                     | 智析是否使用 | 说明                           |
 | ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
-| KnowLM-CR (推理数据集，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | 是           | 无                             |
-| KnowLM-IE (NER/RE，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | 是           | 由于采用远程监督，因此存在噪音 |
-| KnowLM-Tool (工具学习，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | 否           | 将在下一个版本使用                             |
+| KnowLM-CR (推理相关指令数据，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | 是           | 无                             |
+| KnowLM-IE (抽取相关指令数据，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | 是           | 由于采用远程监督，因此存在噪音 |
+| KnowLM-Tool (工具学习相关指令数据，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | 否           | 将在下一个版本使用                             |
 
 数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。
 
