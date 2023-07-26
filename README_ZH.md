@@ -31,14 +31,14 @@
 
 | 指令类型                        | 数量    | 下载地址                                                     | 智析是否使用 | 说明                           |
 | ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
-| KnowLM-CR(推理数据集，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | 是           | 无                             |
-| KnowLM-IE(NER/RE，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | 是           | 由于采用远程监督，因此存在噪音 |
-| KnowLM-Tool(工具学习，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | 否           | 无                             |
+| KnowLM-CR (推理数据集，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | 是           | 无                             |
+| KnowLM-IE (NER/RE，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | 是           | 由于采用远程监督，因此存在噪音 |
+| KnowLM-Tool (工具学习，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | 否           | 将在下一个版本使用                             |
 
 数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。
 
 ## NEWS
-- \[**2023/07**\] 发布指令数据
+- \[**2023/07**\] 发布训练使用的部分指令数据
 - \[**2023/07**\] 支持`LLaMA-2`的指令微调和`vllm`推理
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
 - \[**2023/06**\] 发布第一版预训练权重与第一版LoRA权重
@@ -50,12 +50,15 @@
     <br>
 </p>
 
-这是KnowLM框架的总览图。主要有三个技术路线：
-1. 基于知识编辑技术对齐大模型内过时、错误及价值观不正确的知识，解决知识谬误问题
-2. 基于知识图谱等结构化数据的知识提示生成和知识增强约束技术，解决知识抽取和推理问题
-3. 基于知识动态交互和反馈实现工具组合学习及多智能体协作，解决大模型具身认知问题
+这是KnowLM框架的总览图。主要有三个技术特色：
 
-我们为三个技术路线开发了对应的工具，分别为[EasyEdit](https://github.com/zjunlp/easyedit)、[EasyInstruct](https://github.com/zjunlp/easyinstruct)和EasyAgent(开发中)。欢迎大家使用。
+1.基于知识图谱等结构化数据的知识提示生成和知识增强约束技术，解决**知识抽取和推理**问题
+
+2.基于知识编辑技术对齐大模型内过时、错误及价值观不正确的知识，解决**知识谬误**问题
+
+3.基于知识动态交互和反馈实现工具组合学习及多智能体协作，解决大模型**具身认知**问题
+
+包含三个附属的工具分别为[EasyInstruct](https://github.com/zjunlp/easyinstruct)、[EasyEdit](https://github.com/zjunlp/easyedit)和EasyAgent(开发中)，我们将在近期提供基于KnowLM的知识提示和知识编辑使用案例。
 
 ## 目录
 
