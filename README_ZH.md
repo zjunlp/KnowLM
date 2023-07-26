@@ -19,7 +19,7 @@
 - 开源了预训练模型的权重、指令微调的LoRA权重
 - 开源了**全量预训练脚本**（提供大型语料的转换、构建和加载）和**LoRA指令微调脚本**（支持多机多卡）
 
-所有权重均已上传🤗HuggingFace。需要注意的是，下面的所有效果均是以`ZhiXi-13B-Diff`为基础的，如果下载的是`ZhiXi-13B-Diff-fp16`，效果可能会存在出入！
+所有权重均已上传🤗HuggingFace，我们构建的数据集也已上传到谷歌网盘。需要注意的是，下面的所有效果均是以`ZhiXi-13B-Diff`为基础的，如果下载的是`ZhiXi-13B-Diff-fp16`，效果可能会存在出入！
 | 模型名称  | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
 | ------------------ | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
 | ZhiXi-13B-Diff | 全量预训练   | LLaMA-13B作差的fp32权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 13B大模型底座V1，恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
@@ -29,7 +29,16 @@
 | KnowLM-7B   | 全量预训练     |  全量权重             |  训练中  |  训练中                          | 7B大模型V2                                                     |
 | KnowLM-13B   |  全量预训练     |  全量权重          |  训练中  |  训练中                       | 13B大模型V2                                                  |
 
+| 指令类型                        | 数量    | 下载地址                                                     | 智析是否使用 | 说明                           |
+| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
+| KnowLM-CR(推理数据集，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | 是           | 无                             |
+| KnowLM-IE(NER/RE，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | 是           | 由于采用远程监督，因此存在噪音 |
+| KnowLM-Tool(工具学习，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | 否           | 无                             |
+
+数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。
+
 ## NEWS
+- \[**2023/07**\] 发布指令数据
 - \[**2023/07**\] 支持`LLaMA-2`的指令微调和`vllm`推理
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
 - \[**2023/06**\] 发布第一版预训练权重与第一版LoRA权重
