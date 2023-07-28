@@ -306,11 +306,6 @@ class LLMEngine:
                 if stopped:
                     continue
 
-                # Check if the sequence has reached max_seq_len.
-                if seq.get_len() > self.scheduler_config.max_model_len:
-                    self.scheduler.free_seq(
-                        seq, SequenceStatus.FINISHED_LENGTH_CAPPED)
-                    continue
                 # Check if the sequence has reached max_tokens.
                 if seq.get_output_len() == sampling_params.max_tokens:
                     self.scheduler.free_seq(
