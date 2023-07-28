@@ -6,7 +6,7 @@
     <br>
 </p>
 
-# Knowledgable Large Language Model Framework.
+# Knowledgable Large Language Model Family.
 
 With the rapid development of deep learning technology, large language models such as ChatGPT have made substantial strides in the realm of natural language processing. However, these expansive models still encounter several challenges in acquiring and comprehending knowledge, including the difficulty of updating knowledge and potential knowledge discrepancies and biases, collectively known as **knowledge fallacies**. The KnowLM project endeavors to tackle these issues by launching an open-source large-scale knowledgable language model framework and releasing corresponding models. 
 
