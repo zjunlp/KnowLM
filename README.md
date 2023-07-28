@@ -46,6 +46,13 @@ All weights have been uploaded to HuggingFace🤗. And the instruction dataset w
 ## Why it's called ZhiXi (智析)?
 In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced language understanding capabilities. "Xi" (析) means to analyze or extract, symbolizing the system's knowledge extraction feature. Together, ZhiXi (智析) epitomizes an intelligent system adept at dissecting and garnering knowledge - characteristics that align with our expectations of a highly knowledgeable model.
 
+## What's the KnowLM?
+<p align="center">
+    <br>
+    <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
+    <br>
+</p>
+
 ## Contents
 
 - [Cases](#1)
