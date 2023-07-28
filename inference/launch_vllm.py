@@ -1,22 +1,42 @@
 import os
 
+import torch
+import uvicorn
 from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, Request
 from transformers import AutoTokenizer, AutoConfig, AutoModelForCausalLM, pipeline
 from queue import Queue
+import json
 from typing import List, Dict, Optional
 import time
 import asyncio
 import argparse
+from types import SimpleNamespace
+import subprocess
 import threading
 from dataclasses import dataclass
 from vllm import EngineArgs, SamplingParams
+from fastapi.middleware.cors import CORSMiddleware
 
 from utils import Prompter
 from llm_engine import LLMEngine
+import redis
+import json
 
+# Create Redis connection
+redis_client = redis.StrictRedis(host='localhost', port=6379, db=0)
+
+# Define one day time in seconds
+ONE_DAY = 86400
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @dataclass
@@ -110,7 +130,7 @@ class ModelThread:
         server = LLMEngine.from_engine_args(server_args)
         print('Model ready')
         return server
-
+    
 
 class FastAPIServer:
     def __init__(self, loop, vllm_args):
@@ -190,6 +210,8 @@ class FastAPIServer:
     async def generate(self, request_dict: Dict):
         global prompter
 
+        print(request_dict)
+
         instruction = request_dict['instruction']
         input = request_dict['input']
         prompt = prompter.generate_prompt(instruction=instruction, input=input)
@@ -204,13 +226,90 @@ class FastAPIServer:
             'num_output_tokens_cf': num_output_tokens,
             'error': error,
         }
+    
+    async def apply_vip(self, request_dict: Dict):
+        print(request_dict)
+        info = request_dict
+        if redis_client.hexists('email', info["email"]):
+            return {'message': '每个邮箱仅限申请一次，请勿重复提交。',
+                    'status': 0
+                    }
+            
+        add_email_with_info(info)
+        return {'message': '感谢申请！已成功提交，若信息符合，邀请码将尽快发送至您的邮箱。',
+                'status': 1
+                }
+        
+    async def iptimes(self, request_dict: Dict):
+        print(request_dict)
+        ip = request_dict["ip"]
+        current_time = int(time.time())
+        
+        if redis_client.hexists('verification', ip):
+            return {'status': 1}
+        if not redis_client.exists(ip):
+            redis_client.hset(ip, 'count', 1)
+            redis_client.hset(ip, 'timestamp', current_time)
+            redis_client.expire(ip, ONE_DAY)
+        else:
+            timestamp = int(redis_client.hget(ip, 'timestamp'))
+            if current_time - timestamp >= ONE_DAY:
+                redis_client.hset(ip, 'count', 1)
+                redis_client.hset(ip, 'timestamp', current_time)
+                redis_client.expire(ip, ONE_DAY)
+            else:
+                count = int(redis_client.hget(ip, 'count'))
+                if count >= 10:
+                    return {'status': 0}
+                else:
+                    redis_client.hset(ip, 'count', count + 1)
 
+        return {'status': 1}
+        
+    async def verification(self, request_dict: Dict):
+        print(request_dict)
+        ip = request_dict["ip"]
+        code = request_dict["code"]
+        if is_invite_code_exists(code):
+            redis_client.hset('verification', ip, 1)
+            return {'message': '邀请码有效！', 'status': 1}
+        else:
+            return {'message': '邀请码无效！', 'status': 0}
+
+def add_verification_code(code, info):
+    redis_client.hset('verification', code, info)
+
+def get_info_from_veri(code):
+    return redis_client.hget('verification', code)
+  
+def add_email_with_info(info):
+    redis_client.hset('email', info["email"], json.dumps(info))
+
+def get_info_from_email(email):
+    return json.loads(redis_client.hget('email', email))
+
+def is_invite_code_exists(code):
+    return redis_client.hexists('verification', code)
 
 @app.post("/generate")
 async def generate_stream(request: Request):
     request_dict = await request.json()
     return await server.generate(request_dict)
 
+@app.post("/apply_vip")
+async def apply_vip_stream(request: Request):
+    request_dict = await request.json()
+    return await server.apply_vip(request_dict)
+  
+@app.post("/verification")
+async def verification_stream(request: Request):
+    request_dict = await request.json()
+    return await server.verification(request_dict)
+  
+@app.post("/iptimes")
+async def iptimes_stream(request: Request):
+    request_dict = await request.json()
+    return await server.iptimes(request_dict)
 
 @app.get("/is_ready")
 async def is_ready(request: Request):

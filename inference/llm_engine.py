@@ -9,11 +9,12 @@ from vllm.config import (CacheConfig, ModelConfig, ParallelConfig,
 from vllm.core.scheduler import Scheduler
 from vllm.engine.arg_utils import EngineArgs
 from vllm.engine.ray_utils import DeviceID, initialize_cluster, ray
-from vllm.transformers_utils.tokenizer import detokenize_incrementally, get_tokenizer
 from vllm.logger import init_logger
 from vllm.outputs import RequestOutput
 from vllm.sampling_params import SamplingParams
 from vllm.sequence import Sequence, SequenceGroup, SequenceStatus
+from vllm.transformers_utils.tokenizer import (detokenize_incrementally,
+                                               get_tokenizer)
 from vllm.utils import Counter
 from vllm.worker.worker import Worker
 
@@ -27,7 +28,7 @@ def get_tokenizer(
 ) -> Union[PreTrainedTokenizer, PreTrainedTokenizerFast]:
     """Gets a tokenizer for the given model name via Huggingface."""
 
-    tokenizer = LlamaTokenizer.from_pretrained(model_name, *args, **kwargs)
+    tokenizer = LlamaTokenizer.from_pretrained(model_name, use_fast=True, *args, **kwargs)
     tokenizer.pad_token_id = 0
     tokenizer.bos_token_id = 1
     tokenizer.eos_token_id = 2
@@ -240,8 +241,10 @@ class LLMEngine:
         and updates the scheduler with the model outputs. Finally, it decodes
         the sequences and returns the newly generated results.
         """
-        seq_group_metadata_list, scheduler_outputs = self.scheduler.schedule()
-        if (not seq_group_metadata_list) and scheduler_outputs.is_empty():
+        (seq_group_metadata_list, scheduler_outputs,
+         ignored_seq_groups) = self.scheduler.schedule()
+        if ((not seq_group_metadata_list) and scheduler_outputs.is_empty()
+                and (not ignored_seq_groups)):
             # Nothing to do.
             return []
 
@@ -265,7 +268,7 @@ class LLMEngine:
 
         # Create the outputs.
         request_outputs: List[RequestOutput] = []
-        for seq_group in seq_groups:
+        for seq_group in seq_groups + ignored_seq_groups:
             request_output = RequestOutput.from_seq_group(seq_group)
             request_outputs.append(request_output)
         return request_outputs
@@ -280,8 +283,9 @@ class LLMEngine:
                     seq.get_last_token_id(),
                     skip_special_tokens=True,
                 )
-                seq.output_tokens.append(new_token)
-                seq.output_text = new_output_text
+                if new_token is not None:
+                    seq.output_tokens.append(new_token)
+                    seq.output_text = new_output_text
 
     def _stop_sequences(self, seq_groups: List[SequenceGroup]) -> None:
         """Stop the finished sequences."""
@@ -295,13 +299,18 @@ class LLMEngine:
                         # Truncate the output text so that the stop string is
                         # not included in the output.
                         seq.output_text = seq.output_text[:-len(stop_str)]
-                        self.scheduler.free_seq(seq,
-                                                SequenceStatus.FINISHED_STOPPED)
+                        self.scheduler.free_seq(
+                            seq, SequenceStatus.FINISHED_STOPPED)
                         stopped = True
                         break
                 if stopped:
                     continue
 
+                # Check if the sequence has reached max_seq_len.
+                if seq.get_len() > self.scheduler_config.max_model_len:
+                    self.scheduler.free_seq(
+                        seq, SequenceStatus.FINISHED_LENGTH_CAPPED)
+                    continue
                 # Check if the sequence has reached max_tokens.
                 if seq.get_output_len() == sampling_params.max_tokens:
                     self.scheduler.free_seq(
@@ -310,8 +319,8 @@ class LLMEngine:
                 # Check if the sequence has generated the EOS token.
                 if not sampling_params.ignore_eos:
                     if seq.get_last_token_id() == self.tokenizer.eos_token_id:
-                        self.scheduler.free_seq(seq,
-                                                SequenceStatus.FINISHED_STOPPED)
+                        self.scheduler.free_seq(
+                            seq, SequenceStatus.FINISHED_STOPPED)
                         continue
 
     def _run_workers(
