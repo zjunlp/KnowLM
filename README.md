@@ -30,6 +30,12 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
 | ZhiXi-13B-LoRA | LoRA Instruction-tuning | LoRA Weights              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/>  [GoogleDrive](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link) | It needs to be used with **ZhiXi-13B**. For specific instructions, please refer to [here](#2-4).          |
 | ZhiXi-7B Series   | Coming soon     | Coming soon            | Coming soon | Coming soon                           | Coming soon                                                 |
 
+| Instruction Dataset Name                        | Number    | Download Link                                                    | Is it used by ZhiXi | Note                           |
+| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
+| KnowLM-CR (CoT&Reasoning,Chinese and English) | 202,333 | [Google Drive](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | Yes           | 无                             |
+| KnowLM-IE (CoT&Reasoning,Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | Yes           | 由于采用远程监督，因此存在噪音 |
+| KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | No           | 将在下一个版本使用                             |
+
 
 ## NEWS
 - \[**July 2023**\] Support instruction fine-tuning and vllm for `LLaMA-2`
