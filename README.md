@@ -22,7 +22,7 @@ The project's `initial phase` introduced a knowledge extraction LLM based on LLa
 - The **full-scale pre-training code** (providing conversion, construction, and loading of large corpora) and **LoRA instruction fine-tuning code** are open-sourced (support multi-machine multi-GPU).
 
 
-All weights have been uploaded to HuggingFace🤗. It should be noted that all the following effects are based on `ZhiXi-13B-Diff`. If you have downloaded `ZhiXi-13B-Diff-fp16`, there may be some variations in the effects.
+All weights have been uploaded to HuggingFace🤗. And the instruction dataset we built has also been uploaded to Google Drive. It should be noted that all the following effects are based on `ZhiXi-13B-Diff`. If you have downloaded `ZhiXi-13B-Diff-fp16`, there may be some variations in the effects.
 | Model Name       | Train Method    | Weight Type          | Size     | Download Link                           | Notes                                                         |
 | -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
 | ZhiXi-13B-Diff | Full Pretraining   | Differential Weights | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [GoogleDrive](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link)| Restoring the pre-trained weights (i.e. **ZhiXi-13B**) needs to match the weights of `LLaMA-13B`, please refer to [here](#2-2) for specific instructions. |
@@ -36,6 +36,7 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
 | KnowLM-IE (CoT&Reasoning,Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | Yes           | 由于采用远程监督，因此存在噪音 |
 | KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | No           | 将在下一个版本使用                             |
 
+**Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here.
 
 ## NEWS
 - \[**July 2023**\] Support instruction fine-tuning and vllm for `LLaMA-2`
