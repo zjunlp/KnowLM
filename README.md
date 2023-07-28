@@ -39,6 +39,7 @@ All weights have been uploaded to HuggingFace🤗. And the instruction dataset w
 **Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here.
 
 ## NEWS
+- \[**July 2023**\] The instruction dataset has been released.
 - \[**July 2023**\] Support instruction fine-tuning and vllm for `LLaMA-2`
 - \[**June 2023**\] The project name has been changed from `CaMA` to `KnowLM`.
 - \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
@@ -52,6 +53,16 @@ In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced la
     <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
     <br>
 </p>
+
+This is an overview of the `KnowLM`, which mainly consists of three technical features:
+
+**Knowledge Prompting**: It generates knowledge prompts based on structured data such as knowledge graphs and utilizes knowledge augmentation constraints to address *knowledge extraction and reasoning* issues.
+
+**Knowledge Editing**: It aligns outdated, incorrect, and biased knowledge within large models using knowledge editing techniques to tackle *knowledge fallacy* problems.
+
+**Knowledge Interaction**: It enables dynamic knowledge interaction and feedback to achieve tool-based learning and multi-agent collaboration, resolving the problem of *embodiment cognition* in LLMs.
+
+The tools corresponding to these three technologies are [EasyInstruct](https://github.com/zjunlp/easyinstruct), [EasyEdit](https://github.com/zjunlp/easyedit), and EasyAgent (under development). We will soon provide use cases for knowledge prompting and knowledge editing based on the `KnowLM`framework.
 
 ## Contents
 
