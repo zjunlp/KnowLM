@@ -32,9 +32,9 @@ All weights have been uploaded to HuggingFace🤗. And the instruction dataset w
 
 | Instruction Dataset Name                        | Number    | Download Link                                                    | Is it used by ZhiXi | Note                           |
 | ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
-| KnowLM-CR (CoT&Reasoning,Chinese and English) | 202,333 | [Google Drive](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | Yes           | 无                             |
-| KnowLM-IE (CoT&Reasoning,Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | Yes           | 由于采用远程监督，因此存在噪音 |
-| KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | No           | 将在下一个版本使用                             |
+| KnowLM-CR (CoT&Reasoning,Chinese and English) | 202,333 | [Google Drive](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-CR)| Yes           | 无                             |
+| KnowLM-IE (CoT&Reasoning,Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-IE) | Yes           | 由于采用远程监督，因此存在噪音 |
+| KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool) | No           | 将在下一个版本使用                             |
 
 **Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here.
 
