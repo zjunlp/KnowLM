@@ -246,7 +246,9 @@ class FastAPIServer:
         current_time = int(time.time())
         
         if redis_client.hexists('verification', ip):
-            return {'status': 1}
+            return {'message': 'ip已验证，访问无限制。',
+                    'status': 1
+                    }
         if not redis_client.exists(ip):
             redis_client.hset(ip, 'count', 1)
             redis_client.hset(ip, 'timestamp', current_time)
@@ -257,14 +259,23 @@ class FastAPIServer:
                 redis_client.hset(ip, 'count', 1)
                 redis_client.hset(ip, 'timestamp', current_time)
                 redis_client.expire(ip, ONE_DAY)
+            elif current_time - timestamp < 10:
+                return {'message': '请求太快，请稍后重试。',
+                        'status': 0
+                        }                
             else:
                 count = int(redis_client.hget(ip, 'count'))
                 if count >= 10:
-                    return {'status': 0}
+                    return {'message': '今日访问次数已达上限，请明天再来。',
+                            'status': 0
+                            }
                 else:
                     redis_client.hset(ip, 'count', count + 1)
+                    redis_client.hset(ip, 'timestamp', current_time)
 
-        return {'status': 1}
+        return {'message': '请求成功。',
+                'status': 1
+                }
         
     async def verification(self, request_dict: Dict):
         print(request_dict)
