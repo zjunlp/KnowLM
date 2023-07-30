@@ -58,9 +58,9 @@ This is an overview of the `KnowLM`, which mainly consists of three technical fe
 
 **Knowledge Prompting**: It generates knowledge prompts based on structured data such as knowledge graphs and utilizes knowledge augmentation constraints to address *knowledge extraction and reasoning* issues.
 
-**Knowledge Editing**: It aligns outdated, incorrect, and biased knowledge within large models using knowledge editing techniques to tackle *knowledge fallacy* problems.
+**Knowledge Editing**: It aligns outdated, incorrect, and biased knowledge within large models using knowledge editing techniques to tackle *knowledge fallacy* problems (**[English Tutorial](./pdf/Knowledge_Editing.pdf)**).
 
-**Knowledge Interaction**: It enables dynamic knowledge interaction and feedback to achieve tool-based learning and multi-agent collaboration, resolving the problem of *embodiment cognition* in LLMs.
+**Knowledge Interaction**: It enables dynamic knowledge interaction and feedback to achieve tool-based learning and multi-agent collaboration, resolving the problem of *embodiment cognition* in LLMs (**[English Tutorial](./pdf/Knowledge_Interaction.pdf)**).
 
 The tools corresponding to these three technologies are [EasyInstruct](https://github.com/zjunlp/easyinstruct), [EasyEdit](https://github.com/zjunlp/easyedit), and EasyAgent (under development). We will soon provide use cases for knowledge prompting and knowledge editing based on the `KnowLM`framework.
 
@@ -108,7 +108,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   - <b>你很擅长将中文翻译成英文。将下面的句子翻译成英文：我们今天准备去西安看兵马俑。答案：</b>We are going to see the Terracotta Warriors in Xi'an today.:white_check_mark:
 
 - **You are good at translating English into Chinese. Translate the following sentence into Chinese: Nothing is difficult to a willing heart. Answer:** 什么都不难,只要心甘情愿。:white_check_mark:
-</details>
+  </details>
   
 
 <details>
@@ -191,15 +191,16 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j], arr[j + 1] = arr[j + 1], arr[j]<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;return arr:white_check_mark:
   
+
 </details>
-  
+
 <details>
   <summary><b>Generate long text in Chinese</b></summary>
 
 
 
 - **这是我为我的学生申请浙江大学博士的推荐信：** 尊敬的浙江大学博士研究生招生办公室主任： 您好！  我有幸认识并指导过一位非常优秀的研究生，他就是现在申请浙江大学博士研究生的李某。 我对他的了解和评价如下： 李某于2007年9月进入我的实验室从事博士研究生的学习和科研工作。 在此期间，他刻苦学习、勤奋工作，取得了优异的成绩。 他的学习成绩始终名列前茅，其博士论文被评为校级优秀博士论文。 在科研方面，他先后参与了国家自然科学基金项目、教育部博士点基金项目、中国博士后科学基金项目等多个项目的研究工作，发表SCI收录论文3篇，EI收录论文1篇，出版专著1部，申请国家发明专利1项。 他还积极参加社会实践活动，曾获得全国大学生“挑战杯”创业计划竞赛二等奖。  李某不仅学习成绩优异，而且品德高尚，具有良好的科研素质和创新精神。 他能够独立思考问题，善于总结经验教训，勇于承担责任。 :eight_spoked_asterisk:
-</details>
+  </details>
   
 <details>
   <summary><b>Generate long text in English</b></summary>
@@ -221,7 +222,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
    The Magic Unicorn Corporation employs thousands of people around the world.  Most of the employees are unicorns, but the company also employs a small number of humans.  Humans are hired to do jobs that unicorns cannot or will not do.  For example, humans are hired to clean up after unicorns.  Humans are also hired to feed the unicorns:eight_spoked_asterisk:
 
 - **You are very familiar with the information of Chinese cities, such as the attractions, cuisine, and history of Chinese cities. Please introduce the city of Hangzhou. Hangzhou** is the capital of Zhejiang Province in eastern China.  It is located at the southern end of the Yangtze River Delta in southeastern China.  It is one of the most famous tourist cities in China.  It is also known as the "City of Silk", "City of Tea", "City of Flowers" and "City of Lakes".  It has a population of 6.5 million people.  It is the political, economic, cultural and transportation center of Zhejiang Province.  It is also an important industrial base in China.  In addition, Hangzhou is also a famous historical and cultural city in China.  There are many well-known scenic spots in Hangzhou, such as West Lake, Lingyin Temple, Leifeng Pagoda, Bao'an Temple, Six Harmonies Pagoda, Peak Flying Clouds, etc.  Hangzhou is also known for its delicious cuisine.  Hangzhou cuisine is one of the eight major cuisines in China.  It is characterized by fresh, sweet, sour, salty, and mellow.  Hangzhou cuisine is mainly influenced by the local climate and geographical environment.  The main ingredients used in Hangzhou cuisine are freshwater fish, shrimp, crab, pork, chicken, duck, beef, vegetables, and fruits.  Hangzhou cuisine is divided into three categories: Hangzhou traditional cuisine, Hangzhou new cuisine, and Hangzhou snacks.  Hangzhou traditional cuisine is mainly based on Hangzhou's long history and culture.  Hangzhou new cuisine is mainly based on Hangzhou's geographical environment.  Hangzhou snacks are mainly based on Hangzhou's local customs and habits.  Hangzhou cuisine is rich in color, fragrance, taste, and nutrition.  Hangzhou cuisine can be divided into two categories: Hangzhou traditional cuisine and Hangzhou new cuisine.  Hangzhou traditional cuisine is mainly based on Hangzhou's long:eight_spoked_asterisk:
-</details>
+  </details>
   
 <details>
   <summary><b>Reasoning</b></summary>
@@ -233,7 +234,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   Answer: Cafeteria started with 23 apples.**  20 apples were used to make lunch.  6 more apples were bought.  23 - 20 = 3.  3 + 6 = 9.  The answer is 9.<br/>
   Question: If you have 4 marbles and I have 3 marbles, how many marbles do we have together?<br/>
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
-</details>
+  </details>
 
 <h3 id="1-2">1.2 Information Extraction Cases</h3>
 
@@ -270,7 +271,7 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
   
   最后，请记住，您的生命是宝贵的，您的家人和朋友都希望您能够继续活下去。如果您有任何疑问或需要帮助，请随时与我联系。
   ```
-</details>
+  </details>
   
 <details>
   <summary><b>Translation Ability</b></summary>
