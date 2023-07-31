@@ -36,7 +36,7 @@ All weights have been uploaded to HuggingFace🤗. And the instruction dataset w
 | KnowLM-IE (CoT&Reasoning,Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-IE) | Yes           | Due to using distant supervision, there exists noise. |
 | KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool) | No           | It will be used in the next version.                             |
 
-**Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here.
+**Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here. 3. The `KnowLM-IE` dataset comes from the paper "[InstructIE: A Chinese Instruction-based Information Extraction Dataset](https://arxiv.org/abs/2305.11527)" and the [gitHub](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC) can be found here.
 
 ## NEWS
 - \[**July 2023**\] The instruction dataset has been released.
