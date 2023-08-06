@@ -18,6 +18,7 @@ import fire
 import torch
 import tqdm
 import transformers
+from peft import PeftModel
 # from train import smart_tokenizer_and_embedding_resize
 
 
