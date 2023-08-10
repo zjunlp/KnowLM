@@ -6,6 +6,8 @@
 
 For the environment configuration of the vLLM, vist its official installation and configuration document. ([Installation](https://vllm.readthedocs.io/en/latest/getting_started/installation.html))
 
+**Note: only support vLLM==0.1.2.**
+
 In addition, the original LLaMA model and LoRA parameters need to be merged, you can execute the following command:
 ```shell
 python tools/export_hf_checkpoint.py \
