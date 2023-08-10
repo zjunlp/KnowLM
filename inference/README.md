@@ -6,6 +6,7 @@
 ## 配置
 
 vLLM的环境配置可见其官方安装配置文档 ([Installation](https://vllm.readthedocs.io/en/latest/getting_started/installation.html))。
+**注意：目前仅支持vLLM==0.1.2**
 
 另外，需要将原LLaMA模型参数和LoRA参数进行合并，可以执行下面的命令：
 ```shell
