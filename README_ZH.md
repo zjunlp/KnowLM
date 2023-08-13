@@ -42,6 +42,7 @@
 数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。
 
 ## NEWS
+- \[**2023/08**\] 发布完整模型参数，取消了参数合并过程
 - \[**2023/07**\] 发布训练使用的部分指令数据
 - \[**2023/07**\] 支持`LLaMA-2`的指令微调和`vllm`推理
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
