@@ -42,6 +42,7 @@ All weights have been uploaded to HuggingFace🤗.
 **Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here. 3. The `KnowLM-IE` dataset comes from the paper "[InstructIE: A Chinese Instruction-based Information Extraction Dataset](https://arxiv.org/abs/2305.11527)" and the [gitHub](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC) can be found here.
 
 ## NEWS
+- \[**August 2023**\] The full parameters have been released (omitting the parameter consolidation process).
 - \[**July 2023**\] The instruction dataset has been released.
 - \[**July 2023**\] Support instruction fine-tuning and vllm for `LLaMA-2`
 - \[**June 2023**\] The project name has been changed from `CaMA` to `KnowLM`.
