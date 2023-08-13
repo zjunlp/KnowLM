@@ -1,10 +1,11 @@
-:speaking_head: \[ **中文** | [English](./README_EN.md) \]
+:speaking_head: \[ **中文** | [English](./README.md) \]
 <p align="center">
     <br>
-    <img src="./assets/知析 (10).png" width="400" height="120"/>
+    <img src="./assets/KnowLM.png" width="400" height="120"/>
     <br>
 </p>
 
+# 知识增强的开源语言大模型框架
 
 随着深度学习技术的快速发展，大型语言模型如ChatGPT在自然语言处理领域已经取得了显著的成就。然而，这些大型模型在学习和理解知识方面仍然存在一些挑战和问题，包括知识更新的困难，以及模型中潜在的错误和偏差等知识谬误问题。KnowLM项目旨在发布开源大模型框架及相应模型权重以助力减轻**知识谬误**问题。
 
@@ -19,17 +20,46 @@
 - 开源了预训练模型的权重、指令微调的LoRA权重
 - 开源了**全量预训练脚本**（提供大型语料的转换、构建和加载）和**LoRA指令微调脚本**（支持多机多卡）
 
-所有权重均已上传🤗HuggingFace。需要注意的是，下面的所有效果均是以`ZhiXi-13B-Diff`为基础的，如果下载的是`ZhiXi-13B-Diff-fp16`，效果可能会存在出入！
-| 模型名称       | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
-| -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
-| ZhiXi-13B-Diff | 全量预训练   | 与LLaMA-13B作差的fp32权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
-| ZhiXi-13B-Diff-fp16 | 全量预训练   | 与LLaMA-13B作差的fp16权重 | 24GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff-fp16) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1LYm-HUSSQ5Rl8nqZcswdiSpcP9xYTXaO?usp=sharing) | 与`ZhiXi-13B-Diff`的主要区别是采用`fp16`格式存储，可以减小内存占用，但是与我们实际训练得到的**权重稍有差异，性能会稍有影响，** 具体使用说明请参考[此处](#2-2) |
-| ZhiXi-13B-LoRA | LoRA指令微调 | LoRA权重              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link)  | 需要搭配ZhiXi-13B进行使用，具体使用说明参考[此处](#2-4)          |
-| ZhiXi-7B系列   | 即将发布     | 即将发布              | 即将发布 | 即将发布                           | 即将发布                                                     |
+所有权重均已上传🤗HuggingFace，我们构建的数据集也已上传到谷歌网盘。需要注意的是，下面的所有效果均是以`ZhiXi-13B-Diff`为基础的，如果下载的是`ZhiXi-13B-Diff-fp16`，效果可能会存在出入！
+| 模型名称  | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
+| ------------------ | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
+| ZhiXi-13B-Diff | 全量预训练   | LLaMA-13B作差的fp32权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 13B大模型底座V1，恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
+| ZhiXi-13B-Diff-fp16 | 全量预训练   | LLaMA-13B作差的fp16权重 | 24GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff-fp16) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1LYm-HUSSQ5Rl8nqZcswdiSpcP9xYTXaO?usp=sharing) | 13B大模型底座V1，与`ZhiXi-13B-Diff`的主要区别是采用`fp16`格式存储，可以减小内存占用，但是与我们实际训练得到的**权重稍有差异，性能会稍有影响，** 具体使用说明请参考[此处](#2-2) |
+| ZhiXi-13B-LoRA | LoRA指令微调 | LoRA权重              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link)  | 13B抽取大模型lora权重，需要搭配ZhiXi-13B进行使用，具体使用说明参考[此处](#2-4)          |
+| ZhiXi-7B   | 即将发布     | 即将发布              | 即将发布 | 即将发布                           | 7B抽取大模型                                                    |
+| KnowLM-7B   | 全量预训练     |  全量权重             |  训练中  |  训练中                          | 7B大模型V2                                                     |
+| KnowLM-13B   |  全量预训练     |  全量权重          |  训练中  |  训练中                       | 13B大模型V2                                                  |
+
+| 指令类型                        | 数量    | 下载地址                                                     | 智析是否使用 | 说明                           |
+| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
+| KnowLM-CR (推理相关指令数据，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) | 是           | 无                             |
+| KnowLM-IE (抽取相关指令数据，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) | 是           | 由于采用远程监督，因此存在噪音 |
+| KnowLM-Tool (工具学习相关指令数据，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) | 否           | 将在下一个版本使用                             |
+
+数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。
 
 ## NEWS
+- \[**2023/07**\] 发布训练使用的部分指令数据
+- \[**2023/07**\] 支持`LLaMA-2`的指令微调和`vllm`推理
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
 - \[**2023/06**\] 发布第一版预训练权重与第一版LoRA权重
+
+## KnowLM
+<p align="center">
+    <br>
+    <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
+    <br>
+</p>
+
+这是KnowLM框架的总览图。主要有三个技术特色：
+
+1.**知识提示**：基于知识图谱等结构化数据的知识提示生成和知识增强约束技术，解决*知识抽取和推理*问题
+
+2.**知识编辑**：基于知识编辑技术对齐大模型内过时、错误及价值观不正确的知识，解决*知识谬误*问题 (**[英文版Tutorial](./pdf/Knowledge_Editing.pdf)**)
+
+3.**知识交互**：基于知识动态交互和反馈实现工具组合学习及多智能体协作，解决大模型*具身认知*问题 (**[英文版Tutorial](./pdf/Knowledge_Interaction.pdf)**)
+
+包含三个附属的工具分别为[EasyInstruct](https://github.com/zjunlp/easyinstruct)、[EasyEdit](https://github.com/zjunlp/easyedit)和EasyAgent(开发中)，我们将在近期提供基于KnowLM的知识提示和知识编辑使用案例。
 
 ## 目录
 
@@ -42,6 +72,8 @@
   - [模型权重获取(预训练与LoRA)](#2-2)
   - [模型使用](#2-4)
   - [信息抽取Prompt](#2-5)
+  - [ZhiXi-13B-LoRA与ZhiXi-13B权重合并](#2-6)
+  - [MD5码](#2-7)
 - [训练细节](#3)
   - [预训练数据与训练脚本](#3-1)
   - [指令微调数据与训练脚本](#3-3)
@@ -73,7 +105,7 @@
   - <b>你很擅长将中文翻译成英文。将下面的句子翻译成英文：我们今天准备去西安看兵马俑。答案：</b>We are going to see the Terracotta Warriors in Xi'an today.:white_check_mark:
 
 - **You are good at translating English into Chinese. Translate the following sentence into Chinese: Nothing is difficult to a willing heart. Answer:** 什么都不难,只要心甘情愿。:white_check_mark:
-</details>
+  </details>
   
 
 <details>
@@ -156,15 +188,16 @@
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j], arr[j + 1] = arr[j + 1], arr[j]<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;return arr:white_check_mark:
   
+
 </details>
-  
+
 <details>
   <summary><b>中文长文本能力</b></summary>
 
 
 
 - **这是我为我的学生申请浙江大学博士的推荐信：** 尊敬的浙江大学博士研究生招生办公室主任： 您好！  我有幸认识并指导过一位非常优秀的研究生，他就是现在申请浙江大学博士研究生的李某。 我对他的了解和评价如下： 李某于2007年9月进入我的实验室从事博士研究生的学习和科研工作。 在此期间，他刻苦学习、勤奋工作，取得了优异的成绩。 他的学习成绩始终名列前茅，其博士论文被评为校级优秀博士论文。 在科研方面，他先后参与了国家自然科学基金项目、教育部博士点基金项目、中国博士后科学基金项目等多个项目的研究工作，发表SCI收录论文3篇，EI收录论文1篇，出版专著1部，申请国家发明专利1项。 他还积极参加社会实践活动，曾获得全国大学生“挑战杯”创业计划竞赛二等奖。  李某不仅学习成绩优异，而且品德高尚，具有良好的科研素质和创新精神。 他能够独立思考问题，善于总结经验教训，勇于承担责任。 :eight_spoked_asterisk:
-</details>
+  </details>
   
 <details>
   <summary><b>英文长文本能力</b></summary>
@@ -186,7 +219,7 @@
    The Magic Unicorn Corporation employs thousands of people around the world.  Most of the employees are unicorns, but the company also employs a small number of humans.  Humans are hired to do jobs that unicorns cannot or will not do.  For example, humans are hired to clean up after unicorns.  Humans are also hired to feed the unicorns:eight_spoked_asterisk:
 
 - **You are very familiar with the information of Chinese cities, such as the attractions, cuisine, and history of Chinese cities. Please introduce the city of Hangzhou. Hangzhou** is the capital of Zhejiang Province in eastern China.  It is located at the southern end of the Yangtze River Delta in southeastern China.  It is one of the most famous tourist cities in China.  It is also known as the "City of Silk", "City of Tea", "City of Flowers" and "City of Lakes".  It has a population of 6.5 million people.  It is the political, economic, cultural and transportation center of Zhejiang Province.  It is also an important industrial base in China.  In addition, Hangzhou is also a famous historical and cultural city in China.  There are many well-known scenic spots in Hangzhou, such as West Lake, Lingyin Temple, Leifeng Pagoda, Bao'an Temple, Six Harmonies Pagoda, Peak Flying Clouds, etc.  Hangzhou is also known for its delicious cuisine.  Hangzhou cuisine is one of the eight major cuisines in China.  It is characterized by fresh, sweet, sour, salty, and mellow.  Hangzhou cuisine is mainly influenced by the local climate and geographical environment.  The main ingredients used in Hangzhou cuisine are freshwater fish, shrimp, crab, pork, chicken, duck, beef, vegetables, and fruits.  Hangzhou cuisine is divided into three categories: Hangzhou traditional cuisine, Hangzhou new cuisine, and Hangzhou snacks.  Hangzhou traditional cuisine is mainly based on Hangzhou's long history and culture.  Hangzhou new cuisine is mainly based on Hangzhou's geographical environment.  Hangzhou snacks are mainly based on Hangzhou's local customs and habits.  Hangzhou cuisine is rich in color, fragrance, taste, and nutrition.  Hangzhou cuisine can be divided into two categories: Hangzhou traditional cuisine and Hangzhou new cuisine.  Hangzhou traditional cuisine is mainly based on Hangzhou's long:eight_spoked_asterisk:
-</details>
+  </details>
   
 <details>
   <summary><b>推理能力</b></summary>
@@ -198,7 +231,7 @@
   Answer: Cafeteria started with 23 apples.**  20 apples were used to make lunch.  6 more apples were bought.  23 - 20 = 3.  3 + 6 = 9.  The answer is 9.<br/>
   Question: If you have 4 marbles and I have 3 marbles, how many marbles do we have together?<br/>
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
-</details>
+  </details>
 
 <h3 id="1-2">1.2 信息抽取效果</h3>
 
@@ -236,7 +269,7 @@
   
   最后，请记住，您的生命是宝贵的，您的家人和朋友都希望您能够继续活下去。如果您有任何疑问或需要帮助，请随时与我联系。
   ```
-</details>
+  </details>
   
 <details>
   <summary><b>翻译能力</b></summary>
@@ -365,14 +398,14 @@
 
 <h2 id="2">2. 快速开始</h2>
 
-> ❗❗❗ 注意，硬件方面，执行`2.2`的步骤，即把`LLaMA-13B`与`ZhiXi-13B-Diff`合并需要约`100GB`的内存，显存没有需求（这是由于我们的合并策略导致的内存开销，为了方便使用，我们将在后续改进我们的合并方式，目前也正在开发7B模型，敬请期待）；执行`2.4`的步骤，即使用`ZhiXi`进行推理时，需要的显存至少为`26GB`。
+> ❗❗❗ 注意，硬件方面，执行`2.2`的步骤，即把`LLaMA-13B`与`ZhiXi-13B-Diff`合并需要约`100GB`的内存，显存没有需求（这是由于合并策略导致的内存开销，为了方便使用我们提供了fp16权重https://huggingface.co/zjunlp/zhixi-13b-diff-fp16, **fp16的权重需要的内存较少，但性能会稍有影响**; 我们将在后续改进合并方式，目前也正在开发7B模型，敬请期待）；执行`2.4`的步骤，即使用`ZhiXi`进行推理时，需要的显存至少为`26GB`。
 
 <h3 id="2-1">2.1 环境配置</h3>
 
 ```shell
 conda create -n zhixi python=3.9 -y
 conda activate zhixi
-pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
+pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
 ```
 
@@ -431,7 +464,8 @@ python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-d
 ```shell
 python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff-fp16 --path_tuned ./zhixi --is_fp16 True
 ```
-> ❗对于是否合并成功，我们没有提供`MD5`，原因是因为权重被分成了六个文件。我们采用的验证策略和[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca)一样，对权重进行求和校验（可以参考[此处](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L108)），如果您合并的过程**没有出现任何错误，则表明您已经获得了正确的预训练模型。**
+> ❗对于是否合并成功，我们提供了[MD5码](#2-7)来进行校验，请查看对应文件的`md5`码。
+<!-- ❗对于是否合并成功，我们没有提供`MD5`，原因是因为权重被分成了六个文件。我们采用的验证策略和[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca)一样，对权重进行求和校验（可以参考[此处](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L108)），如果您合并的过程**没有出现任何错误，则表明您已经获得了正确的预训练模型。**-->
 
 
 <h3 id="2-3">2.3 指令微调LoRA权重获取</h3>
@@ -517,13 +551,107 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 
 如果您想批量测试，请修改`examples/generate_lora.py`文件，更改`case`中的例子和超参数即可。
 
+根据不同的任务需求，我们对解码策略及其相关超参数的调整建议如下:
 
+1. 如果您想要更多样化和创造性的输出，请考虑使用 `top_k` 或 `top_p` 相对较高的top-k或top-p 采样策略，并可以使用更高的 `temperature`；
+2. 如果您想要更高质量的输出(例如，信息抽取)，请考虑使用beam search解码策略（适当调整 `num_beam` 参数），或者使用较低 `top_k` 或 `top_p` 的top-k或top-p采样策略，并结合较低的 `temperature` 参数；
+3. 根据您的需要，可以迭代和试验不同的解码策略和超参数以找到最佳组合。
+
+**4. vLLM API服务**
+
+为了加速LLM推理和提供高效的API服务，我们集成了[vLLM](https://github.com/vllm-project/vllm)。请使用以下命令在 `http://localhost:8090` 上启动vLLM的API服务。
+
+```shell
+max_num_batched_tokens=8000
+
+CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
+    --port 8090 \
+    --model data/zhixi-13B \
+    --use-np-weights \
+    --max-num-batched-tokens $max_num_batched_tokens \
+    --dtype half \
+    --tensor-parallel-size 2
+```
+
+通过POST请求发起服务请求：
+
+```shell
+curl -X POST "http://127.0.0.1:8090/generate" \
+  -H 'Content-Type: application/json' \
+  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
+```
+
+你将得到以下结果：
+
+```shell
+{
+  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
+  "num_output_tokens_cf":65,
+  "error":null
+}
+```
 
 <h3 id="2-5">2.5 信息抽取Prompt</h3>
 
 对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，可以参考[此处](./examples/ie_prompt.py)。当然你也可以尝试使用自己的Prompt。
 
 这里也有一个简单的使用ZhiXi-13B-LoRA完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
+
+<h3 id="2-6">2.6 ZhiXi-13B-LoRA与ZhiXi-13B的合并</h3>
+
+如果希望将`ZhiXi-13B-LoRA`与`ZhiXi-13B`进行合并，您可以使用下面的命令进行合并，输出的模型权重保存在`./zhixi-sft`文件夹中：
+
+```shell
+python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
+```
+
+<h3 id="2-7">2.7 MD5码</h3>
+
+> 我们在此处提供了`zhixi-13b-diff` `zhixi-13b-diff-fp16` `zhixi-13b-lora` `zhixi-13b-base`的`MD5`码用于校验下载的权重和合并后的权重是否正确
+
+<h4 id="2-7-1">2.7.1 ZhiXi-13b-Diff</h4>
+
+```shell
+83cc5089df3eb400c99d9947b8c4f97b  pytorch_model-00001-of-00006.bin
+d264f13f961a0d2a5ba97c1c7f8b58e2  pytorch_model-00002-of-00006.bin
+ac6d767ac50fcc0828ac860c3be4dfad  pytorch_model-00003-of-00006.bin
+55736b822e100f1f0cb35e9ddb3b4471  pytorch_model-00004-of-00006.bin
+0dc1f2a6d02fe7db41a6fa72c7cff138  pytorch_model-00005-of-00006.bin
+c92a59383e10e2c4c3688a82856f6cba  pytorch_model-00006-of-00006.bin
+```
+
+<h4 id="2-7-2">2.7.2 ZhiXi-13b-Diff-fp16</h4>
+
+```shell
+37322209a703e24bb0b06d2742901741  pytorch_model-00001-of-00003.bin
+6fcc5659bf10c2b335dc846acc6a1870  pytorch_model-00002-of-00003.bin
+03ed19e6106f7228f6a5c103a8684450  pytorch_model-00003-of-00003.bin
+```
+
+<h4 id="2-7-3">2.7.3 ZhiXi-13b-LoRA</h4>
+
+```shell
+308f8424b1b6ac8dff343716dd78cde7  adapter_model.bin
+```
+
+<h4 id="2-7-4">2.7.4 ZhiXi-13b-base</h4>
+
+如果您使用的是`fp16`格式的`diff`，则下面提供的是`zhixi-13b-base-fp16`的`md5`码：
+```shell
+bad379562a2ee8381683c1badd952951  pytorch_model-00001-of-00003.bin
+f354f1a5a7c65ab378f03d293e9b1715  pytorch_model-00002-of-00003.bin
+41a79e11206adeec872d6188cb62904a  pytorch_model-00003-of-00003.bin
+```
+
+如果您使用的是`fp32`格式的`diff`，则下面提供的是`zhixi-13b-base`的`md5`码：
+```shell
+b19e56ec888b44bfe5c1db49eb4a3195  pytorch_model-00001-of-00006.bin
+39e23c61754719cfab9c0199d9abaccb  pytorch_model-00002-of-00006.bin
+e164b3a17698d7b842274aadd74567eb  pytorch_model-00003-of-00006.bin
+a535e330204f68bce6245914a6d460e5  pytorch_model-00004-of-00006.bin
+009a4913710db64ae94ac62dffd784c6  pytorch_model-00005-of-00006.bin
+c7c5750106a5724de3f0cb7a7151723a  pytorch_model-00006-of-00006.bin
+```
 
 <h2 id="3">3. 训练细节</h2>
 
@@ -534,6 +662,7 @@ python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
 > （2）使用LoRA的指令微调阶段。该阶段让模型能够理解人类的指令并输出合适的内容。
 
 ![](./assets/main_new.jpg)
+
 
 <h3 id="3-1">3.1 预训练数据集构建</h3>
 
