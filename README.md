@@ -1,7 +1,7 @@
 :speaking_head: \[ **中文** | [English](./README.md) \]
 <p align="center">
     <br>
-    <img src="./assets/KnowLM.png" width="400" height="120"/>
+    <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM.png?raw=true" width="400" height="120"/>
     <br>
 </p>
 
@@ -47,7 +47,7 @@
 ## KnowLM
 <p align="center">
     <br>
-    <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
+    <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM-overview.png?raw=true" width="920" height="400"/>
     <br>
 </p>
 
