@@ -1,7 +1,7 @@
 :speaking_head: \[ **中文** | [English](./README.md) \]
 <p align="center">
     <br>
-    <img src="./assets/KnowLM.png" width="400" height="120"/>
+    <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM.png?raw=true" width="400" height="120"/>
     <br>
 </p>
 
@@ -20,15 +20,18 @@
 - 开源了预训练模型的权重、指令微调的LoRA权重
 - 开源了**全量预训练脚本**（提供大型语料的转换、构建和加载）和**LoRA指令微调脚本**（支持多机多卡）
 
-所有权重均已上传🤗HuggingFace，我们构建的数据集也已上传到谷歌网盘。需要注意的是，下面的所有效果均是以`ZhiXi-13B-Diff`为基础的，如果下载的是`ZhiXi-13B-Diff-fp16`，效果可能会存在出入！
-| 模型名称  | 训练方式     | 发布权重类型          | 大小     | 下载链接                           | 备注                                                         |
-| ------------------ | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
-| ZhiXi-13B-Diff | 全量预训练   | LLaMA-13B作差的fp32权重 | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link) | 13B大模型底座V1，恢复预训练的权重（即ZhiXi-13B）需要搭配LLaMA-13B的权重，具体使用说明请参考[此处](#2-2) |
-| ZhiXi-13B-Diff-fp16 | 全量预训练   | LLaMA-13B作差的fp16权重 | 24GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff-fp16) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1LYm-HUSSQ5Rl8nqZcswdiSpcP9xYTXaO?usp=sharing) | 13B大模型底座V1，与`ZhiXi-13B-Diff`的主要区别是采用`fp16`格式存储，可以减小内存占用，但是与我们实际训练得到的**权重稍有差异，性能会稍有影响，** 具体使用说明请参考[此处](#2-2) |
-| ZhiXi-13B-LoRA | LoRA指令微调 | LoRA权重              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/> [谷歌云盘](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link)  | 13B抽取大模型lora权重，需要搭配ZhiXi-13B进行使用，具体使用说明参考[此处](#2-4)          |
-| ZhiXi-7B   | 即将发布     | 即将发布              | 即将发布 | 即将发布                           | 7B抽取大模型                                                    |
-| KnowLM-7B   | 全量预训练     |  全量权重             |  训练中  |  训练中                          | 7B大模型V2                                                     |
-| KnowLM-13B   |  全量预训练     |  全量权重          |  训练中  |  训练中                       | 13B大模型V2                                                  |
+所有权重均已上传🤗HuggingFace，我们构建的数据集也已上传到谷歌网盘。
+
+| 类别     | 底座   | 名称                      | 版本 | 下载链接                                                     | 备注     |
+| -------- | ------ | ------------------------- | ---- | ------------------------------------------------------------ | -------- |
+| 基础模型 | LlaMA1 | KnowLM-13B-Base           | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-base-v1.0) | 底座模型 |
+| 对话模型 | LlaMA1 | KnowLM-13B-ZhiXi          | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-zhixi) | 抽取模型 |
+| 对话模型 | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie)  | 抽取模型 |
+| 基础模型 | LlaMA2 | KnowLM-7B-Base            | V1.0 | 即将发布                                                     | 底座模型 |
+| 对话模型 | LlaMA2 | KnowLM-7B-IE              | V1.0 | 即将发布                                                     | 抽取模型 |
+| 对话模型 | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | 即将发布                                                     | 海洋模型 |
+| 对话模型 | LlaMA2 | KnowLM-13B                | V1.0 | 训练中                                                       | 底座模型 |
+
 
 | 指令类型                        | 数量    | 下载地址                                                     | 智析是否使用 | 说明                           |
 | ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
@@ -39,6 +42,7 @@
 数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。
 
 ## NEWS
+- \[**2023/08**\] 发布完整模型参数，取消了参数合并过程
 - \[**2023/07**\] 发布训练使用的部分指令数据
 - \[**2023/07**\] 支持`LLaMA-2`的指令微调和`vllm`推理
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
@@ -47,7 +51,7 @@
 ## KnowLM
 <p align="center">
     <br>
-    <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
+    <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM-overview.png?raw=true" width="920" height="400"/>
     <br>
 </p>
 
@@ -69,11 +73,7 @@
   - [通用能力效果](#1-3)
 - [快速开始](#2)
   - [环境配置](#2-1)
-  - [模型权重获取(预训练与LoRA)](#2-2)
-  - [模型使用](#2-4)
-  - [信息抽取Prompt](#2-5)
-  - [ZhiXi-13B-LoRA与ZhiXi-13B权重合并](#2-6)
-  - [MD5码](#2-7)
+  - [模型使用](#2-2)
 - [训练细节](#3)
   - [预训练数据与训练脚本](#3-1)
   - [指令微调数据与训练脚本](#3-3)
@@ -88,7 +88,7 @@
 
 <h3 id="1-1">1.1 预训练效果</h3>
 
-我们的预训练模型在未经任何指令微调的情况下获得了一定的指令跟随能力、代码能力、推理能力，以及一些翻译能力，此外获得了一些新的知识。下面是我们的部分case，若希望复现我们的例子、查看详细的解码参数，请先[配置环境](#2-1)和[权重恢复](#2-2)，然后按照[此处](#2-4)的步骤进行即可。
+我们的预训练模型在未经任何指令微调的情况下获得了一定的指令跟随能力、代码能力、推理能力，以及一些翻译能力，此外获得了一些新的知识。下面是我们的部分case，若希望复现我们的例子、查看详细的解码参数，请先[配置环境](#2-1)，然后按照[此处](#2-2)的步骤进行即可。
 
 > 下面的例子中**粗体**为Prompt，常规字体为模型输出。
 >
@@ -398,8 +398,6 @@
 
 <h2 id="2">2. 快速开始</h2>
 
-> ❗❗❗ 注意，硬件方面，执行`2.2`的步骤，即把`LLaMA-13B`与`ZhiXi-13B-Diff`合并需要约`100GB`的内存，显存没有需求（这是由于合并策略导致的内存开销，为了方便使用我们提供了fp16权重https://huggingface.co/zjunlp/zhixi-13b-diff-fp16, **fp16的权重需要的内存较少，但性能会稍有影响**; 我们将在后续改进合并方式，目前也正在开发7B模型，敬请期待）；执行`2.4`的步骤，即使用`ZhiXi`进行推理时，需要的显存至少为`26GB`。
-
 <h3 id="2-1">2.1 环境配置</h3>
 
 ```shell
@@ -409,103 +407,32 @@ pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/w
 pip install -r requirements.txt
 ```
 
-
-<h3 id="2-2">2.2 预训练模型权重获取与恢复</h3>
-
-> 由于meta官方没有完全开放出LLaMA的权重，因此我们将ZhiXi的权重与LLaMA权重进行作差，上传到了[此处](https://huggingface.co/zjunlp/zhixi-13b-diff)。为了还原得到完整的ZhiXi权重，请按照下述步骤进行。
-
-**1. 下载LLaMA13B和ZhiXi-13B-Diff**
-
-请点击[此处](https://forms.gle/jk851eBVbX1m5TAv5)向`meta`申请`LLaMA`的官方预训练权重。此处我们使用的是`13B`规格的模型，因此仅需下载`13B`版本即可。下载完成后的文件目录如下：
-
-```shell
-|-- 13B
-|	|-- checklist.chk
-|	|-- consolidated.00.pth
-|	|-- consolidated.01.pth
-|	|-- params.json
-|-- llama.sh
-|-- tokenizer.model
-|-- tokenizer_checklist.chk
-```
-
-请使用如下命令下载ZhiXi-13B-Diff文件（假设下载后保存在`./zhixi-diff`文件夹中）：
-```shell
-python tools/download.py --download_path ./zhixi-diff --only_base
-```
-
-如果想下载`fp16`格式的diff权重，请使用下面的命令（假设下载后保存到`./zhixi-diff-fp16`文件夹中）：
-```shell
-python tools/download.py --download_path ./zhixi-diff-fp16 --only_base --fp16
-```
-
-> :exclamation:注意，如果下载的时候出现了中断，请重复执行上面的命令即可，huggingface提供了断点传输。
-
-**2. 使用huggingface提供的转换脚本**
-
-使用Huggingface提供的脚本文件，对原始的`LLaMA-13B`转换为Huggingface的格式，具体的脚本文件在[此处](https://github.com/huggingface/transformers/blob/main/src/transformers/models/llama/convert_llama_weights_to_hf.py)。下面是运行的命令（假设下载的原始文件位于`./`下，希望转换后的路径为`./converted`）：
-
-```shell
-python convert_llama_weights_to_hf.py --input_dir ./ --model_size 13B --output_dir ./converted
-```
-
-**3. 使用脚本恢复ZhiXi 13B**
-
-最后使用我们提供的脚本，位于`./tools/weight_diff.py`，执行下面的命令，将得到完整的`ZhiXi`权重：
-
-```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff --path_tuned ./zhixi
-```
-
-最后完整的权重被保存在`./zhixi`文件夹中。
-
-如果您下载的diff权重版本是`fp16`格式，请使用下面的命令即可得到，需要注意的是与`fp32`得到的权重略有差异：
-
-```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff-fp16 --path_tuned ./zhixi --is_fp16 True
-```
-> ❗对于是否合并成功，我们提供了[MD5码](#2-7)来进行校验，请查看对应文件的`md5`码。
-<!-- ❗对于是否合并成功，我们没有提供`MD5`，原因是因为权重被分成了六个文件。我们采用的验证策略和[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca)一样，对权重进行求和校验（可以参考[此处](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L108)），如果您合并的过程**没有出现任何错误，则表明您已经获得了正确的预训练模型。**-->
-
-
-<h3 id="2-3">2.3 指令微调LoRA权重获取</h3>
-
-使用我们提供的脚本文件，位于`./tools/download.py`，执行下面的命令，得到LoRA权重（假设保存的路径位于`./lora`）：
-
-```shell
-python tools/download.py --download_path ./lora --only_lora
-```
-
-最后完整的权重被保存在`./lora`文件夹中。
-
-
-
-<h3 id="2-4">2.4 模型使用</h3>
+<h3 id="2-2">2.2 模型使用</h3>
 
 **1. 复现效果图中的结果**
 
 > 第1节中的例子均在V100上进行推理，如若在其他设备上进行推理，结果可能有出入，请多次运行或修改解码参数。
 
-1. 若希望**复现预训练**的结果，请运行如下命令（假设已经根据2.2的步骤得到了完整的预训练权重，模型保存在`./zhixi`文件夹中）：
+1. 若希望**复现预训练**的结果，请运行如下命令：
 
    ```shell
-   python examples/generate_finetune.py --base_model ./zhixi
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
    ```
 
    即可得到1.1中的结果。
 
-2. 若希望**复现信息抽取**的结果，请运行如下命令（假设已经根据2.3的步骤得到了完整的LoRA权重，并保存在`./lora`文件夹中）：
+2. 若希望**复现信息抽取**的结果，请运行如下命令：
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_ie_cases
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
    ```
 
    即可得到1.2中的结果。
 
-3. 若希望**复现通用能力**的结果，请运行如下命令（假设已经根据2.3的步骤得到了完整的LoRA权重，并保存在`./lora`文件夹中）：
+3. 若希望**复现通用能力**的结果，请运行如下命令：
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_general_cases
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
    ```
 
    即可得到1.3中的结果。
@@ -519,7 +446,7 @@ python tools/download.py --download_path ./lora --only_lora
 1. 命令行方法，使用下面的命令进入命令行交互：
 
    ```shell
-   python examples/generate_finetune.py --base_model ./zhixi --interactive
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0 --interactive
    ```
 
    缺点是无法动态的更改解码参数。
@@ -527,7 +454,7 @@ python tools/download.py --download_path ./lora --only_lora
 2. 网页版方法，使用下面的命令进入网页版：
 
    ```shell
-   python examples/generate_finetune_web.py --base_model ./zhixi
+   python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
    ```
    下面是网页版的demo图：
    <p align="center" width="100%">
@@ -539,7 +466,7 @@ python tools/download.py --download_path ./lora --only_lora
 此处我们提供了网页版的方法，使用下面的命令进入网页版：
 
 ```shell
-python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
+python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
 ```
 
 下面是网页版的demo图：
@@ -591,67 +518,12 @@ curl -X POST "http://127.0.0.1:8090/generate" \
 }
 ```
 
-<h3 id="2-5">2.5 信息抽取Prompt</h3>
+<h3 id="2-3">2.3 信息抽取Prompt</h3>
 
 对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，可以参考[此处](./examples/ie_prompt.py)。当然你也可以尝试使用自己的Prompt。
 
-这里也有一个简单的使用ZhiXi-13B-LoRA完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
+这里也有一个简单的使用`knowlm-13b-zhixi`完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
 
-<h3 id="2-6">2.6 ZhiXi-13B-LoRA与ZhiXi-13B的合并</h3>
-
-如果希望将`ZhiXi-13B-LoRA`与`ZhiXi-13B`进行合并，您可以使用下面的命令进行合并，输出的模型权重保存在`./zhixi-sft`文件夹中：
-
-```shell
-python weight_diff.py merge --path_zhixi ./zhixi --path_lora ./zhixi-lora --path_sfted ./zhixi-sft
-```
-
-<h3 id="2-7">2.7 MD5码</h3>
-
-> 我们在此处提供了`zhixi-13b-diff` `zhixi-13b-diff-fp16` `zhixi-13b-lora` `zhixi-13b-base`的`MD5`码用于校验下载的权重和合并后的权重是否正确
-
-<h4 id="2-7-1">2.7.1 ZhiXi-13b-Diff</h4>
-
-```shell
-83cc5089df3eb400c99d9947b8c4f97b  pytorch_model-00001-of-00006.bin
-d264f13f961a0d2a5ba97c1c7f8b58e2  pytorch_model-00002-of-00006.bin
-ac6d767ac50fcc0828ac860c3be4dfad  pytorch_model-00003-of-00006.bin
-55736b822e100f1f0cb35e9ddb3b4471  pytorch_model-00004-of-00006.bin
-0dc1f2a6d02fe7db41a6fa72c7cff138  pytorch_model-00005-of-00006.bin
-c92a59383e10e2c4c3688a82856f6cba  pytorch_model-00006-of-00006.bin
-```
-
-<h4 id="2-7-2">2.7.2 ZhiXi-13b-Diff-fp16</h4>
-
-```shell
-37322209a703e24bb0b06d2742901741  pytorch_model-00001-of-00003.bin
-6fcc5659bf10c2b335dc846acc6a1870  pytorch_model-00002-of-00003.bin
-03ed19e6106f7228f6a5c103a8684450  pytorch_model-00003-of-00003.bin
-```
-
-<h4 id="2-7-3">2.7.3 ZhiXi-13b-LoRA</h4>
-
-```shell
-308f8424b1b6ac8dff343716dd78cde7  adapter_model.bin
-```
-
-<h4 id="2-7-4">2.7.4 ZhiXi-13b-base</h4>
-
-如果您使用的是`fp16`格式的`diff`，则下面提供的是`zhixi-13b-base-fp16`的`md5`码：
-```shell
-bad379562a2ee8381683c1badd952951  pytorch_model-00001-of-00003.bin
-f354f1a5a7c65ab378f03d293e9b1715  pytorch_model-00002-of-00003.bin
-41a79e11206adeec872d6188cb62904a  pytorch_model-00003-of-00003.bin
-```
-
-如果您使用的是`fp32`格式的`diff`，则下面提供的是`zhixi-13b-base`的`md5`码：
-```shell
-b19e56ec888b44bfe5c1db49eb4a3195  pytorch_model-00001-of-00006.bin
-39e23c61754719cfab9c0199d9abaccb  pytorch_model-00002-of-00006.bin
-e164b3a17698d7b842274aadd74567eb  pytorch_model-00003-of-00006.bin
-a535e330204f68bce6245914a6d460e5  pytorch_model-00004-of-00006.bin
-009a4913710db64ae94ac62dffd784c6  pytorch_model-00005-of-00006.bin
-c7c5750106a5724de3f0cb7a7151723a  pytorch_model-00006-of-00006.bin
-```
 
 <h2 id="3">3. 训练细节</h2>
 
