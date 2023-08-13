@@ -53,7 +53,7 @@ In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced la
 ## What's the KnowLM?
 <p align="center">
     <br>
-    <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
+    <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM-overview.png?raw=true" width="920" height="400"/>
     <br>
 </p>
 
