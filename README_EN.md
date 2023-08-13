@@ -399,8 +399,6 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
 
 <h2 id="2">2. Quick Start</h2>
 
-> ❗❗❗ Note that in terms of hardware, performing step `2.2`, which involves merging LLaMA-13B with ZhiXI-13B-Diff, requires approximately **100GB** of RAM, with no demand for VRAM (this is due to the memory overhead caused by our merging strategy. For your convenience, we have provided the fp16 weights at this link: https://huggingface.co/zjunlp/zhixi-13b-diff-fp16. **fp16 weights require less memory but may slightly impact performance**. We will improve our merging approach in future updates, and we are currently developing a 7B model as well, so stay tuned). For step `2.4`, which involves inference using `ZhiXi`, a minimum of **26GB** of VRAM is required.
-
 <h3 id="2-1">2.1 Environment Configuration</h3>
 
 ```shell
