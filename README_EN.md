@@ -1,12 +1,12 @@
-:speaking_head: \[ [中文](./README.md) | **English** \]
+:speaking_head: \[ [中文](./README_ZH.md) | **English** \]
 
 <p align="center">
     <br>
-    <img src="./assets/知析 (10).png" width="400" height="120"/>
+    <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM.png?raw=true" width="400" height="120"/>
     <br>
 </p>
 
-# Knowledgable Large Language Model Framework.
+# Knowledgable Large Language Model Framework
 
 With the rapid development of deep learning technology, large language models such as ChatGPT have made substantial strides in the realm of natural language processing. However, these expansive models still encounter several challenges in acquiring and comprehending knowledge, including the difficulty of updating knowledge and potential knowledge discrepancies and biases, collectively known as **knowledge fallacies**. The KnowLM project endeavors to tackle these issues by launching an open-source large-scale knowledgable language model framework and releasing corresponding models. 
 
@@ -22,18 +22,50 @@ The project's `initial phase` introduced a knowledge extraction LLM based on LLa
 - The **full-scale pre-training code** (providing conversion, construction, and loading of large corpora) and **LoRA instruction fine-tuning code** are open-sourced (support multi-machine multi-GPU).
 
 
-All weights have been uploaded to HuggingFace🤗. It should be noted that all the following effects are based on `ZhiXi-13B-Diff`. If you have downloaded `ZhiXi-13B-Diff-fp16`, there may be some variations in the effects.
-| Model Name       | Train Method    | Weight Type          | Size     | Download Link                           | Notes                                                         |
-| -------------- | ------------ | --------------------- | -------- | ---------------------------------- | ------------------------------------------------------------ |
-| ZhiXi-13B-Diff | Full Pretraining   | Differential Weights | 48GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff) <br/> [GoogleDrive](https://drive.google.com/drive/folders/1PZDqZNaBJYQYeON1-9aFBtagktEWAtUK?usp=drive_link)| Restoring the pre-trained weights (i.e. **ZhiXi-13B**) needs to match the weights of `LLaMA-13B`, please refer to [here](#2-2) for specific instructions. |
-| ZhiXi-13B-Diff-fp16 | Full Pretraining   | Differential Weights(fp16) | 24GB     | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-diff-fp16) <br/> [Google Drive](https://drive.google.com/drive/folders/1LYm-HUSSQ5Rl8nqZcswdiSpcP9xYTXaO?usp=sharing) | The main difference with `ZhiXi-13B-Diff` is the adoption of the `fp16` format for storage, which reduces memory usage. However, it may result in slight differences in the weights obtained from our actual training, which can slightly impact performance. For specific usage instructions, please refer to [here](#2-2) for specific instructions. |
-| ZhiXi-13B-LoRA | LoRA Instruction-tuning | LoRA Weights              | 251MB    | [HuggingFace](https://huggingface.co/zjunlp/zhixi-13b-lora) <br/>  [GoogleDrive](https://drive.google.com/drive/folders/1GLyaWIyDIayudrQhb_tJYoNPAUk1xByS?usp=drive_link) | It needs to be used with **ZhiXi-13B**. For specific instructions, please refer to [here](#2-4).          |
-| ZhiXi-7B Series   | Coming soon     | Coming soon            | Coming soon | Coming soon                           | Coming soon                                                 |
+All weights have been uploaded to HuggingFace🤗. 
+| Category | Base   | Name                     | Version | Download Link                                                     | Note     |
+| -------- | ------ | ------------------------- | ---- | ------------------------------------------------------------ | -------- |
+| Base Model | LlaMA1 | KnowLM-13B-Base           | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-base-v1.0) | Base Model |
+| Dialogue Model | LlaMA1 | KnowLM-13B-ZhiXi          | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-zhixi) | Information Extraction Model |
+| Dialogue Model | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie)  | Information Extraction Model |
+| Base Model | LlaMA2 | KnowLM-7B-Base            | V1.0 | Coming soon                                                     | Base Model |
+| Dialogue Model | LlaMA2 | KnowLM-7B-IE              | V1.0 | Coming soon                                                     | Information Extraction Model |
+| Dialogue Model | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | Coming soon                                                     | Ocean Model |
+| Dialogue Model | LlaMA2 | KnowLM-13B                | V1.0 | Training                                                       | Base Model |
 
+| Instruction Dataset Name                        | Number    | Download Link                                                    | Is it used by ZhiXi | Note                           |
+| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
+| KnowLM-CR (CoT&Reasoning, Chinese and English) | 202,333 | [Google Drive](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-CR)| Yes           |                              |
+| KnowLM-IE (Information Extraction, Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-IE) | Yes           | Due to using distant supervision, there exists noise. |
+| KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool) | No           | It will be used in the next version.                             |
+
+**Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here. 3. The `KnowLM-IE` dataset comes from the paper "[InstructIE: A Chinese Instruction-based Information Extraction Dataset](https://arxiv.org/abs/2305.11527)" and the [gitHub](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC) can be found here.
 
 ## NEWS
+- \[**July 2023**\] The instruction dataset has been released.
+- \[**July 2023**\] Support instruction fine-tuning and vllm for `LLaMA-2`
 - \[**June 2023**\] The project name has been changed from `CaMA` to `KnowLM`.
 - \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
+
+## Why it's called ZhiXi (智析)?
+In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced language understanding capabilities. "Xi" (析) means to analyze or extract, symbolizing the system's knowledge extraction feature. Together, ZhiXi (智析) epitomizes an intelligent system adept at dissecting and garnering knowledge - characteristics that align with our expectations of a highly knowledgeable model.
+
+## What's the KnowLM?
+<p align="center">
+    <br>
+    <img src="./assets/KnowLM-overview.png" width="920" height="400"/>
+    <br>
+</p>
+
+This is an overview of the `KnowLM`, which mainly consists of three technical features:
+
+**Knowledge Prompting**: It generates knowledge prompts based on structured data such as knowledge graphs and utilizes knowledge augmentation constraints to address *knowledge extraction and reasoning* issues.
+
+**Knowledge Editing**: It aligns outdated, incorrect, and biased knowledge within large models using knowledge editing techniques to tackle *knowledge fallacy* problems (**[English Tutorial](./pdf/Knowledge_Editing.pdf)**).
+
+**Knowledge Interaction**: It enables dynamic knowledge interaction and feedback to achieve tool-based learning and multi-agent collaboration, resolving the problem of *embodiment cognition* in LLMs (**[English Tutorial](./pdf/Knowledge_Interaction.pdf)**).
+
+The tools corresponding to these three technologies are [EasyInstruct](https://github.com/zjunlp/easyinstruct), [EasyEdit](https://github.com/zjunlp/easyedit), and EasyAgent (under development). We will soon provide use cases for knowledge prompting and knowledge editing based on the `KnowLM`framework.
 
 ## Contents
 
@@ -43,9 +75,7 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
   - [General Ability Cases](#1-3)
 - [Quick Start](#2)
   - [Environment Configuration](#2-1)
-  - [Model Weight(Pretrain and LoRA)](#2-2)
-  - [Model Usage Guide](#2-4)
-  - [Information Extraction Prompt](#2-5)
+  - [Model Usage Guide](#2-2)
 - [Training Details](#3)
   - [Pertraining data and Pretraining scripts](#3-1)
   - [Instruction data and Instruction-tuning scripts](#3-3)
@@ -60,7 +90,7 @@ All weights have been uploaded to HuggingFace🤗. It should be noted that all t
 
 <h3 id="1-1">1.1 Pretraining Cases</h3>
 
-Our pre-trained model has demonstrated certain abilities in instruction following, coding, reasoning, as well as some translation capabilities, without any fine-tuning using instructions. Additionally, it has acquired new knowledge. Below are some of our sample cases. If you wish to reproduce our examples and view detailed decoding configuration, please first [set up the environment](#2-1) and [restore the weights](#2-2), then follow the steps outlined [here](#2-4).
+Our pre-trained model has demonstrated certain abilities in instruction following, coding, reasoning, as well as some translation capabilities, without any fine-tuning using instructions. Additionally, it has acquired new knowledge. Below are some of our sample cases. If you wish to reproduce our examples and view detailed decoding configuration, please first [set up the environment](#2-1), then follow the steps outlined [here](#2-2).
 
 > In the follwing cases, text in **bold** represents the prompt, while non-bold text represents the model's output.
 >
@@ -77,7 +107,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   - <b>你很擅长将中文翻译成英文。将下面的句子翻译成英文：我们今天准备去西安看兵马俑。答案：</b>We are going to see the Terracotta Warriors in Xi'an today.:white_check_mark:
 
 - **You are good at translating English into Chinese. Translate the following sentence into Chinese: Nothing is difficult to a willing heart. Answer:** 什么都不难,只要心甘情愿。:white_check_mark:
-</details>
+  </details>
   
 
 <details>
@@ -160,15 +190,16 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j], arr[j + 1] = arr[j + 1], arr[j]<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;return arr:white_check_mark:
   
+
 </details>
-  
+
 <details>
   <summary><b>Generate long text in Chinese</b></summary>
 
 
 
 - **这是我为我的学生申请浙江大学博士的推荐信：** 尊敬的浙江大学博士研究生招生办公室主任： 您好！  我有幸认识并指导过一位非常优秀的研究生，他就是现在申请浙江大学博士研究生的李某。 我对他的了解和评价如下： 李某于2007年9月进入我的实验室从事博士研究生的学习和科研工作。 在此期间，他刻苦学习、勤奋工作，取得了优异的成绩。 他的学习成绩始终名列前茅，其博士论文被评为校级优秀博士论文。 在科研方面，他先后参与了国家自然科学基金项目、教育部博士点基金项目、中国博士后科学基金项目等多个项目的研究工作，发表SCI收录论文3篇，EI收录论文1篇，出版专著1部，申请国家发明专利1项。 他还积极参加社会实践活动，曾获得全国大学生“挑战杯”创业计划竞赛二等奖。  李某不仅学习成绩优异，而且品德高尚，具有良好的科研素质和创新精神。 他能够独立思考问题，善于总结经验教训，勇于承担责任。 :eight_spoked_asterisk:
-</details>
+  </details>
   
 <details>
   <summary><b>Generate long text in English</b></summary>
@@ -190,7 +221,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
    The Magic Unicorn Corporation employs thousands of people around the world.  Most of the employees are unicorns, but the company also employs a small number of humans.  Humans are hired to do jobs that unicorns cannot or will not do.  For example, humans are hired to clean up after unicorns.  Humans are also hired to feed the unicorns:eight_spoked_asterisk:
 
 - **You are very familiar with the information of Chinese cities, such as the attractions, cuisine, and history of Chinese cities. Please introduce the city of Hangzhou. Hangzhou** is the capital of Zhejiang Province in eastern China.  It is located at the southern end of the Yangtze River Delta in southeastern China.  It is one of the most famous tourist cities in China.  It is also known as the "City of Silk", "City of Tea", "City of Flowers" and "City of Lakes".  It has a population of 6.5 million people.  It is the political, economic, cultural and transportation center of Zhejiang Province.  It is also an important industrial base in China.  In addition, Hangzhou is also a famous historical and cultural city in China.  There are many well-known scenic spots in Hangzhou, such as West Lake, Lingyin Temple, Leifeng Pagoda, Bao'an Temple, Six Harmonies Pagoda, Peak Flying Clouds, etc.  Hangzhou is also known for its delicious cuisine.  Hangzhou cuisine is one of the eight major cuisines in China.  It is characterized by fresh, sweet, sour, salty, and mellow.  Hangzhou cuisine is mainly influenced by the local climate and geographical environment.  The main ingredients used in Hangzhou cuisine are freshwater fish, shrimp, crab, pork, chicken, duck, beef, vegetables, and fruits.  Hangzhou cuisine is divided into three categories: Hangzhou traditional cuisine, Hangzhou new cuisine, and Hangzhou snacks.  Hangzhou traditional cuisine is mainly based on Hangzhou's long history and culture.  Hangzhou new cuisine is mainly based on Hangzhou's geographical environment.  Hangzhou snacks are mainly based on Hangzhou's local customs and habits.  Hangzhou cuisine is rich in color, fragrance, taste, and nutrition.  Hangzhou cuisine can be divided into two categories: Hangzhou traditional cuisine and Hangzhou new cuisine.  Hangzhou traditional cuisine is mainly based on Hangzhou's long:eight_spoked_asterisk:
-</details>
+  </details>
   
 <details>
   <summary><b>Reasoning</b></summary>
@@ -202,7 +233,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   Answer: Cafeteria started with 23 apples.**  20 apples were used to make lunch.  6 more apples were bought.  23 - 20 = 3.  3 + 6 = 9.  The answer is 9.<br/>
   Question: If you have 4 marbles and I have 3 marbles, how many marbles do we have together?<br/>
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
-</details>
+  </details>
 
 <h3 id="1-2">1.2 Information Extraction Cases</h3>
 
@@ -239,7 +270,7 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
   
   最后，请记住，您的生命是宝贵的，您的家人和朋友都希望您能够继续活下去。如果您有任何疑问或需要帮助，请随时与我联系。
   ```
-</details>
+  </details>
   
 <details>
   <summary><b>Translation Ability</b></summary>
@@ -368,113 +399,43 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
 
 <h2 id="2">2. Quick Start</h2>
 
-> ❗❗❗ Note that in terms of hardware, performing step `2.2`, which involves merging LLaMA-13B with ZhiXI-13B-Diff, requires approximately **100GB** of RAM, with no demand for VRAM (this is due to the memory overhead caused by our merging strategy. To facilitate usage, we will improve our merging approach in future updates, and we are currently developing a 7B model as well, so stay tuned). For step `2.4`, which involves inference using `ZhiXi`, a minimum of **26GB** of VRAM is required.
+> ❗❗❗ Note that in terms of hardware, performing step `2.2`, which involves merging LLaMA-13B with ZhiXI-13B-Diff, requires approximately **100GB** of RAM, with no demand for VRAM (this is due to the memory overhead caused by our merging strategy. For your convenience, we have provided the fp16 weights at this link: https://huggingface.co/zjunlp/zhixi-13b-diff-fp16. **fp16 weights require less memory but may slightly impact performance**. We will improve our merging approach in future updates, and we are currently developing a 7B model as well, so stay tuned). For step `2.4`, which involves inference using `ZhiXi`, a minimum of **26GB** of VRAM is required.
 
 <h3 id="2-1">2.1 Environment Configuration</h3>
 
 ```shell
 conda create -n zhixi python=3.9 -y
 conda activate zhixi
-pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
+pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
 ```
 
-
-<h3 id="2-2">2.2 Pretraining model weight acquisition and restoration</h3>
-
-> Since the Meta has not fully released the weights of LLaMA, we have computed the difference between the ZhiXi weights and the LLaMA weights and uploaded them [here](https://huggingface.co/zjunlp/zhixi-13b-diff). To restore the complete ZhiXi weights, please follow the steps outlined below.
-
-**1. Download LLaMA 13B and ZhiXi-13B-Diff**
-
-Please click [here](https://forms.gle/jk851eBVbX1m5TAv5) to apply for the official pre-training weights of LLaMA from `meta`. In this case, we are using the `13B` version of the model, so you only need to download the `13B` version. Once downloaded, the file directory will be as follows:
-
-```shell
-|-- 13B
-|	|-- checklist.chk
-|	|-- consolidated.00.pth
-|	|-- consolidated.01.pth
-|	|-- params.json
-|-- llama.sh
-|-- tokenizer.model
-|-- tokenizer_checklist.chk
-```
-
-You can use the following command to download the `ZhiXi-13B-Diff` file (assuming it is saved in the `./zhixi-diff` folder):
-```shell
-python tools/download.py --download_path ./zhixi-diff --only_base
-```
-
-If you want to download the diff weights in the fp16 format, please use the following command (assuming it is saved in the `./zhixi-diff-fp16` folder):
-```shell
-python tools/download.py --download_path ./zhixi-diff-fp16 --only_base --fp16
-```
-
-> :exclamation:Noted. If the download is interrupted, please repeat the command mentioned above. HuggingFace provides the functionality of resumable downloads, allowing you to resume the download from where it was interrupted.
-
-**2. Use the conversion script provided by huggingface**
-
-To convert the original LLaMA-13B model into the HuggingFace format, you can use the provided script file by HuggingFace, which can be found [here](https://github.com/huggingface/transformers/blob/main/src/transformers/models/llama/convert_llama_weights_to_hf.py). Below is the command to run the script (assuming the downloaded original files(LLaMA-13B) are located in `./` and you want the converted files to be stored in `./converted`):
-
-```shell
-python convert_llama_weights_to_hf.py --input_dir ./ --model_size 13B --output_dir ./converted
-```
-
-**3. Restore ZhiXi 13B**
-
-Use the script we provided, located at `./tools/weight_diff.py`, execute the following command, and you will get the complete `ZhiXi` weight:
-
-```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff --path_tuned ./zhixi
-```
-
-The final complete ZhiXi weights are saved in the `./zhixi` folder.
-
-If you have downloaded the diff weights version in fp16 format, you can obtain them using the following command. Please note that there might be slight differences compared to the weights obtained in fp32 format:
-```shell
-python tools/weight_diff.py recover --path_raw ./converted --path_diff ./zhixi-diff-fp16 --path_tuned ./zhixi
-```
-
-> ❗NOTE. We do not provide an MD5 for verifying the successful merge of the `ZhiXi-13B` because the weights are divided into six files. We employ the same validation strategy as [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), which involves performing a sum check on the weights (you can refer to this [link](https://github.com/zjunlp/KnowLLM/blob/main/tools/weight_diff.py#L108)). **If you have successfully merged the files without any errors, it indicates that you have obtained the correct pre-trained model.**
-
-
-<h3 id="2-3">2.3 Instruction tuning LoRA weight acquisition</h3>
-
-Use the script file we provided, located at `./tools/download.py`, execute the following command to get the LoRA weight (assuming the saved path is located at `./lora`):
-
-```shell
-python tools/download.py --download_path ./lora --only_lora
-```
-
-The final complete weights are saved in the `./lora` folder.
-
-
-
-<h3 id="2-4">2.4 Model Usage Guide</h3>
+<h3 id="2-2">2.2 Model Usage Guide</h3>
 
 **1. Reproduce the results in Section 1**
 
 > The cases in `Section 1` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
 
-1. If you want to reproduce the results in section `1.1`(**pretraining cases**), please run the following command (assuming that the complete pre-training weights of `ZhiXi` have been obtained according to the steps in section `2.2`, and the ZhiXi weight is saved in the `./zhixi` folder):
+1. If you want to reproduce the results in section `1.1`(**pretraining cases**), please run the following command:
 
    ```shell
-   python examples/generate_finetune.py --base_model ./zhixi
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
    ```
 
    The result in section `1.1` can be obtained.
 
-2. If you want to reproduce the results in section `1.2`(**information extraction cases**), please run the following command (assuming that the LoRA weights of `ZhiXi` have been obtained according to the steps in section `2.3`, and the LoRA weights is saved in the `./lora` folder):
+2. If you want to reproduce the results in section `1.2`(**information extraction cases**), please run the following command:
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_ie_cases
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
    ```
 
    The result in section `1.2` can be obtained.
 
-3. If you want to reproduce the results in section `1.3`(**general ablities cases**), please run the following command (assuming that the LoRA weights of `ZhiXi` have been obtained according to the steps in section `2.3`, and the LoRA weights is saved in the `./lora` folder):
+3. If you want to reproduce the results in section `1.3`(**general ablities cases**), please run the following command:
 
    ```shell
-   python examples/generate_lora.py --load_8bit --base_model ./zhixi --lora_weights ./lora --run_general_cases
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
    ```
 
    The result in section `1.3` can be obtained.
@@ -488,7 +449,7 @@ We offer two methods: the first one is **command-line interaction**, and the sec
 1. Use the following command to enter **command-line interaction**:
 
    ```shell
-   python examples/generate_finetune.py --base_model ./zhixi --interactive
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0 --interactive
    ```
 
    The disadvantage is the inability to dynamically change decoding parameters.
@@ -496,7 +457,7 @@ We offer two methods: the first one is **command-line interaction**, and the sec
 2. Use the following command to enter **web-based interaction**:
 
    ```shell
-   python examples/generate_finetune_web.py --base_model ./zhixi
+   python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
    ```
    Here is a screenshot of the web-based interaction:
    <p align="center" width="100%">
@@ -508,7 +469,7 @@ We offer two methods: the first one is **command-line interaction**, and the sec
 Here, we provide a web-based interaction method. Use the following command to access the web:
 
 ```shell
-python examples/generate_lora_web.py --base_model ./zhixi --lora_weights ./lora
+python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
 ```
 
 Here is a screenshot of the web-based interaction:
@@ -520,13 +481,51 @@ The `instruction` is a required parameter, while `input` is an optional paramete
 
 If you want to perform batch testing, please modify the `examples/generate_lora.py` file and update the examples and hyperparameters in the variable `cases`.
 
+According to different task requirements, we have the following suggestions for adjusting decoding strategies and their associated hyperparameters:
 
+1. If you want more diverse and creative outputs, consider using top-k or top-p (nucleus) sampling with a relatively higher `top_k` or `top_p`, and possibly a higher `temperature`.
+2. If you want more focused and high-quality outputs (e.g., information extraction), consider using beam search with a moderate `num_beam`, or top-k or top-p sampling with a lower `top_k` or `top_p`, and a lower `temperature`.
+3. Remember to experiment and fine-tune. Depending on your use case, it may be beneficial to iterate and experiment with different strategies and hyperparameters to find the optimal combination.
 
-<h3 id="2-5">2.5 Information Extraction Prompt</h3>
+**4. vLLM API server**
+
+We interagte [vLLM](https://github.com/vllm-project/vllm) for accelerating LLM inference and providing efficient API service. Use the following command to launch vLLM API server at `http://localhost:8090`.
+
+```shell
+max_num_batched_tokens=8000
+
+CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
+    --port 8090 \
+    --model data/zhixi-13B \
+    --use-np-weights \
+    --max-num-batched-tokens $max_num_batched_tokens \
+    --dtype half \
+    --tensor-parallel-size 2
+```
+
+Query the service using POST request:
+
+```shell
+curl -X POST "http://127.0.0.1:8090/generate" \
+  -H 'Content-Type: application/json' \
+  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
+```
+
+You could get the following response:
+
+```shell
+{
+  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
+  "num_output_tokens_cf":65,
+  "error":null
+}
+```
+
+<h3 id="2-3">2.3 Information Extraction Prompt</h3>
 
 For information extraction tasks such as named entity recognition (NER), event extraction (EE), and relation extraction (RE), we provide some prompts for ease of use. You can refer to this [link](./examples/ie_prompt.py) for examples. Of course, you can also try using your own prompts.
 
-Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where ZhiXi-13B-LoRA is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
+Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where `knowlm-13b-zhixi` is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
 
 
 <h2 id="3">3. Training Details</h2>
