@@ -401,6 +401,7 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
 <h2 id="2">2. Quick Start</h2>
 
 <h3 id="2-1">2.1 Environment Configuration</h3>
+
 *KnowLM* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
 #### 🔧Manual Environment Configuration
 ```shell
