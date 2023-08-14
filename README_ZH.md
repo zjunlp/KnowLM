@@ -524,6 +524,15 @@ curl -X POST "http://127.0.0.1:8090/generate" \
 
 这里也有一个简单的使用`knowlm-13b-zhixi`完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
 
+<h3 id="2-4">2.4 LlaMA.cpp量化</h3>
+
+如果没有充足的GPU计算资源，由于`KnowLM`的架构和`LlaMA`相同，因此可以使用[llama.cpp](https://github.com/ggerganov/llama.cpp)进行量化。在配置完环境后，您可以通过下面的命令下载我们的模型到指定的路径：
+
+```shell
+python tools/download.py --specify --download_path ./your/path --repo_name zjunlp/knowlm-13b-zhixi
+```
+
+然后将[此处](https://github.com/ggerganov/llama.cpp#prepare-data--run)的模型路径更换为下载的路径即可。在具体运行的时候，请修改[此脚本](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh)的模型路径即可。
 
 <h2 id="3">3. 训练细节</h2>
 
