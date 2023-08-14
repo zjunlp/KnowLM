@@ -401,14 +401,19 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
 <h2 id="2">2. Quick Start</h2>
 
 <h3 id="2-1">2.1 Environment Configuration</h3>
-
+*KnowLM* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
+#### 🔧Manual Environment Configuration
 ```shell
 conda create -n zhixi python=3.9 -y
 conda activate zhixi
 pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
 ```
-
+#### 🐳Building With Docker Images
+```shell
+docker pull zjunlp/knowlm:v.1
+docker run -it zjunlp/knowlm:v.1 /bin/bash
+```
 <h3 id="2-2">2.2 Model Usage Guide</h3>
 
 **1. Reproduce the results in Section 1**
