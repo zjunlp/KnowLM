@@ -1,5 +1,5 @@
-<p align="center">
 :speaking_head: \[ **中文** | [English](./README.md) \]
+<p align="center">
     <br>
     <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM.png?raw=true" width="400" height="120"/>
     <br>
