@@ -67,13 +67,13 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 
 ## Contents
 
-- [Cases](#1)
-  - [Pretraining Cases](#1-1)
-  - [Information Extraction Cases](#1-2)
-  - [General Ability Cases](#1-3)
-- [Quick Start](#2)
-  - [Environment Configuration](#2-1)
-  - [Model Usage Guide](#2-2)
+- [Quick Start](#1)
+  - [Environment Configuration](#1-1)
+  - [Model Usage Guide](#1-2)
+- [Cases](#2)
+  - [Pretraining Cases](#2-1)
+  - [Information Extraction Cases](#2-2)
+  - [General Ability Cases](#2-3)
 - [Training Details](#3)
   - [Pertraining data and Pretraining scripts](#3-1)
   - [Instruction data and Instruction-tuning scripts](#3-3)
@@ -83,12 +83,147 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 - [Acknowledgments/Contributors/Citations](#7)
 
 
+<h2 id="1">1. Quick Start</h2>
 
-<h2 id="1">1. Cases</h2>
+<h3 id="1-1">1.1 Environment Configuration</h3>
 
-<h3 id="1-1">1.1 Pretraining Cases</h3>
+*KnowLM* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
+#### 🔧Manual Environment Configuration
+```shell
+conda create -n zhixi python=3.9 -y
+conda activate zhixi
+pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
+pip install -r requirements.txt
+```
+#### 🐳Building With Docker Images
+```shell
+docker pull zjunlp/knowlm:v.1
+docker run -it zjunlp/knowlm:v.1 /bin/bash
+```
+<h3 id="1-2">1.2 Model Usage Guide</h3>
 
-Our pre-trained model has demonstrated certain abilities in instruction following, coding, reasoning, as well as some translation capabilities, without any fine-tuning using instructions. Additionally, it has acquired new knowledge. Below are some of our sample cases. If you wish to reproduce our examples and view detailed decoding configuration, please first [set up the environment](#2-1), then follow the steps outlined [here](#2-2).
+**1. Reproduce the results in Section 2**
+
+> The cases in `Section 2` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
+
+1. If you want to reproduce the results in section `2.1`(**pretraining cases**), please run the following command:
+
+   ```shell
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
+   ```
+
+   The result in section `2.1` can be obtained.
+
+2. If you want to reproduce the results in section `2.2`(**information extraction cases**), please run the following command:
+
+   ```shell
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
+   ```
+
+   The result in section `2.2` can be obtained.
+
+3. If you want to reproduce the results in section `2.3`(**general ablities cases**), please run the following command:
+
+   ```shell
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
+   ```
+
+   The result in section `1.3` can be obtained.
+
+
+
+**2. Usage of Pretraining Model**
+
+We offer two methods: the first one is **command-line interaction**, and the second one is **web-based interaction**, which provides greater flexibility.
+
+1. Use the following command to enter **command-line interaction**:
+
+   ```shell
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0 --interactive
+   ```
+
+   The disadvantage is the inability to dynamically change decoding parameters.
+
+2. Use the following command to enter **web-based interaction**:
+
+   ```shell
+   python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
+   ```
+   Here is a screenshot of the web-based interaction:
+   <p align="center" width="100%">
+   <a href="" target="_blank"><img src="./assets/finetune_web.jpg" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
+   </p>
+
+**3. Usage of Instruction tuning Model**
+
+Here, we provide a web-based interaction method. Use the following command to access the web:
+
+```shell
+python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
+```
+
+Here is a screenshot of the web-based interaction:
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/lora_web.png" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
+</p>
+
+The `instruction` is a required parameter, while `input` is an optional parameter. For general tasks (such as the examples provided in section `1.3`), you can directly enter the input in the `instruction` field. For information extraction tasks (as shown in the example in section `1.2`), please enter the instruction in the `instruction` field and the sentence to be extracted in the `input` field. We provide an information extraction prompt in section `2.5`. 
+
+If you want to perform batch testing, please modify the `examples/generate_lora.py` file and update the examples and hyperparameters in the variable `cases`.
+
+According to different task requirements, we have the following suggestions for adjusting decoding strategies and their associated hyperparameters:
+
+1. If you want more diverse and creative outputs, consider using top-k or top-p (nucleus) sampling with a relatively higher `top_k` or `top_p`, and possibly a higher `temperature`.
+2. If you want more focused and high-quality outputs (e.g., information extraction), consider using beam search with a moderate `num_beam`, or top-k or top-p sampling with a lower `top_k` or `top_p`, and a lower `temperature`.
+3. Remember to experiment and fine-tune. Depending on your use case, it may be beneficial to iterate and experiment with different strategies and hyperparameters to find the optimal combination.
+
+**4. vLLM API server**
+
+We interagte [vLLM](https://github.com/vllm-project/vllm) for accelerating LLM inference and providing efficient API service. Use the following command to launch vLLM API server at `http://localhost:8090`.
+
+```shell
+max_num_batched_tokens=8000
+
+CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
+    --port 8090 \
+    --model data/zhixi-13B \
+    --use-np-weights \
+    --max-num-batched-tokens $max_num_batched_tokens \
+    --dtype half \
+    --tensor-parallel-size 2
+```
+
+Query the service using POST request:
+
+```shell
+curl -X POST "http://127.0.0.1:8090/generate" \
+  -H 'Content-Type: application/json' \
+  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
+```
+
+You could get the following response:
+
+```shell
+{
+  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
+  "num_output_tokens_cf":65,
+  "error":null
+}
+```
+
+<h3 id="1-3">1.3 Information Extraction Prompt</h3>
+
+For information extraction tasks such as named entity recognition (NER), event extraction (EE), and relation extraction (RE), we provide some prompts for ease of use. You can refer to this [link](./examples/ie_prompt.py) for examples. Of course, you can also try using your own prompts.
+
+Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where `knowlm-13b-zhixi` is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
+
+
+
+<h2 id="2">2. Cases</h2>
+
+<h3 id="2-1">2.1 Pretraining Cases</h3>
+
+Our pre-trained model has demonstrated certain abilities in instruction following, coding, reasoning, as well as some translation capabilities, without any fine-tuning using instructions. Additionally, it has acquired new knowledge. Below are some of our sample cases. If you wish to reproduce our examples and view detailed decoding configuration, please first [set up the environment](#1-1), then follow the steps outlined [here](#1-2).
 
 > In the follwing cases, text in **bold** represents the prompt, while non-bold text represents the model's output.
 >
@@ -233,7 +368,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
   </details>
 
-<h3 id="1-2">1.2 Information Extraction Cases</h3>
+<h3 id="2-2">2.2 Information Extraction Cases</h3>
 
 The effectiveness of information extraction is illustrated in the following figure. We tested different instructions for different tasks as well as the same instructions for the same task, and achieved good results for all of them.
 
@@ -248,7 +383,7 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
 </p>
 
 
-<h3 id="1-3">1.3 General Ablities Cases</h3>
+<h3 id="2-3">2.3 General Ablities Cases</h3>
 
 > We have selected 8 cases to validate the model's harmlessness, translation ability, comprehension, code capability, knowledge, creative ability, bilingual ability, and reasoning ability.
 
@@ -394,140 +529,6 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
   ```
 </details>
 
-
-<h2 id="2">2. Quick Start</h2>
-
-<h3 id="2-1">2.1 Environment Configuration</h3>
-
-*KnowLM* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
-#### 🔧Manual Environment Configuration
-```shell
-conda create -n zhixi python=3.9 -y
-conda activate zhixi
-pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
-pip install -r requirements.txt
-```
-#### 🐳Building With Docker Images
-```shell
-docker pull zjunlp/knowlm:v.1
-docker run -it zjunlp/knowlm:v.1 /bin/bash
-```
-<h3 id="2-2">2.2 Model Usage Guide</h3>
-
-**1. Reproduce the results in Section 1**
-
-> The cases in `Section 1` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
-
-1. If you want to reproduce the results in section `1.1`(**pretraining cases**), please run the following command:
-
-   ```shell
-   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
-   ```
-
-   The result in section `1.1` can be obtained.
-
-2. If you want to reproduce the results in section `1.2`(**information extraction cases**), please run the following command:
-
-   ```shell
-   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
-   ```
-
-   The result in section `1.2` can be obtained.
-
-3. If you want to reproduce the results in section `1.3`(**general ablities cases**), please run the following command:
-
-   ```shell
-   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
-   ```
-
-   The result in section `1.3` can be obtained.
-
-
-
-**2. Usage of Pretraining Model**
-
-We offer two methods: the first one is **command-line interaction**, and the second one is **web-based interaction**, which provides greater flexibility.
-
-1. Use the following command to enter **command-line interaction**:
-
-   ```shell
-   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0 --interactive
-   ```
-
-   The disadvantage is the inability to dynamically change decoding parameters.
-
-2. Use the following command to enter **web-based interaction**:
-
-   ```shell
-   python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
-   ```
-   Here is a screenshot of the web-based interaction:
-   <p align="center" width="100%">
-   <a href="" target="_blank"><img src="./assets/finetune_web.jpg" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
-   </p>
-
-**3. Usage of Instruction tuning Model**
-
-Here, we provide a web-based interaction method. Use the following command to access the web:
-
-```shell
-python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
-```
-
-Here is a screenshot of the web-based interaction:
-<p align="center" width="100%">
-<a href="" target="_blank"><img src="./assets/lora_web.png" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
-</p>
-
-The `instruction` is a required parameter, while `input` is an optional parameter. For general tasks (such as the examples provided in section `1.3`), you can directly enter the input in the `instruction` field. For information extraction tasks (as shown in the example in section `1.2`), please enter the instruction in the `instruction` field and the sentence to be extracted in the `input` field. We provide an information extraction prompt in section `2.5`. 
-
-If you want to perform batch testing, please modify the `examples/generate_lora.py` file and update the examples and hyperparameters in the variable `cases`.
-
-According to different task requirements, we have the following suggestions for adjusting decoding strategies and their associated hyperparameters:
-
-1. If you want more diverse and creative outputs, consider using top-k or top-p (nucleus) sampling with a relatively higher `top_k` or `top_p`, and possibly a higher `temperature`.
-2. If you want more focused and high-quality outputs (e.g., information extraction), consider using beam search with a moderate `num_beam`, or top-k or top-p sampling with a lower `top_k` or `top_p`, and a lower `temperature`.
-3. Remember to experiment and fine-tune. Depending on your use case, it may be beneficial to iterate and experiment with different strategies and hyperparameters to find the optimal combination.
-
-**4. vLLM API server**
-
-We interagte [vLLM](https://github.com/vllm-project/vllm) for accelerating LLM inference and providing efficient API service. Use the following command to launch vLLM API server at `http://localhost:8090`.
-
-```shell
-max_num_batched_tokens=8000
-
-CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
-    --port 8090 \
-    --model data/zhixi-13B \
-    --use-np-weights \
-    --max-num-batched-tokens $max_num_batched_tokens \
-    --dtype half \
-    --tensor-parallel-size 2
-```
-
-Query the service using POST request:
-
-```shell
-curl -X POST "http://127.0.0.1:8090/generate" \
-  -H 'Content-Type: application/json' \
-  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
-```
-
-You could get the following response:
-
-```shell
-{
-  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
-  "num_output_tokens_cf":65,
-  "error":null
-}
-```
-
-<h3 id="2-3">2.3 Information Extraction Prompt</h3>
-
-For information extraction tasks such as named entity recognition (NER), event extraction (EE), and relation extraction (RE), we provide some prompts for ease of use. You can refer to this [link](./examples/ie_prompt.py) for examples. Of course, you can also try using your own prompts.
-
-Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where `knowlm-13b-zhixi` is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
 
 
 <h2 id="3">3. Training Details</h2>
