@@ -27,7 +27,7 @@ The project's `initial phase` introduced a knowledge extraction LLM based on LLa
 - The **full-scale pre-training code** (providing conversion, construction, and loading of large corpora) and **LoRA instruction fine-tuning code** are open-sourced (support multi-machine multi-GPU).
 
 
-All weights have been uploaded to HuggingFace🤗. 
+All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-1) to get started right away!
 | Category | Base   | Name                     | Version | Download Link                                                     | Note     |
 | -------- | ------ | ------------------------- | ---- | ------------------------------------------------------------ | -------- |
 | Base Model | LlaMA1 | KnowLM-13B-Base           | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-base-v1.0) | Base Model |
