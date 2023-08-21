@@ -67,13 +67,13 @@
 
 ## 目录
 
-- [模型效果](#1)
-  - [预训练模型效果](#1-1)
-  - [信息抽取效果](#1-2)
-  - [通用能力效果](#1-3)
-- [快速开始](#2)
-  - [环境配置](#2-1)
-  - [模型使用](#2-2)
+- [快速开始](#1)
+  - [环境配置](#1-1)
+  - [模型使用](#1-2)
+- [模型效果](#2)
+  - [预训练模型效果](#2-1)
+  - [信息抽取效果](#2-2)
+  - [通用能力效果](#2-3)
 - [训练细节](#3)
   - [预训练数据与训练脚本](#3-1)
   - [指令微调数据与训练脚本](#3-3)
@@ -84,11 +84,149 @@
 
 
 
-<h2 id="1">1. 模型效果</h2>
+<h2 id="1">1. 快速开始</h2>
 
-<h3 id="1-1">1.1 预训练效果</h3>
+<h3 id="1-1">1.1 环境配置</h3>
 
-我们的预训练模型在未经任何指令微调的情况下获得了一定的指令跟随能力、代码能力、推理能力，以及一些翻译能力，此外获得了一些新的知识。下面是我们的部分case，若希望复现我们的例子、查看详细的解码参数，请先[配置环境](#2-1)，然后按照[此处](#2-2)的步骤进行即可。
+```shell
+conda create -n knowlm python=3.9 -y
+conda activate knowlm
+pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
+pip install -r requirements.txt
+```
+
+<h3 id="1-2">1.2 模型使用</h3>
+
+**1. 复现效果图中的结果**
+
+> [第2节](#2)中的例子均在V100上进行推理，如若在其他设备上进行推理，结果可能有出入，请多次运行或修改解码参数。
+
+1. 若希望**[复现预训练](#2-1)**的结果，请运行如下命令：
+
+   ```shell
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
+   ```
+
+   即可得到[2.1](#2-1)中的结果。
+
+2. 若希望**[复现信息抽取](#2-2)**的结果，请运行如下命令：
+
+   ```shell
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
+   ```
+
+   即可得到[2.2](#2-2)中的结果。
+
+3. 若希望**[复现通用能力](#2-3)**的结果，请运行如下命令：
+
+   ```shell
+   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
+   ```
+
+   即可得到[2.3](#2-3)中的结果。
+
+
+
+**2. 预训练模型使用**
+
+我们提供了**命令行方法**和**网页版**方法，后者的自由度更高。
+
+1. 命令行方法，使用下面的命令进入命令行交互：
+
+   ```shell
+   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0 --interactive
+   ```
+
+   缺点是无法动态的更改解码参数。
+
+2. 网页版方法，使用下面的命令进入网页版：
+
+   ```shell
+   python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
+   ```
+   下面是网页版的demo图：
+   <p align="center" width="100%">
+   <a href="" target="_blank"><img src="./assets/finetune_web.jpg" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
+   </p>
+
+**3. LoRA模型使用**
+
+此处我们提供了网页版的方法，使用下面的命令进入网页版：
+
+```shell
+python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
+```
+
+下面是网页版的demo图：
+<p align="center" width="100%">
+<a href="" target="_blank"><img src="./assets/lora_web.png" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
+</p>
+
+其中`instruction`是必填参数，`input`是可选参数。对于一般任务而言（如[2.3](#2-3)中提供的例子），可以直接将输入填写到`instruction`；对于信息抽取任务而言（如[2.2](#2-2)提供的例子），请将指令填写到`instruction`，将待抽取的句子填写到`input`。我们在[1.3](#1-3)小节中提供了信息抽取的`prompt`。
+
+如果您想批量测试，请修改`examples/generate_lora.py`文件，更改`case`中的例子和超参数即可。
+
+根据不同的任务需求，我们对解码策略及其相关超参数的调整建议如下:
+
+1. 如果您想要更多样化和创造性的输出，请考虑使用 `top_k` 或 `top_p` 相对较高的top-k或top-p 采样策略，并可以使用更高的 `temperature`；
+2. 如果您想要更高质量的输出(例如，信息抽取)，请考虑使用beam search解码策略（适当调整 `num_beam` 参数），或者使用较低 `top_k` 或 `top_p` 的top-k或top-p采样策略，并结合较低的 `temperature` 参数；
+3. 根据您的需要，可以迭代和试验不同的解码策略和超参数以找到最佳组合。
+
+**4. vLLM API服务**
+
+为了加速LLM推理和提供高效的API服务，我们集成了[vLLM](https://github.com/vllm-project/vllm)。请使用以下命令在 `http://localhost:8090` 上启动vLLM的API服务。
+
+```shell
+max_num_batched_tokens=8000
+
+CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
+    --port 8090 \
+    --model data/zhixi-13B \
+    --use-np-weights \
+    --max-num-batched-tokens $max_num_batched_tokens \
+    --dtype half \
+    --tensor-parallel-size 2
+```
+
+通过POST请求发起服务请求：
+
+```shell
+curl -X POST "http://127.0.0.1:8090/generate" \
+  -H 'Content-Type: application/json' \
+  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
+```
+
+你将得到以下结果：
+
+```shell
+{
+  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
+  "num_output_tokens_cf":65,
+  "error":null
+}
+```
+
+<h3 id="1-3">1.3 信息抽取Prompt</h3>
+
+对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，可以参考[此处](./examples/ie_prompt.py)。当然你也可以尝试使用自己的Prompt。
+
+这里也有一个简单的使用`knowlm-13b-zhixi`完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
+
+<h3 id="1-4">1.4 LlaMA.cpp量化</h3>
+
+如果没有充足的GPU计算资源，由于`KnowLM`的架构和`LlaMA`相同，因此可以使用[llama.cpp](https://github.com/ggerganov/llama.cpp)进行量化。在配置完环境后，您可以通过下面的命令下载我们的模型到指定的路径：
+
+```shell
+python tools/download.py --specify --download_path ./your/path --repo_name zjunlp/knowlm-13b-zhixi
+```
+
+然后将[此处](https://github.com/ggerganov/llama.cpp#prepare-data--run)的模型路径更换为下载的路径即可。在具体运行的时候，请修改[此脚本](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh)的模型路径即可。
+
+<h2 id="2">2. 模型效果</h2>
+
+<h3 id="2-1">2.1 预训练效果</h3>
+
+我们的预训练模型在未经任何指令微调的情况下获得了一定的指令跟随能力、代码能力、推理能力，以及一些翻译能力，此外获得了一些新的知识。下面是我们的部分case，若希望复现我们的例子、查看详细的解码参数，请先[配置环境](#1-1)，然后按照[此处](#1-2)的步骤进行即可。
 
 > 下面的例子中**粗体**为Prompt，常规字体为模型输出。
 >
@@ -233,7 +371,7 @@
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
   </details>
 
-<h3 id="1-2">1.2 信息抽取效果</h3>
+<h3 id="2-2">2.2 信息抽取效果</h3>
 
 信息抽取的效果如下图所示。对于同样一个文本，我们测试了不同任务的指令、相同任务的指令，都取得了不错的效果。
 
@@ -250,7 +388,7 @@
 
 
 
-<h3 id="1-3">1.3 通用能力效果</h3>
+<h3 id="2-3">2.3 通用能力效果</h3>
 
 > 下面选取了8个例子，分别验证了模型的无害性、翻译能力、理解能力、代码能力、知识储备、创作能力、双语能力、推理能力。
 
@@ -396,143 +534,6 @@
 </details>
 
 
-<h2 id="2">2. 快速开始</h2>
-
-<h3 id="2-1">2.1 环境配置</h3>
-
-```shell
-conda create -n zhixi python=3.9 -y
-conda activate zhixi
-pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
-pip install -r requirements.txt
-```
-
-<h3 id="2-2">2.2 模型使用</h3>
-
-**1. 复现效果图中的结果**
-
-> 第1节中的例子均在V100上进行推理，如若在其他设备上进行推理，结果可能有出入，请多次运行或修改解码参数。
-
-1. 若希望**复现预训练**的结果，请运行如下命令：
-
-   ```shell
-   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
-   ```
-
-   即可得到1.1中的结果。
-
-2. 若希望**复现信息抽取**的结果，请运行如下命令：
-
-   ```shell
-   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
-   ```
-
-   即可得到1.2中的结果。
-
-3. 若希望**复现通用能力**的结果，请运行如下命令：
-
-   ```shell
-   python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
-   ```
-
-   即可得到1.3中的结果。
-
-
-
-**2. 预训练模型使用**
-
-我们提供了**命令行方法**和**网页版**方法，后者的自由度更高。
-
-1. 命令行方法，使用下面的命令进入命令行交互：
-
-   ```shell
-   python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0 --interactive
-   ```
-
-   缺点是无法动态的更改解码参数。
-
-2. 网页版方法，使用下面的命令进入网页版：
-
-   ```shell
-   python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
-   ```
-   下面是网页版的demo图：
-   <p align="center" width="100%">
-   <a href="" target="_blank"><img src="./assets/finetune_web.jpg" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
-   </p>
-
-**3. LoRA模型使用**
-
-此处我们提供了网页版的方法，使用下面的命令进入网页版：
-
-```shell
-python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
-```
-
-下面是网页版的demo图：
-<p align="center" width="100%">
-<a href="" target="_blank"><img src="./assets/lora_web.png" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
-</p>
-
-其中`instruction`是必填参数，`input`是可选参数。对于一般任务而言（如1.3中提供的例子），可以直接将输入填写到`instruction`；对于信息抽取任务而言（如1.2提供的例子），请将指令填写到`instruction`，将待抽取的句子填写到`input`。我们在`2.5`小节中提供了信息抽取的`prompt`。
-
-如果您想批量测试，请修改`examples/generate_lora.py`文件，更改`case`中的例子和超参数即可。
-
-根据不同的任务需求，我们对解码策略及其相关超参数的调整建议如下:
-
-1. 如果您想要更多样化和创造性的输出，请考虑使用 `top_k` 或 `top_p` 相对较高的top-k或top-p 采样策略，并可以使用更高的 `temperature`；
-2. 如果您想要更高质量的输出(例如，信息抽取)，请考虑使用beam search解码策略（适当调整 `num_beam` 参数），或者使用较低 `top_k` 或 `top_p` 的top-k或top-p采样策略，并结合较低的 `temperature` 参数；
-3. 根据您的需要，可以迭代和试验不同的解码策略和超参数以找到最佳组合。
-
-**4. vLLM API服务**
-
-为了加速LLM推理和提供高效的API服务，我们集成了[vLLM](https://github.com/vllm-project/vllm)。请使用以下命令在 `http://localhost:8090` 上启动vLLM的API服务。
-
-```shell
-max_num_batched_tokens=8000
-
-CUDA_VISIBLE_DEVICES=1,2 python inference/launch_vllm.py \
-    --port 8090 \
-    --model data/zhixi-13B \
-    --use-np-weights \
-    --max-num-batched-tokens $max_num_batched_tokens \
-    --dtype half \
-    --tensor-parallel-size 2
-```
-
-通过POST请求发起服务请求：
-
-```shell
-curl -X POST "http://127.0.0.1:8090/generate" \
-  -H 'Content-Type: application/json' \
-  -d '{"instruction": "你好", "input": "", "parameters": {"top_p": 0.7, "max_tokens": 256}}'
-```
-
-你将得到以下结果：
-
-```shell
-{
-  "generated_text":"你好，很高兴见到你。我是一个人工智能助手，可以帮助你解决问题和提供信息。有什么我可以帮助你的吗？</s>",
-  "num_output_tokens_cf":65,
-  "error":null
-}
-```
-
-<h3 id="2-3">2.3 信息抽取Prompt</h3>
-
-对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，可以参考[此处](./examples/ie_prompt.py)。当然你也可以尝试使用自己的Prompt。
-
-这里也有一个简单的使用`knowlm-13b-zhixi`完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
-
-<h3 id="2-4">2.4 LlaMA.cpp量化</h3>
-
-如果没有充足的GPU计算资源，由于`KnowLM`的架构和`LlaMA`相同，因此可以使用[llama.cpp](https://github.com/ggerganov/llama.cpp)进行量化。在配置完环境后，您可以通过下面的命令下载我们的模型到指定的路径：
-
-```shell
-python tools/download.py --specify --download_path ./your/path --repo_name zjunlp/knowlm-13b-zhixi
-```
-
-然后将[此处](https://github.com/ggerganov/llama.cpp#prepare-data--run)的模型路径更换为下载的路径即可。在具体运行的时候，请修改[此脚本](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh)的模型路径即可。
 
 <h2 id="3">3. 训练细节</h2>
 
@@ -616,7 +617,7 @@ python tools/download.py --specify --download_path ./your/path --repo_name zjunl
 - 更新LoRA指令微调
 - 集成更多大模型 (如Llama-7b, Falcon-7b)，因GPU资源有限，模型仍在缓慢训练和优化中
 - 基于更多数据集如 [Mol-Instructions](https://github.com/zjunlp/Mol-Instructions)使模型具备一些新能力
-- llama.cpp支持
+- ~~llama.cpp支持~~
 - ......
 
 
