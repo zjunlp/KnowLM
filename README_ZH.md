@@ -101,7 +101,7 @@ pip install -r requirements.txt
 
 > [第2节](#2)中的例子均在V100上进行推理，如若在其他设备上进行推理，结果可能有出入，请多次运行或修改解码参数。
 
-1. 若希望**[复现预训练](#2-1)**的结果，请运行如下命令：
+1. 若希望[**复现预训练**](#2-1)的结果，请运行如下命令：
 
    ```shell
    python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
@@ -109,7 +109,7 @@ pip install -r requirements.txt
 
    即可得到[2.1](#2-1)中的结果。
 
-2. 若希望**[复现信息抽取](#2-2)**的结果，请运行如下命令：
+2. 若希望[**复现信息抽取**](#2-2)的结果，请运行如下命令：
 
    ```shell
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
@@ -117,7 +117,7 @@ pip install -r requirements.txt
 
    即可得到[2.2](#2-2)中的结果。
 
-3. 若希望**[复现通用能力](#2-3)**的结果，请运行如下命令：
+3. 若希望[**复现通用能力**](#2-3)的结果，请运行如下命令：
 
    ```shell
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
