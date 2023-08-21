@@ -90,8 +90,8 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 *KnowLM* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
 #### 🔧Manual Environment Configuration
 ```shell
-conda create -n zhixi python=3.9 -y
-conda activate zhixi
+conda create -n knowlm python=3.9 -y
+conda activate knowlm
 pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
 ```
@@ -104,9 +104,9 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
 **1. Reproduce the results in Section 2**
 
-> The cases in `Section 2` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
+> The cases in `[Section 2](#2)` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
 
-1. If you want to reproduce the results in section `2.1`(**pretraining cases**), please run the following command:
+1. If you want to reproduce the results in section `[2.1]`(**[pretraining cases](#2-1)**), please run the following command:
 
    ```shell
    python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
@@ -114,7 +114,7 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
    The result in section `2.1` can be obtained.
 
-2. If you want to reproduce the results in section `2.2`(**information extraction cases**), please run the following command:
+2. If you want to reproduce the results in section `[2.2]`(**[information extraction cases](#2-2)**), please run the following command:
 
    ```shell
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
@@ -122,14 +122,13 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
    The result in section `2.2` can be obtained.
 
-3. If you want to reproduce the results in section `2.3`(**general ablities cases**), please run the following command:
+3. If you want to reproduce the results in section `2.3`(**[general ablities cases](#2-3)**), please run the following command:
 
    ```shell
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
    ```
 
-   The result in section `1.3` can be obtained.
-
+   The result in section `2.3` can be obtained.
 
 
 **2. Usage of Pretraining Model**
@@ -592,7 +591,6 @@ In addition, we manually constructed a general Chinese dataset and translated it
 Currently, most instruction tuning scripts using LoRA are based on [alpaca-lora](https://github.com/tloen/alpaca-lora/), so we will not go into detail here. Detailed instruction tuning parameters and training scripts can be found in [./finetune/lora](./finetune/lora).
 
  
-
 <h2 id="4">4. Limitations</h2>
 
 Due to time constraints, hardware limitations, and technical reasons, our model has limitations, including but not limited to:
