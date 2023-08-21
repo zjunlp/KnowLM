@@ -48,9 +48,6 @@ All weights have been uploaded to HuggingFace🤗.
 - \[**June 2023**\] The project name has been changed from `CaMA` to `KnowLM`.
 - \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
 
-## Why it's called ZhiXi (智析)?
-In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced language understanding capabilities. "Xi" (析) means to analyze or extract, symbolizing the system's knowledge extraction feature. Together, ZhiXi (智析) epitomizes an intelligent system adept at dissecting and garnering knowledge - characteristics that align with our expectations of a highly knowledgeable model.
-
 ## What's the KnowLM?
 <p align="center">
     <br>
@@ -615,7 +612,6 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
 - New instruction tuning weights using LoRA will be updated shortly.
 - New models (Llama-7b, Falcon-7b) are being trained (We have limited GPUs!).
 - New abilities such as molecule and protein generation with [Mol-Instructions](https://github.com/zjunlp/Mol-Instructions), a large-scale biomolecules instruction dataset for large language models.
-- supporting llama.cpp
 - ......
 
 
@@ -667,7 +663,6 @@ If you use our repository, please cite the following related papers:
 ```
 
 
-
 <h3 id="7-3">7.3 Acknowledgment</h3>
 
 We are very grateful to the following open source projects for their help:
@@ -687,3 +682,9 @@ We are very grateful to the following open source projects for their help:
     <img src="./assets/知析 (8).png" width="300"/>
     <br>
 </p>-->
+
+
+
+## Why it's called ZhiXi (智析)?
+In Chinese, "Zhi" (智) signifies intelligence, referencing the AI's advanced language understanding capabilities. "Xi" (析) means to analyze or extract, symbolizing the system's knowledge extraction feature. Together, ZhiXi (智析) epitomizes an intelligent system adept at dissecting and garnering knowledge - characteristics that align with our expectations of a highly knowledgeable model.
+
