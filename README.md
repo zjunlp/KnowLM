@@ -109,7 +109,7 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
 **1. Reproduce the results in Section 2**
 
-> The cases in `[Section 2](#2)` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters.
+> The cases in `[Section 2](#2)` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters. **We derived `knowlm-13b-zhixi` and `knowlm-13b-ie` through training using LoRA, building upon the foundation of `knowlm-13b-base`. These models, `knowlm-13b-zhixi` and `knowlm-13b-ie`, are the result of merging the trained LoRA weights with the existing `knowlm-13b-base` model parameters.**
 
 1. If you want to reproduce the results in section `[2.1]`(**[pretraining cases](#2-1)**), please run the following command:
 
