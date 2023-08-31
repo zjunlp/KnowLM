@@ -6,7 +6,7 @@
     <br>
 </p>
 
-# Knowledgable Large Language Model Framework
+# Knowledgeable Large Language Model Framework
 
 <details>
   <summary><b>Project Background</b></summary>
