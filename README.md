@@ -656,7 +656,7 @@ Model Testing and Deployment：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinr
 If you use our repository, please cite the following related papers:
 
 ```bibtex
-@article{knowlm,
+@misc{knowlm,
   author = {Ningyu Zhang, Jintian Zhang, Xiaohan Wang, Honghao Gui, Kangwei Liu, Yinuo Jiang, Xiang Chen, Shengyu Mao, Shuofei Qiao, Yuqi Zhu, Zhen Bi, Jing Chen, Xiaozhuan Liang, Yixin Ou, Ruinan Fang, Zekun Xi, Xin Xu, Lei Li, Peng Wang, Guozhou Zheng, Huajun Chen},
   title = {KnowLM: An Open-sourced Knowledgeable Large Langugae Model Framework},
   year = {2023},
