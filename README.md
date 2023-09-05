@@ -75,10 +75,15 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 - [Quick Start](#1)
   - [Environment Configuration](#1-1)
   - [Model Usage Guide](#1-2)
+  - [Information Extraction prompt](#1-3)
+  - [Llama.cpp](#1-4)
+  - [Model Editing](#1-5)
+
 - [Cases](#2)
   - [Pretraining Cases](#2-1)
   - [Information Extraction Cases](#2-2)
   - [General Ability Cases](#2-3)
+  - [Model Editing case](#2-4)
 - [Training Details](#3)
   - [Pertraining data and Pretraining scripts](#3-1)
   - [Instruction data and Instruction-tuning scripts](#3-3)
@@ -221,7 +226,27 @@ For information extraction tasks such as named entity recognition (NER), event e
 
 Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where `knowlm-13b-zhixi` is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
 
+<h3 id="1-5">1.5 Model Editing</h3>
+Although large language models perform exceptionally well in many tasks, they can still provide incorrect answers. Moreover, as time passes, knowledge that was once accurate may become outdated. This necessitates that we adjust the model's responses to meet our expectations through model editing.
 
+In model editing, we utilized EasyEdit as our editing tool (details can be found at https://github.com/zjunlp/EasyEdit). EasyEdit is a highly integrated model editing tool. All you need to do is define your editor in just three lines of code, similar to how you would in hugging face.
+```shell
+from easyeditor import MENDHyperParams
+hparams = MENDHyperParams.from_hparams('./hparams/MEND/gpt2-xl')
+editor = BaseEditor.from_hparams(hparams)
+```
+The code above demonstrates the editor definition for editing the gpt2-xl model using the MEND method. The next step is to prepare the editing data and the test data.
+
+```shell
+metrics, edited_model, _ = editor.edit(
+    prompts=prompts,
+    ground_truth=ground_truth,
+    target_new=target_new,
+    locality_inputs=locality_inputs,
+    keep_original_weight=True
+)
+```
+With the provided code, you can complete the editing of the model. The edited model is stored in "edit_model," and the corresponding evaluation metrics are saved in "metrics."
 
 <h2 id="2">2. Cases</h2>
 
@@ -533,8 +558,30 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
   ```
 </details>
 
+<h3 id="2-4">2.4 Model Editing Cases</h3>
 
+EasyEdit supports a variety of methods including, but not limited to, KN, IKE, MEND, SERAC, ROME, etc. Due to space constraints, we only showcase the effects of the KN and IKE methods:
 
+<details>
+  <summary><b>KN method case</b></summary>
+
+Michael Jordan is born from
+>Answer before editing:
+>Michael Jordan is born from the USA
+
+>Answer after editing:
+>Michael Jordan is born from China
+</details>
+<details>
+  <summary><b>IKE method case</b></summary>
+
+Michael Jordan is born from
+>Answer before editing:
+>Michael Jordan is born from the USA
+
+>Answer after editing:
+>Michael Jordan is born from China
+</details> 
 <h2 id="3">3. Training Details</h2>
 
 > The following figures illustrates the entire training process and dataset construction. The training process is divided into two stages:
