@@ -75,10 +75,14 @@
 - [快速开始](#1)
   - [环境配置](#1-1)
   - [模型使用](#1-2)
+  - [信息抽取Prompt](#1-3)
+  - [Llama.cpp量化](#1-4)
+  - [模型编辑](#1-5)
 - [模型效果](#2)
   - [预训练模型效果](#2-1)
   - [信息抽取效果](#2-2)
   - [通用能力效果](#2-3)
+  - [模型编辑效果](#2-4)
 - [训练细节](#3)
   - [预训练数据与训练脚本](#3-1)
   - [指令微调数据与训练脚本](#3-3)
@@ -226,6 +230,30 @@ python tools/download.py --specify --download_path ./your/path --repo_name zjunl
 ```
 
 然后将[此处](https://github.com/ggerganov/llama.cpp#prepare-data--run)的模型路径更换为下载的路径即可。在具体运行的时候，请修改[此脚本](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh)的模型路径即可。
+
+<h3 id="1-5">1.5 模型编辑</h3>
+
+尽管大语言模型在很多任务上都表现很出色，但是他还是会出现回答错误的情况。此外，随着时间的流逝，曾经正确的知识也会变得错误。这就需要我们通过模型编辑的方法让模型的回答达到我们的预期
+
+在模型编辑中，我们使用了EasyEdit作为我们的编辑工具（详情可见https://github.com/zjunlp/EasyEdit，EasyEdit是一个高度集成的模型编辑工具，你所需要做的仅仅是像在hugging face一样,使用以下三行代码，完成您的编辑器定义
+
+```shell
+from easyeditor import MENDHyperParams
+hparams = MENDHyperParams.from_hparams('./hparams/MEND/gpt2-xl')
+editor = BaseEditor.from_hparams(hparams)
+```
+以上的代码展示了对于gpt2-xl模型进行MEND方法编辑的编辑器定义，接下来您需要做的就是准备编辑数据以及测试数据
+
+```shell
+metrics, edited_model, _ = editor.edit(
+    prompts=prompts,
+    ground_truth=ground_truth,
+    target_new=target_new,
+    locality_inputs=locality_inputs,
+    keep_original_weight=True
+)
+```
+通过以上代码您即可完成对模型的编辑，编辑后的模型保存在edit_model中，相应的评价指标保存在metrics中
 
 <h2 id="2">2. 模型效果</h2>
 
@@ -538,7 +566,33 @@ python tools/download.py --specify --download_path ./your/path --repo_name zjunl
   ```
 </details>
 
+<h3 id="2-4">2.4 模型编辑效果</h3>
 
+EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法，由于篇幅限制，我们仅仅展示KN和IKE方法效果
+
+<details>
+  <summary><b>KN方法效果</b></summary>
+
+- **Michael Jordan is born from**
+>编辑前回答:
+>Michael Jordan is born from USA
+
+>编辑后回答:
+>Michael Jordan is born from China
+
+  </details>
+
+<details>
+  <summary><b>IKE方法效果</b></summary>
+
+- **Michael Jordan is born from**
+
+>编辑前回答:
+>Michael Jordan is born from USA
+
+>编辑后回答:
+>Michael Jordan is born from China
+  </details>  
 
 <h2 id="3">3. 训练细节</h2>
 
