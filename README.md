@@ -703,6 +703,32 @@ Model Testing and Deployment：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinr
 If you use our repository, please cite the following related papers:
 
 ```bibtex
+@article{DBLP:journals/corr/abs-2308-07269,
+  author       = {Peng Wang and
+                  Ningyu Zhang and
+                  Xin Xie and
+                  Yunzhi Yao and
+                  Bozhong Tian and
+                  Mengru Wang and
+                  Zekun Xi and
+                  Siyuan Cheng and
+                  Kangwei Liu and
+                  Guozhou Zheng and
+                  Huajun Chen},
+  title        = {EasyEdit: An Easy-to-use Knowledge Editing Framework for Large Language
+                  Models},
+  journal      = {CoRR},
+  volume       = {abs/2308.07269},
+  year         = {2023},
+  url          = {https://doi.org/10.48550/arXiv.2308.07269},
+  doi          = {10.48550/arXiv.2308.07269},
+  eprinttype    = {arXiv},
+  eprint       = {2308.07269},
+  timestamp    = {Wed, 23 Aug 2023 14:43:32 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2308-07269.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
 @misc{knowlm,
   author = {Ningyu Zhang and Jintian Zhang and Xiaohan Wang and Honghao Gui and Kangwei Liu and Yinuo Jiang and Xiang Chen and Shengyu Mao and Shuofei Qiao and Yuqi Zhu and Zhen Bi and Jing Chen and Xiaozhuan Liang and Yixin Ou and Runnan Fang and Zekun Xi and Xin Xu and Lei Li and Peng Wang and Mengru Wang and Yunzhi Yao and Bozhong Tian and Yin Fang and Guozhou Zheng and Huajun Chen},
   title = {KnowLM: An Open-sourced Knowledgeable Large Langugae Model Framework},
