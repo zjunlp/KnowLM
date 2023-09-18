@@ -129,7 +129,7 @@ def train(
     tokenizer.pad_token_id = (
         0  # unk. we want this to be different from the eos token
     )
-    tokenizer.padding_side = "right"
+    tokenizer.padding_side = "left"        # llama2 use left
     model.config.pad_token_id = tokenizer.pad_token_id = 0  # same as unk token id
     model.config.bos_token_id = tokenizer.bos_token_id = 1
     model.config.eos_token_id = tokenizer.eos_token_id = 2
