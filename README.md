@@ -28,6 +28,9 @@ The project's `initial phase` introduced a knowledge extraction LLM based on LLa
 
 
 All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-1) to get started right away!
+
+-❗**If you encounter any issues during the installation or using of KnowLM, please promptly submit an issue, and we will assist you with resolving the problem!**
+
 | Category | Base   | Name                     | Version | Download Link                                                     | Note     |
 | -------- | ------ | ------------------------- | ---- | ------------------------------------------------------------ | -------- |
 | Base Model | LlaMA1 | KnowLM-13B-Base           | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-base-v1.0) | Base Model |
