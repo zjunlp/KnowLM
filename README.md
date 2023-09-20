@@ -113,7 +113,7 @@ pip install -r requirements.txt
 docker pull zjunlp/knowlm:v.1
 docker run -it zjunlp/knowlm:v.1 /bin/bash
 ```
-<h3 id="1-2">1.2 Model Usage Guide</h3>
+<h3 id="1-2">💻1.2 Model Usage Guide</h3>
 
 **1. Reproduce the results in Section 2**
 
