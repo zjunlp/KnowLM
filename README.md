@@ -49,14 +49,14 @@ All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-
 
 **Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here. 3. The `KnowLM-IE` dataset comes from the paper "[InstructIE: A Chinese Instruction-based Information Extraction Dataset](https://arxiv.org/abs/2305.11527)" and the [gitHub](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC) can be found here.
 
-## NEWS
+## 📬 NEWS
 - \[**August 2023**\] The full parameters have been released (omitting the parameter consolidation process).
 - \[**July 2023**\] The instruction dataset has been released.
 - \[**July 2023**\] Support instruction fine-tuning and vllm for `LLaMA-2`
 - \[**June 2023**\] The project name has been changed from `CaMA` to `KnowLM`.
 - \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
 
-## What's the KnowLM?
+## 📍 What's the KnowLM?
 <p align="center">
     <br>
     <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM-overview.png?raw=true" width="920" height="400"/>
@@ -73,7 +73,7 @@ This is an overview of the `KnowLM`, which mainly consists of three technical fe
 
 The tools corresponding to these three technologies are [EasyInstruct](https://github.com/zjunlp/easyinstruct), [EasyEdit](https://github.com/zjunlp/easyedit), and EasyAgent (under development). We will soon provide use cases for knowledge prompting and knowledge editing based on the `KnowLM`framework.
 
-## Contents
+## 🗂️ Contents
 
 - [Quick Start](#1)
   - [Environment Configuration](#1-1)
@@ -96,9 +96,9 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 - [Acknowledgments/Contributors/Citations](#7)
 
 
-<h2 id="1">1. Quick Start</h2>
+<h2 id="1">🚴1. Quick Start</h2>
 
-<h3 id="1-1">1.1 Environment Configuration</h3>
+<h3 id="1-1">🛠️1.1 Environment Configuration</h3>
 
 *KnowLM* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
 #### 🔧Manual Environment Configuration
@@ -223,13 +223,20 @@ You could get the following response:
 }
 ```
 
-<h3 id="1-3">1.3 Information Extraction Prompt</h3>
+<h3 id="1-3">🎯1.3 Information Extraction Prompt</h3>
 
 For information extraction tasks such as named entity recognition (NER), event extraction (EE), and relation extraction (RE), we provide some prompts for ease of use. You can refer to this [link](./examples/ie_prompt.py) for examples. Of course, you can also try using your own prompts.
 
 Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where `knowlm-13b-zhixi` is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
 
-<h3 id="1-5">1.5 Model Editing</h3>
+<h3 id="1-4">🐐1.4 LlaMA.cpp</h3>
+If you find yourself lacking sufficient GPU computing resources, you have the option to carry out quantization using [llama.cpp](https://github.com/ggerganov/llama.cpp). This is possible because llama.cpp shares the same architecture as KnowLM. Once you have set up your environment, you can download our model to a designated path using the following command:
+```bash
+python tools/download.py --specify --download_path ./your/path --repo_name zjunlp/knowlm-13b-zhixi
+```
+Next, just substitute the model path at this [location](https://github.com/ggerganov/llama.cpp#prepare-data--run) with the downloaded one. When executing it in practice, please remember to adjust the model path within this [script[(https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh) accordingly.
+
+<h3 id="1-5">🖊️1.5 Model Editing</h3>
 Although large language models perform exceptionally well in many tasks, they can still provide incorrect answers. Moreover, as time passes, knowledge that was once accurate may become outdated. This necessitates that we adjust the model's responses to meet our expectations through model editing.
 
 In model editing, we utilized EasyEdit as our editing tool (details can be found at https://github.com/zjunlp/EasyEdit). EasyEdit is a highly integrated model editing tool. All you need to do is define your editor in just three lines of code, similar to how you would in hugging face.
@@ -251,9 +258,9 @@ metrics, edited_model, _ = editor.edit(
 ```
 With the provided code, you can complete the editing of the model. The edited model is stored in "edit_model," and the corresponding evaluation metrics are saved in "metrics."
 
-<h2 id="2">2. Cases</h2>
+<h2 id="2">🌰2. Cases</h2>
 
-<h3 id="2-1">2.1 Pretraining Cases</h3>
+<h3 id="2-1">🌰2.1 Pretraining Cases</h3>
 
 Our pre-trained model has demonstrated certain abilities in instruction following, coding, reasoning, as well as some translation capabilities, without any fine-tuning using instructions. Additionally, it has acquired new knowledge. Below are some of our sample cases. If you wish to reproduce our examples and view detailed decoding configuration, please first [set up the environment](#1-1), then follow the steps outlined [here](#1-2).
 
@@ -400,7 +407,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
   </details>
 
-<h3 id="2-2">2.2 Information Extraction Cases</h3>
+<h3 id="2-2">🌰2.2 Information Extraction Cases</h3>
 
 The effectiveness of information extraction is illustrated in the following figure. We tested different instructions for different tasks as well as the same instructions for the same task, and achieved good results for all of them.
 
@@ -415,7 +422,7 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
 </p>
 
 
-<h3 id="2-3">2.3 General Ablities Cases</h3>
+<h3 id="2-3">🌰2.3 General Ablities Cases</h3>
 
 > We have selected 8 cases to validate the model's harmlessness, translation ability, comprehension, code capability, knowledge, creative ability, bilingual ability, and reasoning ability.
 
@@ -561,7 +568,7 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
   ```
 </details>
 
-<h3 id="2-4">2.4 Model Editing Cases</h3>
+<h3 id="2-4">🌰2.4 Model Editing Cases</h3>
 
 EasyEdit supports a variety of methods including, but not limited to, KN, IKE, MEND, SERAC, ROME, etc. Due to space constraints, we only showcase the effects of the KN and IKE methods:
 
@@ -585,7 +592,7 @@ Michael Jordan is born from
 >Answer after editing:
 >Michael Jordan is born from China
 </details> 
-<h2 id="3">3. Training Details</h2>
+<h2 id="3">🥊3. Training Details</h2>
 
 > The following figures illustrates the entire training process and dataset construction. The training process is divided into two stages:
 >
@@ -595,13 +602,13 @@ Michael Jordan is born from
 
 ![](./assets/main_new.jpg)
 
-<h3 id="3-1">3.1 Dataset Construction (Pretraining)</h3>
+<h3 id="3-1">🧾3.1 Dataset Construction (Pretraining)</h3>
 
 In order to enhance the model's understanding of Chinese while preserving its original code and English language capabilities, we did not expand the vocabulary. Instead, we collected Chinese corpora, English corpora, and code corpora. The Chinese corpora were sourced from Baidu Baike, Wudao, and Chinese Wikipedia. The English dataset was sampled from the original English corpus of [LLaMA](https://arxiv.org/pdf/2302.13971.pdf), with the exception of the Wikipedia data. The original paper's English Wikipedia data was up until August 2022, and **we additionally crawled data from September 2022 to February 2023, covering a total of six months.** As for the code dataset, due to the low-quality code in the `Pile` dataset, we crawled code data from GitHub and LeetCode. A portion of the data was used for pre-training, while another portion was used for fine-tuning with instructions.
 
 For the crawled datasets mentioned above, we employed a heuristic approach to filter out harmful content. Additionally, we removed duplicate data.
 
-<h3 id="3-2">3.2 Training Process (Pretraining)</h3>
+<h3 id="3-2">⏳3.2 Training Process (Pretraining)</h3>
 
 Detailed data processing code, training code, complete training scripts, and detailed training results can be found in [./pretrain](./pretrain).
 
@@ -618,7 +625,7 @@ Finally, we performed pre-training on 5.5 million Chinese samples, 1.5 million E
 
 
 
-<h3 id="3-3">3.3 Dataset Construction (Instruction tuning)</h3>
+<h3 id="3-3">🧾3.3 Dataset Construction (Instruction tuning)</h3>
 
 In addition to incorporating general capabilities such as reasoning and coding, we have also introduced additional information extraction abilities, including NER (Named Entity Recognition), RE (Relation Extraction), and EE (Event Extraction), into the current homogeneous models. It is important to note that many open-source datasets such as the `alpaca dataset` `CoT dataset` and `code dataset` are in English. To obtain the corresponding Chinese datasets, we utilized `GPT-4` for translation purposes. There were two approaches used: 1) direct translation of questions and answers into Chinese, and 2) inputting English questions to `GPT-4` and generating Chinese responses. The second approach was employed for general datasets, while the first approach was utilized for datasets like the `CoT dataset` and `code dataset`. These datasets are readily available online.
 
@@ -641,12 +648,12 @@ In addition, we manually constructed a general Chinese dataset and translated it
 <a href="" target="_blank"><img src="./assets/kg2instructions-en.png"style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
 </p>
 
-<h3 id="3-4">3.4 Training Process (Instruction tuning)</h3>
+<h3 id="3-4">⏳3.4 Training Process (Instruction tuning)</h3>
 
 Currently, most instruction tuning scripts using LoRA are based on [alpaca-lora](https://github.com/tloen/alpaca-lora/), so we will not go into detail here. Detailed instruction tuning parameters and training scripts can be found in [./finetune/lora](./finetune/lora).
 
  
-<h2 id="4">4. Limitations</h2>
+<h2 id="4">🔴4. Limitations</h2>
 
 Due to time constraints, hardware limitations, and technical reasons, our model has limitations, including but not limited to:
 
@@ -660,7 +667,7 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
 
   
 
-<h2 id="5">5. TODO List</h2>
+<h2 id="5">🕐5. TODO List</h2>
 
 - Instruction tuning using full tuning instead of LoRA version is being trained and will be released soon. 
 - New instruction tuning weights using LoRA will be updated shortly.
@@ -670,7 +677,7 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
 
 
 
-<h2 id="6">6. FAQ</h2>
+<h2 id="6">❓6. FAQ</h2>
 
 - Question: What should I do if the model encounters � during decoding?
 
@@ -684,9 +691,9 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
 
   Answer: Please try changing the decoding parameters.
 
-<h2 id="7">7. Others</h2>
+<h2 id="7">👋7. Others</h2>
 
-<h3 id="7-1">7.1 Contributors（In Random Order）</h3>
+<h3 id="7-1">👨‍👩‍👦7.1 Contributors（In Random Order）</h3>
 
 Pretraining：Xiang Chen, Jintian Zhang, Xiaozhuan Liang
 
@@ -701,7 +708,7 @@ Model Editing and Safety：Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Me
 Model Testing and Deployment：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li
 
 
-<h3 id="7-2">7.2 Citation</h3>
+<h3 id="7-2">📇7.2 Citation</h3>
 
 If you use our repository, please cite the following related papers:
 
@@ -730,7 +737,7 @@ If you use our repository, please cite the following related papers:
 ```
 
 
-<h3 id="7-3">7.3 Acknowledgment</h3>
+<h3 id="7-3">💡7.3 Acknowledgment</h3>
 
 We are very grateful to the following open source projects for their help:
 
