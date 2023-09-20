@@ -48,14 +48,14 @@
 
 数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。3. `KnowLM-IE`数据集来源于论文[《InstructIE: A Chinese Instruction-based Information Extraction Dataset》](https://arxiv.org/abs/2305.11527)，github链接位于[此处](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC)。
 
-## NEWS
+## 📬 NEWS
 - \[**2023/08**\] 发布完整模型参数，取消了参数合并过程
 - \[**2023/07**\] 发布训练使用的部分指令数据
 - \[**2023/07**\] 支持`LLaMA-2`的指令微调和`vllm`推理
 - \[**2023/06**\] 将仓库`CaMA`更名为`KnowLM`
 - \[**2023/06**\] 发布第一版预训练权重与第一版LoRA权重
 
-## KnowLM
+## 📍 KnowLM
 <p align="center">
     <br>
     <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM-overview.png?raw=true" width="920" height="400"/>
@@ -72,7 +72,7 @@
 
 包含三个附属的工具分别为[EasyInstruct](https://github.com/zjunlp/easyinstruct)、[EasyEdit](https://github.com/zjunlp/easyedit)和EasyAgent(开发中)，我们将在近期提供基于KnowLM的知识提示和知识编辑使用案例。
 
-## 目录
+## 🗂️ 目录
 
 - [快速开始](#1)
   - [环境配置](#1-1)
@@ -95,9 +95,9 @@
 
 
 
-<h2 id="1">1. 快速开始</h2>
+<h2 id="1">🚴1. 快速开始</h2>
 
-<h3 id="1-1">1.1 环境配置</h3>
+<h3 id="1-1">🛠️1.1 环境配置</h3>
 
 ```shell
 conda create -n knowlm python=3.9 -y
@@ -106,7 +106,7 @@ pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/w
 pip install -r requirements.txt
 ```
 
-<h3 id="1-2">1.2 模型使用</h3>
+<h3 id="1-2">💻1.2 模型使用</h3>
 
 **1. 复现效果图中的结果**
 
@@ -217,13 +217,13 @@ curl -X POST "http://127.0.0.1:8090/generate" \
 }
 ```
 
-<h3 id="1-3">1.3 信息抽取Prompt</h3>
+<h3 id="1-3">🎯1.3 信息抽取Prompt</h3>
 
 对于信息抽取任务，比如命名实体识别（NER）、事件抽取（EE）、关系抽取（RE），我们提供了一些`prompt`便于使用，可以参考[此处](./examples/ie_prompt.py)。当然你也可以尝试使用自己的Prompt。
 
 这里也有一个简单的使用`knowlm-13b-zhixi`完成CCKS2023指令驱动的知识图谱构建任务的[案例](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md)
 
-<h3 id="1-4">1.4 LlaMA.cpp量化</h3>
+<h3 id="1-4">🐐1.4 LlaMA.cpp量化</h3>
 
 如果没有充足的GPU计算资源，由于`KnowLM`的架构和`LlaMA`相同，因此可以使用[llama.cpp](https://github.com/ggerganov/llama.cpp)进行量化。在配置完环境后，您可以通过下面的命令下载我们的模型到指定的路径：
 
@@ -233,7 +233,7 @@ python tools/download.py --specify --download_path ./your/path --repo_name zjunl
 
 然后将[此处](https://github.com/ggerganov/llama.cpp#prepare-data--run)的模型路径更换为下载的路径即可。在具体运行的时候，请修改[此脚本](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh)的模型路径即可。
 
-<h3 id="1-5">1.5 模型编辑</h3>
+<h3 id="1-5">🖊️1.5 模型编辑</h3>
 
 尽管大语言模型在很多任务上都表现很出色，但是他还是会出现回答错误的情况。此外，随着时间的流逝，曾经正确的知识也会变得错误。这就需要我们通过模型编辑的方法让模型的回答达到我们的预期
 
@@ -257,9 +257,9 @@ metrics, edited_model, _ = editor.edit(
 ```
 通过以上代码您即可完成对模型的编辑，编辑后的模型保存在edit_model中，相应的评价指标保存在metrics中
 
-<h2 id="2">2. 模型效果</h2>
+<h2 id="2">🌰2. 模型效果</h2>
 
-<h3 id="2-1">2.1 预训练效果</h3>
+<h3 id="2-1">🌰2.1 预训练效果</h3>
 
 我们的预训练模型在未经任何指令微调的情况下获得了一定的指令跟随能力、代码能力、推理能力，以及一些翻译能力，此外获得了一些新的知识。下面是我们的部分case，若希望复现我们的例子、查看详细的解码参数，请先[配置环境](#1-1)，然后按照[此处](#1-2)的步骤进行即可。
 
@@ -406,7 +406,7 @@ metrics, edited_model, _ = editor.edit(
   Answer: 4 + 3 = 7.  The answer is 7.:arrow_left:
   </details>
 
-<h3 id="2-2">2.2 信息抽取效果</h3>
+<h3 id="2-2">🌰2.2 信息抽取效果</h3>
 
 信息抽取的效果如下图所示。对于同样一个文本，我们测试了不同任务的指令、相同任务的指令，都取得了不错的效果。
 
@@ -423,7 +423,7 @@ metrics, edited_model, _ = editor.edit(
 
 
 
-<h3 id="2-3">2.3 通用能力效果</h3>
+<h3 id="2-3">🌰2.3 通用能力效果</h3>
 
 > 下面选取了8个例子，分别验证了模型的无害性、翻译能力、理解能力、代码能力、知识储备、创作能力、双语能力、推理能力。
 
@@ -596,7 +596,7 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 >Michael Jordan is born from China
   </details>  
 
-<h2 id="3">3. 训练细节</h2>
+<h2 id="3">🥊3. 训练细节</h2>
 
 > 下图展示了我们的训练的整个流程和数据集构造。整个训练过程分为两个阶段：
 >
@@ -607,13 +607,13 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 ![](./assets/main_new.jpg)
 
 
-<h3 id="3-1">3.1 预训练数据集构建</h3>
+<h3 id="3-1">🧾3.1 预训练数据集构建</h3>
 
 为了在保留原来的代码能力和英语能力的前提下，来提升模型对于中文的理解能力，我们并没有对词表进行扩增，而是搜集了中文语料、英文语料和代码语料。其中中文语料来自于百度百科、悟道和中文维基百科；英文数据集是从LLaMA原始的英文语料中进行采样，不同的是维基数据，原始论文中的英文维基数据的最新时间点是2022年8月，我们额外爬取了2022年9月到2023年2月，总共六个月的数据；而代码数据集，由于`Pile`数据集中的代码质量不高，我们去爬取了Github、Leetcode的代码数据，一部分用于预训练，另外一部分用于指令微调。
 
 对上面爬取到的数据集，我们使用了启发式的方法，剔除了数据集中有害的内容，此外，我们还剔除了重复的数据。
 
-<h3 id="3-2">3.2 预训练训练过程</h3>
+<h3 id="3-2">⏳3.2 预训练训练过程</h3>
 
 详细的数据处理代码和训练代码、完整的训练脚本、详细的训练情况可以在[./pretrain](./pretrain)找到。
 
@@ -630,7 +630,7 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 
 
 
-<h3 id="3-3">3.3 指令微调数据集构建</h3>
+<h3 id="3-3">🧾3.3 指令微调数据集构建</h3>
 
 在目前千篇一律的模型中，我们除了要加入通用的能力（比如推理能力、代码能力等），我们还额外增加了信息抽取能力（包括`NER`、`RE`、`EE`）。需要注意的是，由于许多开源的数据集，比如`alpaca数据集` `CoT数据集` `代码数据集`都是英文的，因此为了获得对应的中文数据集，我们对这些英文数据集使用`GPT4`进行翻译（有两种情况：1. 直接对问题和答案进行成中文。2. 将英文问题输入给模型，让模型输出中文回答）。我们对通用的数据集使用第二种情况，对于其他数据集如`CoT数据集` `代码数据集`使用第一种情况。这些数据集很容易在网上找到。
 
@@ -653,13 +653,13 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 <a href="" target="_blank"><img src="./assets/kg2instructions-zh.jpg"style="width: 90%; min-width: 90px; display: block; margin: auto;"></a>
 </p>
 
-<h3 id="3-4">3.4 指令微调训练过程</h3>
+<h3 id="3-4">⏳3.4 指令微调训练过程</h3>
 
 目前大多数的微调脚本都是基于[alpaca-lora](https://github.com/tloen/alpaca-lora/)，因此此处不再赘述。我们的详细的指令微调训练参数、训练脚本可以在[./finetune/lora](./finetune/lora)找到。
 
  
 
-<h2 id="4">4. 局限性</h2>
+<h2 id="4">🔴4. 局限性</h2>
 
 由于时间成本、硬件成本和技术上的原因，我们的模型存在局限性，包括但不限于：
 
@@ -672,7 +672,7 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 
   
 
-<h2 id="5">5. 未来计划</h2>
+<h2 id="5">🕐5. 未来计划</h2>
 
 - 训练并发布全量指令微调版本
 - 更新LoRA指令微调
@@ -683,7 +683,7 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 
 
 
-<h2 id="6">6. FAQ</h2>
+<h2 id="6">❓6. FAQ</h2>
 
 - 问题：解码的时候出现了�怎么办？
 
@@ -695,11 +695,24 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 
 - 问题：为什么抽取效果或者回答的效果不好？
 
-  答案：请尝试更换解码参数。
+  答案：请尝试更换解码参数。如果您是在自己的数据集上进行测试，比如医疗领域、法律领域等，请优先进行二次训练（因为我们的模型是通用的模型，在垂直领域上的效果肯定不如进行二次训练的效果）。
 
-<h2 id="7">7. 其他</h2>
+- 问题：在自己的领域数据集上训练的模型的测试效果仍然不佳？
 
-<h3 id="7-1">7.1 贡献者（排名不分先后）</h3>
+  答案：如果您使用的是`lora`训练，请检查您的训练数据是否足够、loss是否正常下降，建议多训练几个轮次再进行测试（可以更改解码参数、多次执行来测试）。如果指令微调的数据实在较少，可以使用一些领域相关的无监督语料在我们二次预训练的模型上进行再次预训练，然后使用lora指令微调。
+
+- 问题：推理速度较慢怎么办？
+
+  答案：由于我们的模型是基于llama的，因此推理速度取决于您的硬件、解码参数等，如果希望提高解码速度，可以参考其他针对llama的库。
+
+- 问题：代码运行报错怎么办？
+  
+  答案：如果可以请先自行搜索相关的错误，如果仍未解决请提交issue。提交issue的时候指明报错的信息、运行的代码文件和命令、环境（是否使用我们提供的`requirements.txt`和要求进行安装、是否使用docker）。
+
+
+<h2 id="7">👋7. 其他</h2>
+
+<h3 id="7-1">👨‍👩‍👦7.1 贡献者（排名不分先后）</h3>
 
 基础模型：Xiang Chen, Jintian Zhang, Xiaozhuan Liang
 
@@ -714,7 +727,7 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 测试与演示：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li
 
 
-<h3 id="7-2">7.2 引用</h3>
+<h3 id="7-2">📇7.2 引用</h3>
 
 如果你使用到了我们的仓库，请引用下列相关论文：
 
@@ -729,7 +742,7 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 
 
 
-<h3 id="7-3">7.3 致谢</h3>
+<h3 id="7-3">💡7.3 致谢</h3>
 
 我们非常感谢以下这些开源项目给予我们的帮助：
 
