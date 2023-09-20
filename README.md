@@ -75,25 +75,25 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 
 ## 🗂️ Contents
 
-- [Quick Start](#1)
-  - [Environment Configuration](#1-1)
-  - [Model Usage Guide](#1-2)
-  - [Information Extraction prompt](#1-3)
-  - [Llama.cpp](#1-4)
-  - [Model Editing](#1-5)
+- [🚴Quick Start](#1)
+  - [🛠️Environment Configuration](#1-1)
+  - [💻Model Usage Guide](#1-2)
+  - [🎯Information Extraction prompt](#1-3)
+  - [🐐Llama.cpp](#1-4)
+  - [🖊️Model Editing](#1-5)
 
-- [Cases](#2)
-  - [Pretraining Cases](#2-1)
-  - [Information Extraction Cases](#2-2)
-  - [General Ability Cases](#2-3)
-  - [Model Editing case](#2-4)
-- [Training Details](#3)
-  - [Pertraining data and Pretraining scripts](#3-1)
-  - [Instruction data and Instruction-tuning scripts](#3-3)
-- [Limitations](#4)
-- [TODO List](#5)
-- [FAQ](#6)
-- [Acknowledgments/Contributors/Citations](#7)
+- [🌰Cases](#2)
+  - [🌰Pretraining Cases](#2-1)
+  - [🌰Information Extraction Cases](#2-2)
+  - [🌰General Ability Cases](#2-3)
+  - [🌰Model Editing case](#2-4)
+- [🥊Training Details](#3)
+  - [🧾Pertraining data and Pretraining scripts](#3-1)
+  - [🧾Instruction data and Instruction-tuning scripts](#3-3)
+- [🔴Limitations](#4)
+- [🕐TODO List](#5)
+- [❓FAQ](#6)
+- [👋Acknowledgments/Contributors/Citations](#7)
 
 
 <h2 id="1">🚴1. Quick Start</h2>
@@ -689,7 +689,19 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
   
 - Question: Why is the extraction or answer quality not good?
 
-  Answer: Please try changing the decoding parameters.
+  Answer: Please try changing the decoding parameters. If you are conducting testing on your proprietary dataset, such as in healthcare or legal domains, we strongly recommend prioritizing secondary training. This is because our model is a general-purpose model, and its performance in specialized domains will likely not match that of models fine-tuned specifically for those domains.
+
+- Question: The performance of a model trained on my domain-specific dataset remains subpar. What steps should I take?
+
+  Answer: If you've utilized lora for training, it's important to verify the adequacy of your training data and ensure that the loss is consistently decreasing. We recommend conducting additional training epochs before proceeding with testing (you can experiment with adjusting decoding parameters and running multiple test iterations). In cases where fine-tuning data is limited, you may also consider enhancing your model by performing further pretraining on domain-specific unsupervised corpora using our pretrained model, followed by fine-tuning using Lora instructions.
+
+- Question: What can be done to address slow inference speed?
+
+  Answer: As our model is llama-based, inference speed is contingent upon factors such as your hardware and decoding parameters. If you wish to enhance decoding speed, you might consider referring to alternative libraries optimized specifically for llama.
+
+- Question: What should I do if I encounter an error while running the code?
+
+  Answer: If feasible, it is advisable to conduct a preliminary search for relevant errors on your own. If the problem persists, kindly consider submitting an issue report. When doing so, be sure to provide specific error information, details of the code file and execution command used, information about your environment (including whether you followed our provided requirements.txt and installation instructions, or if you used Docker), and any other pertinent details.
 
 <h2 id="7">👋7. Others</h2>
 
