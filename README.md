@@ -117,9 +117,9 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
 **1. Reproduce the results in Section 2**
 
-> The cases in `[Section 2](#2)` were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters. **We derived `knowlm-13b-zhixi` and `knowlm-13b-ie` through training using LoRA, building upon the foundation of `knowlm-13b-base`. These models, `knowlm-13b-zhixi` and `knowlm-13b-ie`, are the result of merging the trained LoRA weights with the existing `knowlm-13b-base` model parameters.**
+> The cases in **[Section 2](#2-cases)** were all run on V100. If running on other devices, the results may vary. Please run multiple times or change the decoding parameters. **We derived `knowlm-13b-zhixi` and `knowlm-13b-ie` through training using LoRA, building upon the foundation of `knowlm-13b-base`. These models, `knowlm-13b-zhixi` and `knowlm-13b-ie`, are the result of merging the trained LoRA weights with the existing `knowlm-13b-base` model parameters.**
 
-1. If you want to reproduce the results in section `[2.1]`(**[pretraining cases](#2-1)**), please run the following command:
+1. If you want to reproduce the results in `section 2.1`(**[pretraining cases](#21-pretraining-cases)**), please run the following command:
 
    ```shell
    python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
@@ -127,7 +127,7 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
    The result in section `2.1` can be obtained.
 
-2. If you want to reproduce the results in section `[2.2]`(**[information extraction cases](#2-2)**), please run the following command:
+2. If you want to reproduce the results in `section 2.2`(**[information extraction cases](#22-information-extraction-cases)**), please run the following command:
 
    ```shell
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
@@ -135,7 +135,7 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
    The result in section `2.2` can be obtained.
 
-3. If you want to reproduce the results in section `2.3`(**[general ablities cases](#2-3)**), please run the following command:
+3. If you want to reproduce the results in `section 2.3`(**[general ablities cases](#23-general-ablities-cases)**), please run the following command:
 
    ```shell
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
