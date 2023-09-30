@@ -75,25 +75,25 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 
 ## 🗂️ Contents
 
-- [🚴Quick Start](#1)
-  - [🛠️Environment Configuration](#1-1)
-  - [💻Model Usage Guide](#1-2)
-  - [🎯Information Extraction prompt](#1-3)
-  - [🐐Llama.cpp](#1-4)
-  - [🖊️Model Editing](#1-5)
+- [🚴Quick Start](#1-quick-start)
+  - [🛠️Environment Configuration](#%EF%B8%8F11-environment-configuration)
+  - [💻Model Usage Guide](#12-model-usage-guide)
+  - [🎯Information Extraction prompt](#13-information-extraction-prompt)
+  - [🐐Llama.cpp](#14-llamacpp)
+  - [🖊️Model Editing](#%EF%B8%8F15-model-editing)
 
-- [🌰Cases](#2)
-  - [🌰Pretraining Cases](#2-1)
-  - [🌰Information Extraction Cases](#2-2)
-  - [🌰General Ability Cases](#2-3)
-  - [🌰Model Editing case](#2-4)
-- [🥊Training Details](#3)
-  - [🧾Pertraining data and Pretraining scripts](#3-1)
-  - [🧾Instruction data and Instruction-tuning scripts](#3-3)
-- [🔴Limitations](#4)
-- [🕐TODO List](#5)
-- [❓FAQ](#6)
-- [👋Acknowledgments/Contributors/Citations](#7)
+- [🌰Cases](#2-cases)
+  - [🌰Pretraining Cases](#21-pretraining-cases)
+  - [🌰Information Extraction Cases](#22-information-extraction-cases)
+  - [🌰General Ability Cases](#23-general-ablities-cases)
+  - [🌰Model Editing case](#24-model-editing-cases)
+- [🥊Training Details](#3-training-details)
+  - [🧾Pertraining data and Pretraining scripts](#31-dataset-construction-pretraining)
+  - [🧾Instruction data and Instruction-tuning scripts](#32-training-process-pretraining)
+- [🔴Limitations](#4-limitations)
+- [🕐TODO List](#5-todo-list)
+- [❓FAQ](#6-faq)
+- [👋Acknowledgments/Contributors/Citations](#7-others)
 
 
 <h2 id="1">🚴1. Quick Start</h2>
