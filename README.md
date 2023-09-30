@@ -230,13 +230,15 @@ For information extraction tasks such as named entity recognition (NER), event e
 Here is a [case](https://github.com/zjunlp/DeepKE/blob/main/example/llm/InstructKGC/README.md) where `knowlm-13b-zhixi` is used to accomplish the instruction-based knowledge graph construction task in CCKS2023.
 
 <h3 id="1-4">🐐1.4 LlaMA.cpp</h3>
+
 If you find yourself lacking sufficient GPU computing resources, you have the option to carry out quantization using [llama.cpp](https://github.com/ggerganov/llama.cpp). This is possible because llama.cpp shares the same architecture as KnowLM. Once you have set up your environment, you can download our model to a designated path using the following command:
 ```bash
 python tools/download.py --specify --download_path ./your/path --repo_name zjunlp/knowlm-13b-zhixi
 ```
-Next, just substitute the model path at this [location](https://github.com/ggerganov/llama.cpp#prepare-data--run) with the downloaded one. When executing it in practice, please remember to adjust the model path within this [script[(https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh) accordingly.
+Next, just substitute the model path at this [location](https://github.com/ggerganov/llama.cpp#prepare-data--run) with the downloaded one. When executing it in practice, please remember to adjust the model path within this [script](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh) accordingly.
 
 <h3 id="1-5">🖊️1.5 Model Editing</h3>
+
 Although large language models perform exceptionally well in many tasks, they can still provide incorrect answers. Moreover, as time passes, knowledge that was once accurate may become outdated. This necessitates that we adjust the model's responses to meet our expectations through model editing.
 
 In model editing, we utilized EasyEdit as our editing tool (details can be found at https://github.com/zjunlp/EasyEdit). EasyEdit is a highly integrated model editing tool. All you need to do is define your editor in just three lines of code, similar to how you would in hugging face.
