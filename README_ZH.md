@@ -85,7 +85,7 @@
   - [🌰 信息抽取效果](#22-信息抽取效果)
   - [🌰 通用能力效果](#23-通用能力效果)
   - [🌰 模型编辑效果](#24-模型编辑效果)
-- [🥊 训练细节]#3-训练细节)
+- [🥊 训练细节](#3-训练细节)
   - [🧾 预训练数据与训练脚本](#31-预训练数据集构建)
   - [🧾 指令微调数据与训练脚本](#33-指令微调数据集构建)
 - [🔴 局限性](#4-局限性)
@@ -118,7 +118,7 @@ pip install -r requirements.txt
    python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
    ```
 
-   即可得到[2.1](#2-1)中的结果。
+   即可得到[2.1](#21-预训练效果)中的结果。
 
 2. 若希望[**复现信息抽取**](#22-信息抽取效果)的结果，请运行如下命令：
 
@@ -126,7 +126,7 @@ pip install -r requirements.txt
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_ie_cases
    ```
 
-   即可得到[2.2](#2-2)中的结果。
+   即可得到[2.2](#22-信息抽取效果)中的结果。
 
 3. 若希望[**复现通用能力**](#23-通用能力效果)的结果，请运行如下命令：
 
@@ -134,7 +134,7 @@ pip install -r requirements.txt
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
    ```
 
-   即可得到[2.3](#2-3)中的结果。
+   即可得到[2.3](#23-通用能力效果)中的结果。
 
 
 
