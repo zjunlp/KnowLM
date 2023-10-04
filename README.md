@@ -191,7 +191,7 @@ According to different task requirements, we have the following suggestions for 
 
 **4. vLLM API server**
 
-We interagte [vLLM](https://github.com/vllm-project/vllm) for accelerating LLM inference and providing efficient API service. Use the following command to launch vLLM API server at `http://localhost:8090`.
+We integrate [vLLM](https://github.com/vllm-project/vllm) for accelerating LLM inference and providing efficient API service. Use the following command to launch vLLM API server at `http://localhost:8090`.
 
 ```shell
 max_num_batched_tokens=8000
