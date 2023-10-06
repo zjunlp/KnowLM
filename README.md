@@ -270,7 +270,7 @@ Our pre-trained model has demonstrated certain abilities in instruction followin
 >
 > Due to the maximum inference length set to 512, our cases fall into three situations:
 >
-> 1. Compeleted output. The model generates the termination token EOS and completes the output. We mark this with :white_check_mark:.
+> 1. Completed output. The model generates the termination token EOS and completes the output. We mark this with :white_check_mark:.
 > 2. Incomplete output. The output is cut off due to the maximum inference length. We mark this with :eight_spoked_asterisk:.
 > 3. Repeated output. We remove repeated content manually and mark it with :arrow_left:.
 
@@ -424,7 +424,7 @@ Compared to other large models like ChatGPT, as shown in the graph, it can be ob
 </p>
 
 
-<h3 id="2-3">🌰2.3 General Ablities Cases</h3>
+<h3 id="2-3">🌰2.3 General Abilities Cases</h3>
 
 > We have selected 8 cases to validate the model's harmlessness, translation ability, comprehension, code capability, knowledge, creative ability, bilingual ability, and reasoning ability.
 
