@@ -57,7 +57,7 @@ def main(
         print("cpu")
         model = LlamaForCausalLM.from_pretrained(
             base_model,
-            torch_dtype=torch.float16
+            torch_dtype=torch.float32
         )
 
     # unwind broken decapoda-research config
@@ -65,7 +65,7 @@ def main(
     model.config.bos_token_id = tokenizer.bos_token_id = 1
     model.config.eos_token_id = tokenizer.eos_token_id = 2
 
-    if not load_8bit:
+    if not load_8bit and device != "cpu":
         model.half()  # seems to fix bugs for some users.
 
     model.eval()
@@ -102,7 +102,9 @@ def main(
             )
         s = generation_output.sequences[0]
         output = tokenizer.decode(s)
-        return output
+        print(output)
+        yield output
+        return
     
     gr.Interface(
         fn=evaluate,
@@ -132,7 +134,7 @@ def main(
             ),
         ],
         outputs=[
-            gr.inputs.Textbox(
+            gr.Textbox(
                 lines=5,
                 label="Output"
             )
