@@ -1,0 +1,12 @@
+numpy
+transformers
+torch==2.0.0
+sentencepiece
+tokenizers
+accelerate
+deepspeed
+gradio
+bitsandbytes==0.41.1
+datasets
+fire
+peft==0.2.0
