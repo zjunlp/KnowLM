@@ -100,6 +100,8 @@
 <h3 id="1-1">🛠️1.1 环境配置</h3>
 
 ```shell
+git clone https://github.com/zjunlp/KnowLM.git
+cd KnowLM
 conda create -n knowlm python=3.9 -y
 conda activate knowlm
 pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
