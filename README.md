@@ -661,7 +661,7 @@ Currently, most instruction tuning scripts using LoRA are based on [alpaca-lora]
 
 Due to time constraints, hardware limitations, and technical reasons, our model has limitations, including but not limited to:
 
-- Our intruction tuning process does not involve full tuning. Instead, we use the LoRA approach for instruction tuning.
+- Our instruction tuning process does not involve full tuning. Instead, we use the LoRA approach for instruction tuning.
 - Our model does not currently support multi-turn conversations.
 - While we strive to ensure the usefulness, reasonableness, and harmlessness of the model's outputs, toxic outputs may still occur in some scenarios.
 
