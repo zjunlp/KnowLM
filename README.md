@@ -268,7 +268,7 @@ With the provided code, you can complete the editing of the model. The edited mo
 
 Our pre-trained model has demonstrated certain abilities in instruction following, coding, reasoning, as well as some translation capabilities, without any fine-tuning using instructions. Additionally, it has acquired new knowledge. Below are some of our sample cases. If you wish to reproduce our examples and view detailed decoding configuration, please first [set up the environment](#1-1), then follow the steps outlined [here](#1-2).
 
-> In the follwing cases, text in **bold** represents the prompt, while non-bold text represents the model's output.
+> In the following cases, text in **bold** represents the prompt, while non-bold text represents the model's output.
 >
 > Due to the maximum inference length set to 512, our cases fall into three situations:
 >
@@ -598,7 +598,7 @@ Michael Jordan is born from
 </details> 
 <h2 id="3">🥊3. Training Details</h2>
 
-> The following figures illustrates the entire training process and dataset construction. The training process is divided into two stages:
+> The following figures illustrate the entire training process and dataset construction. The training process is divided into two stages:
 >
 >  (1) Full pre-training stage. The purpose of this stage is to enhance the model's Chinese language proficiency and knowledge base. 
 >
