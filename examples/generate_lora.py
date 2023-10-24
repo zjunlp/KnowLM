@@ -96,7 +96,7 @@ def main(
     top_k = 40,
     repetition_penalty = 1.3,
     max_new_tokens = 512,
-    prompt_template: str = "finetune/lora/templates/alpaca.json",  # The prompt template to use, will default to alpaca.
+    prompt_template: str = "finetune/lora/knowlm/templates/alpaca.json",  # The prompt template to use, will default to alpaca.
 ):
     assert not (run_general_cases and run_ie_cases), "Only one mode!"
     assert run_general_cases or run_ie_cases, "Please Choose One!"
