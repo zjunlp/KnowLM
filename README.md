@@ -38,7 +38,7 @@ All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-
 | Dialogue Model | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie)  | Information Extraction Model |
 | Base Model | LlaMA2 | KnowLM-7B-Base            | V1.0 | Coming soon                                                     | Base Model |
 | Dialogue Model | LlaMA2 | KnowLM-7B-IE              | V1.0 | Coming soon                                                     | Information Extraction Model |
-| Dialogue Model | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | [HuggingFace]( ) | Ocean Model |
+| Dialogue Model | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/OceanGPT-7b) | Ocean Model |
 | Dialogue Model | LlaMA2 | KnowLM-13B                | V1.0 | Training                                                       | Base Model |
 
 | Instruction Dataset Name                        | Number    | Download Link                                                    | Is it used by ZhiXi | Note                           |
