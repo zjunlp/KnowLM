@@ -29,7 +29,7 @@ The project's `initial phase` introduced a knowledge extraction LLM based on LLa
 
 All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-1) to get started right away!
 
-❗**If you encounter any issues during the installation or using of KnowLM, please check [FAQ](https://github.com/zjunlp/KnowLM#6) or promptly submit an [issue](https://github.com/zjunlp/KnowLM/issues), and we will assist you with resolving the problem!**
+❗**If you encounter any issues during the installation or use of KnowLM, please check [FAQ](https://github.com/zjunlp/KnowLM#6) or promptly submit an [issue](https://github.com/zjunlp/KnowLM/issues), and we will assist you with resolving the problem!**
 
 | Category | Base   | Name                     | Version | Download Link                                                     | Note     |
 | -------- | ------ | ------------------------- | ---- | ------------------------------------------------------------ | -------- |
