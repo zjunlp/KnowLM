@@ -95,6 +95,11 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
 - [❓FAQ](#6-faq)
 - [👋Acknowledgments/Contributors/Citations](#7-others)
 
+### All Thanks To Our Contributors :
+<a href="https://github.com/zjunlp/KnowLM/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=zjunlp/KnowLM" />
+</a>
+
 
 <h2 id="1">🚴1. Quick Start</h2>
 
