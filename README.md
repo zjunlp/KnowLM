@@ -20,7 +20,7 @@ The project's `initial phase` introduced a knowledge extraction LLM based on LLa
 
 **The features of this project are as follows:**
 
-- Centered on knowledge and large models, a **full-scale pre-training** of the large model, such as LLaMA, is conducted using the built Chinese&English pre-training corpus.
+- Centered on knowledge and large models, a **full-scale pre-training** of the large model, such as LLaMA, is conducted using the built Chinese & English pre-training corpus.
 - Based on the technology of **KG2Instructions**, the knowledge extraction tasks, including NER, RE, and IE, are optimized and can be completed using human instructions.
 - Using the built Chinese instruction dataset (approximately 1400K), LoRA fine-tuning is used to enhance the model's understanding of human instructions.
 - The weights of the pre-training model and LoRA's instruction fine-tuning are open-sourced.
