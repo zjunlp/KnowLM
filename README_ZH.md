@@ -151,8 +151,16 @@ pip install -r requirements.txt
    ```
 
    缺点是无法动态的更改解码参数。
+   
+   如果单张显卡无法加载模型，使用下面的命令行可以让模型在不同的显卡中进行加载：
 
-2. 网页版方法，使用下面的命令进入网页版：
+   ```shell
+   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune.py --multi_gpu     # --allocate [10,10,10]
+   ```
+
+   > 上面的`--allocate`为每张卡占用多少显存，单位是`GB`
+
+1. 网页版方法，使用下面的命令进入网页版：
 
    ```shell
    python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
@@ -162,12 +170,24 @@ pip install -r requirements.txt
    <a href="" target="_blank"><img src="./assets/finetune_web.jpg" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
    </p>
 
+   如果单张显卡无法加载模型，使用下面的命令行可以让模型在不同的显卡中进行加载：
+
+   ```shell
+   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune_web.py --multi_gpu     # --allocate [10,10,10]
+   ```
+
 **3. LoRA模型使用**
 
 此处我们提供了网页版的方法，使用下面的命令进入网页版：
 
 ```shell
 python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
+```
+
+如果单张显卡无法加载模型，使用下面的命令行可以让模型在不同的显卡中进行加载：
+
+```shell
+CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_lora_web.py --multi_gpu     # --allocate [10,10,10]
 ```
 
 下面是网页版的demo图：
