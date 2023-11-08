@@ -155,7 +155,7 @@ pip install -r requirements.txt
    如果单张显卡无法加载模型，使用下面的命令行可以让模型在不同的显卡中进行加载：
 
    ```shell
-   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune.py --multi_gpu     # --allocate [10,10,10]
+   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune.py  --base_model zjunlp/knowlm-13b-base-v1.0 --interactive --multi_gpu     # --allocate [10,10,10]
    ```
 
    > 上面的`--allocate`为每张卡占用多少显存，单位是`GB`
@@ -173,7 +173,7 @@ pip install -r requirements.txt
    如果单张显卡无法加载模型，使用下面的命令行可以让模型在不同的显卡中进行加载：
 
    ```shell
-   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune_web.py --multi_gpu     # --allocate [10,10,10]
+   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0 --multi_gpu     # --allocate [10,10,10]
    ```
 
 **3. LoRA模型使用**
@@ -187,7 +187,7 @@ python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
 如果单张显卡无法加载模型，使用下面的命令行可以让模型在不同的显卡中进行加载：
 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_lora_web.py --multi_gpu     # --allocate [10,10,10]
+CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi --multi_gpu     # --allocate [10,10,10]
 ```
 
 下面是网页版的demo图：
