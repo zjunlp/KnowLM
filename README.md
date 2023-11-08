@@ -164,11 +164,26 @@ We offer two methods: the first one is **command-line interaction**, and the sec
 
    The disadvantage is the inability to dynamically change decoding parameters.
 
-2. Use the following command to enter **web-based interaction**:
+   If a single GPU is unable to load the model, you can utilize the following command to enable the model to be loaded across different GPU:
+
+   ```shell
+   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune.py  --base_model zjunlp/knowlm-13b-base-v1.0 --interactive --multi_gpu     # --allocate [10,10,10]
+   ```
+
+   > The `--allocate` above specifies the amount of memory used by each GPU, measured in `GB`.
+
+3. Use the following command to enter **web-based interaction**:
 
    ```shell
    python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0
    ```
+
+   If a single GPU is unable to load the model, you can utilize the following command to enable the model to be loaded across different GPU:
+
+   ```shell
+   CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0 --multi_gpu     # --allocate [10,10,10]
+   ```
+   
    Here is a screenshot of the web-based interaction:
    <p align="center" width="100%">
    <a href="" target="_blank"><img src="./assets/finetune_web.jpg" alt="finetune-web" style="width: 100%; min-width: 100px; display: block; margin: auto;"></a>
@@ -180,6 +195,12 @@ Here, we provide a web-based interaction method. Use the following command to ac
 
 ```shell
 python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
+```
+
+If a single GPU is unable to load the model, you can utilize the following command to enable the model to be loaded across different GPU:
+
+```shell
+CUDA_VISIBLE_DEVICES=0,1,2 python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi --multi_gpu     # --allocate [10,10,10]
 ```
 
 Here is a screenshot of the web-based interaction:
