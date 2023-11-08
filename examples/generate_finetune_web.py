@@ -4,6 +4,8 @@ import fire
 import torch
 import transformers
 import gradio as gr
+from multi_gpu_inference import get_tokenizer_and_model
+from typing import List
 
 assert (
     "LlamaTokenizer" in transformers._import_structure["models.llama"]
@@ -32,6 +34,8 @@ def main(
     repetition_penalty=1.6,
     interactive: bool = False,
     share_gradio: bool = False,
+    multi_gpu: bool = False,
+    allocate: List[int] = None
 ):
     assert base_model, (
         "Please specify a --base_model, e.g. --base_model='decapoda-research/llama-7b-hf'"
@@ -40,12 +44,15 @@ def main(
     tokenizer = LlamaTokenizer.from_pretrained(base_model)
     if device == "cuda":
         print("cuda")
-        model = LlamaForCausalLM.from_pretrained(
-            base_model,
-            load_in_8bit=load_8bit,
-            torch_dtype=torch.float16,
-            device_map="auto",
-        )
+        if multi_gpu:
+            model, tokenizer = get_tokenizer_and_model(base_model=base_model, dtype="float16", allocate=allocate)
+        else:
+            model = LlamaForCausalLM.from_pretrained(
+                base_model,
+                load_in_8bit=load_8bit,
+                torch_dtype=torch.float16,
+                device_map={"": device},
+            )
     elif device == "mps":
         print("mps")
         model = LlamaForCausalLM.from_pretrained(
@@ -140,7 +147,7 @@ def main(
             )
         ],
         title="ZhiXi Finetune",
-        description="ZhiXi Finetune是基于LLaMA-13B使用中英双语进行二次全量预训练的模型。如果测试的效果不理想，请更改解码参数，或者尝试其他prompt，模型对于参数的选择和prompt的选择比较敏感。如果希望获得更多信息，请参考[KnowLLM](https://github.com/zjunlp/knowllm)。",
+        description="ZhiXi Finetune是基于LLaMA-13B使用中英双语进行二次全量预训练的模型。如果测试的效果不理想，请更改解码参数，或者尝试其他prompt，模型对于参数的选择和prompt的选择比较敏感。如果希望获得更多信息，请参考[KnowLM](https://github.com/zjunlp/knowlm)。",
 
     ).queue().launch(server_name="0.0.0.0", share=share_gradio)
 
@@ -148,3 +155,9 @@ def main(
 
 if __name__ == "__main__":
     fire.Fire(main)
+    """
+    # multi
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0 --multi_gpu --allocate [5,10,8,10]
+    # single
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_finetune_web.py --base_model zjunlp/knowlm-13b-base-v1.0 
+    """

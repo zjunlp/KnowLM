@@ -7,6 +7,8 @@ import torch
 import transformers
 # from peft import PeftModel
 from transformers import GenerationConfig, LlamaForCausalLM, LlamaTokenizer
+from multi_gpu_inference import get_tokenizer_and_model
+from typing import List
 
 from callbacks import Iteratorize, Stream
 from prompter import Prompter
@@ -26,10 +28,12 @@ except:  # noqa: E722
 def main(
     load_8bit: bool = False,
     base_model: str = None,
-    lora_weights: str = "zjunlp/CaMA-13B-LoRA",
+    # lora_weights: str = "zjunlp/CaMA-13B-LoRA",
     prompt_template: str = "finetune/lora/knowlm/templates/alpaca.json",  # The prompt template to use, will default to alpaca.
     server_name: str = "0.0.0.0",  # Allows to listen on all interfaces by providing '0.
     share_gradio: bool = False,
+    multi_gpu: bool = False,
+    allocate: List[int] = None
 ):
     base_model = base_model or os.environ.get("BASE_MODEL", "")
     assert (
@@ -39,12 +43,15 @@ def main(
     prompter = Prompter(prompt_template)
     tokenizer = LlamaTokenizer.from_pretrained(base_model)
     if device == "cuda":
-        model = LlamaForCausalLM.from_pretrained(
-            base_model,
-            load_in_8bit=load_8bit,
-            torch_dtype=torch.float16,
-            device_map="auto",
-        )
+        if multi_gpu:
+            model, tokenizer = get_tokenizer_and_model(base_model=base_model, dtype="float16", allocate=allocate)
+        else:
+            model = LlamaForCausalLM.from_pretrained(
+                base_model,
+                load_in_8bit=load_8bit,
+                torch_dtype=torch.float16,
+                device_map={"": device},
+            )
         # model = PeftModel.from_pretrained(
         #     model,
         #     lora_weights,
@@ -200,15 +207,21 @@ def main(
             gr.components.Checkbox(label="Stream output"),
         ],
         outputs=[
-            gr.inputs.Textbox(
+            gr.Textbox(
                 lines=5,
                 label="Output",
             )
         ],
-        title="知析",
-        description="知析（ZhiXi）是基于LLaMA-13B，先使用中英双语进行全量预训练，然后使用指令数据集进行LoRA微调（我们专门针对信息抽取进行优化）。如果希望获得更多信息，请参考[KnowLLM](https://github.com/zjunlp/knowllm)。如果出现重复或者效果不佳，请调整repeatition_penalty、beams两个参数。",  # noqa: E501
+        title="智析",
+        description="智析（ZhiXi）是基于LLaMA-13B，先使用中英双语进行全量预训练，然后使用指令数据集进行LoRA微调（我们专门针对信息抽取进行优化）。如果希望获得更多信息，请参考[KnowLM](https://github.com/zjunlp/knowlm)。如果出现重复或者效果不佳，请调整repeatition_penalty、beams两个参数。",  # noqa: E501
     ).queue().launch(server_name="0.0.0.0", share=share_gradio)
 
 
 if __name__ == "__main__":
     fire.Fire(main)
+    """
+    # multi-gpu
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi --multi_gpu --allocate [5,10,8,10]
+    # single-gpu
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
+    """
