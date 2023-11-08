@@ -7,6 +7,8 @@ import torch
 import transformers
 # from peft import PeftModel
 from transformers import GenerationConfig, LlamaForCausalLM, LlamaTokenizer
+from multi_gpu_inference import get_tokenizer_and_model
+from typing import List
 
 class Prompter(object):
     __slots__ = ("template", "_verbose")
@@ -97,6 +99,8 @@ def main(
     repetition_penalty = 1.3,
     max_new_tokens = 512,
     prompt_template: str = "finetune/lora/knowlm/templates/alpaca.json",  # The prompt template to use, will default to alpaca.
+    multi_gpu: bool = False,
+    allocate: List[int] = None
 ):
     assert not (run_general_cases and run_ie_cases), "Only one mode!"
     assert run_general_cases or run_ie_cases, "Please Choose One!"
@@ -114,12 +118,15 @@ def main(
     print(f"load_8bit={load_8bit}")
 
     if device == "cuda":
-        model = LlamaForCausalLM.from_pretrained(
-            base_model,
-            load_in_8bit=load_8bit,
-            torch_dtype=torch.float16,
-            device_map="auto",
-        )
+        if multi_gpu:
+            model, tokenizer = get_tokenizer_and_model(base_model=base_model, dtype="float16", allocate=allocate)
+        else:
+            model = LlamaForCausalLM.from_pretrained(
+                base_model,
+                load_in_8bit=load_8bit,
+                torch_dtype=torch.float16,
+                device_map={"": device},
+            )
         # model = PeftModel.from_pretrained(
         #     model,
         #     lora_weights,
@@ -215,3 +222,9 @@ def main(
 
 if __name__ == "__main__":
     fire.Fire(main)
+    """
+    # multi-gpu
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --multi_gpu --allocate [5,10,8,10] --run_general_cases
+    # single-gpu
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi  --run_general_cases
+    """

@@ -3,6 +3,8 @@ import sys
 import fire
 import torch
 import transformers
+from multi_gpu_inference import get_tokenizer_and_model
+from typing import List
 
 assert (
     "LlamaTokenizer" in transformers._import_structure["models.llama"]
@@ -51,6 +53,8 @@ def main(
     top_k = 40,
     repetition_penalty=1.6,
     interactive: bool = False,
+    multi_gpu: bool = False,
+    allocate: List[int] = None
 ):
     assert base_model, (
         "Please specify a --base_model, e.g. --base_model='decapoda-research/llama-7b-hf'"
@@ -59,12 +63,16 @@ def main(
     tokenizer = LlamaTokenizer.from_pretrained(base_model)
     if device == "cuda":
         print("cuda")
-        model = LlamaForCausalLM.from_pretrained(
-            base_model,
-            load_in_8bit=load_8bit,
-            torch_dtype=torch.float16,
-            device_map="auto",
-        )
+        if multi_gpu:
+            # allocate = [5,10,8,10] for test
+            model, tokenizer = get_tokenizer_and_model(base_model=base_model, dtype="float16", allocate=allocate)
+        else:
+            model = LlamaForCausalLM.from_pretrained(
+                base_model,
+                load_in_8bit=load_8bit,
+                torch_dtype=torch.float16,
+                device_map={"": device},
+            )
     elif device == "mps":
         print("mps")
         model = LlamaForCausalLM.from_pretrained(
@@ -143,3 +151,9 @@ def main(
 
 if __name__ == "__main__":
     fire.Fire(main)
+    """
+    # Multi-gpu
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0 --multi_gpu --max_new_tokens 10 --allocate [5,10,8,10]
+    # Single-gpu
+    CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_finetune.py --base_model zjunlp/knowlm-13b-base-v1.0
+    """
