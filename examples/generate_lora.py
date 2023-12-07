@@ -121,11 +121,15 @@ def main(
         if multi_gpu:
             model, tokenizer = get_tokenizer_and_model(base_model=base_model, dtype="float16", allocate=allocate)
         else:
+            if load_8bit:
+                device_map = {"":0}
+            else:
+                device_map = {"": device}
             model = LlamaForCausalLM.from_pretrained(
                 base_model,
                 load_in_8bit=load_8bit,
                 torch_dtype=torch.float16,
-                device_map={"": device},
+                device_map=device_map,
             )
         # model = PeftModel.from_pretrained(
         #     model,
