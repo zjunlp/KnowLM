@@ -36,19 +36,27 @@ def get_tokenizer_and_model(base_model:str, dtype:str, allocate:List[int]=None, 
     config.use_cache = use_cache
     with init_empty_weights():
         model = AutoModelForCausalLM.from_config(config)
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
+    tokenizer = LlamaTokenizer.from_pretrained(base_model)
+    # device_map = infer_auto_device_map(
+    #     model, 
+    #     no_split_module_classes=model._no_split_modules, 
+    #     dtype=dtype2torch[dtype],
+    #     max_memory=set_limit(allocate)
+    # )
+    max_memory = {i:f"{value}GiB" for i, value in enumerate(allocate)}
+    max_memory.update({'cpu': "20GiB"})
     device_map = infer_auto_device_map(
         model, 
+        max_memory=max_memory,
         no_split_module_classes=model._no_split_modules, 
         dtype=dtype2torch[dtype],
-        max_memory=set_limit(allocate)
     )
     load_checkpoint_and_dispatch(
         model,
         base_model,
         device_map=device_map,
-        offload_folder=None,
-        offload_state_dict=False,
+        # offload_folder=None,
+        # offload_state_dict=False,
         dtype=dtype
     )
     return model, tokenizer
