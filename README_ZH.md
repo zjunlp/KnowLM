@@ -79,7 +79,8 @@
   - [💻 模型使用](#12-模型使用)
   - [🎯 信息抽取Prompt](#13-信息抽取prompt)
   - [🐐 Llama.cpp量化](#14-llamacpp量化)
-  - [🖊️ 模型编辑](#%EF%B8%8F15-模型编辑)
+  - [📌 指令处理](#15-指令处理)
+  - [🖊️ 模型编辑](#%EF%B8%8F16-模型编辑)
 - [🌰 模型效果](#2-模型效果)
   - [🌰 预训练模型效果](#21-预训练效果)
   - [🌰 信息抽取效果](#22-信息抽取效果)
@@ -255,20 +256,47 @@ python tools/download.py --specify --download_path ./your/path --repo_name zjunl
 
 然后将[此处](https://github.com/ggerganov/llama.cpp#prepare-data--run)的模型路径更换为下载的路径即可。在具体运行的时候，请修改[此脚本](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh)的模型路径即可。
 
-<h3 id="1-5">🖊️1.5 模型编辑</h3>
+<h3 id="1-5">📌1.5 指令处理</h3>
+
+指令调整已成为增强 LLM 能力的一项重要技术，它将 LLM 的下一单词预测目标与人类偏好进行对齐。
+为了构建高质量的指令数据集，人们提出了许多指令处理方法，旨在实现指令数据数量和质量之间的微妙平衡。
+
+在指令处理过程中，我们使用 EasyInstruct 作为处理框架（详情可见 [https://github.com/zjunlp/EasyInstruct](https://github.com/zjunlp/EasyInstruct)）。EasyInstruct 将指令生成、筛选和提示模块化，同时还考虑了它们之间的组合和交互。下面的代码展示了一个在 EasyInstruct 中生成和筛选指令的运行示例：
+
+```python
+from easyinstruct import SelfInstructGenerator, GPTScoreSelector
+from easyinstruct.utils.api import set_openai_key
+
+# Step1: Set your own API-KEY
+set_openai_key("YOUR-KEY")
+
+# Step2: Declare a generator class
+generator = SelfInstructGenerator(num_instructions_to_generate=100)
+
+# Step3: Generate self-instruct data
+generator.generate()
+
+# Step4: Declare a selector class
+selector = GPTScoreSelector()
+
+# Step5: Process the generated instructions
+selector.process()
+```
+
+<h3 id="1-6">🖊️1.6 模型编辑</h3>
 
 尽管大语言模型在很多任务上都表现很出色，但是他还是会出现回答错误的情况。此外，随着时间的流逝，曾经正确的知识也会变得错误。这就需要我们通过模型编辑的方法让模型的回答达到我们的预期
 
 在模型编辑中，我们使用了EasyEdit作为我们的编辑工具（详情可见[https://github.com/zjunlp/EasyEdit](https://github.com/zjunlp/EasyEdit)，EasyEdit是一个高度集成的模型编辑工具，你所需要做的仅仅是像在hugging face一样,使用以下三行代码，完成您的编辑器定义
 
-```shell
+```python
 from easyeditor import MENDHyperParams
 hparams = MENDHyperParams.from_hparams('./hparams/MEND/gpt2-xl')
 editor = BaseEditor.from_hparams(hparams)
 ```
 以上的代码展示了对于gpt2-xl模型进行MEND方法编辑的编辑器定义，接下来您需要做的就是准备编辑数据以及测试数据
 
-```shell
+```spython
 metrics, edited_model, _ = editor.edit(
     prompts=prompts,
     ground_truth=ground_truth,

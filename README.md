@@ -81,13 +81,14 @@ The tools corresponding to these three technologies are [EasyInstruct](https://g
   - [💻Model Usage Guide](#12-model-usage-guide)
   - [🎯Information Extraction prompt](#13-information-extraction-prompt)
   - [🐐Llama.cpp](#14-llamacpp)
-  - [🖊️Model Editing](#%EF%B8%8F15-model-editing)
+  - [📌Instruction Processing](#15-instruction-processing)
+  - [🖊️Model Editing](#%EF%B8%8F16-model-editing)
 
 - [🌰Cases](#2-cases)
   - [🌰Pretraining Cases](#21-pretraining-cases)
   - [🌰Information Extraction Cases](#22-information-extraction-cases)
   - [🌰General Ability Cases](#23-general-ablities-cases)
-  - [🌰Model Editing case](#24-model-editing-cases)
+  - [🌰Model Editing Cases](#24-model-editing-cases)
 - [🥊Training Details](#3-training-details)
   - [🧾Pertraining data and Pretraining scripts](#31-dataset-construction-pretraining)
   - [🧾Instruction data and Instruction-tuning scripts](#32-training-process-pretraining)
@@ -266,19 +267,47 @@ python tools/download.py --specify --download_path ./your/path --repo_name zjunl
 ```
 Next, just substitute the model path at this [location](https://github.com/ggerganov/llama.cpp#prepare-data--run) with the downloaded one. When executing it in practice, please remember to adjust the model path within this [script](https://github.com/ggerganov/llama.cpp/blob/master/examples/alpaca.sh) accordingly.
 
-<h3 id="1-5">🖊️1.5 Model Editing</h3>
+<h3 id="1-5">📌1.5 Instruction Processing</h3>
+
+Instruction tuning has emerged as a crucial technique to enhance the capabilities of LLMs, which bridges the gap between the next-word prediction objective of LLMs and human preference.
+To construct a high-quality instruction dataset, many instruction processing approaches have been proposed, aiming to achieve a delicate balance between data quantity and data quality.
+
+In instruction processing, we utilized EasyInstruct as our processing framework (detailed can be found at https://github.com/zjunlp/EasyInstruct). EasyInstruct modularizes instruction generation, selection, and prompting, while also considering their combination and interaction. The code below shows a running example of instruction generation and selection in EasyInstruct:
+
+```python
+from easyinstruct import SelfInstructGenerator, GPTScoreSelector
+from easyinstruct.utils.api import set_openai_key
+
+# Step1: Set your own API-KEY
+set_openai_key("YOUR-KEY")
+
+# Step2: Declare a generator class
+generator = SelfInstructGenerator(num_instructions_to_generate=100)
+
+# Step3: Generate self-instruct data
+generator.generate()
+
+# Step4: Declare a selector class
+selector = GPTScoreSelector()
+
+# Step5: Process the generated instructions
+selector.process()
+```
+
+<h3 id="1-6">🖊️1.6 Model Editing</h3>
 
 Although large language models perform exceptionally well in many tasks, they can still provide incorrect answers. Moreover, as time passes, knowledge that was once accurate may become outdated. This necessitates that we adjust the model's responses to meet our expectations through model editing.
 
 In model editing, we utilized EasyEdit as our editing tool (details can be found at https://github.com/zjunlp/EasyEdit). EasyEdit is a highly integrated model editing tool. All you need to do is define your editor in just three lines of code, similar to how you would in hugging face.
-```shell
+
+```python
 from easyeditor import MENDHyperParams
 hparams = MENDHyperParams.from_hparams('./hparams/MEND/gpt2-xl')
 editor = BaseEditor.from_hparams(hparams)
 ```
 The code above demonstrates the editor definition for editing the gpt2-xl model using the MEND method. The next step is to prepare the editing data and the test data.
 
-```shell
+```python
 metrics, edited_model, _ = editor.edit(
     prompts=prompts,
     ground_truth=ground_truth,
