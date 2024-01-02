@@ -33,10 +33,10 @@
 | -------- | ------ | ------------------------- | ---- | ------------------------------------------------------------ | -------- |
 | 基础模型 | LlaMA1 | KnowLM-13B-Base           | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-base-v1.0)  <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-base-v1.0) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-base-v1.0) | 底座模型 |
 | 对话模型 | LlaMA1 | KnowLM-13B-ZhiXi          | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-zhixi)  <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-zhixi) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-zhixi) | 抽取模型 |
-| 对话模型 | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie)  | 抽取模型 |
+| 对话模型 | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-ie) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-ie) | 抽取模型 |
 | 基础模型 | LlaMA2 | KnowLM-7B-Base            | V1.0 | 即将发布                                                     | 底座模型 |
 | 对话模型 | LlaMA2 | KnowLM-7B-IE              | V1.0 | 即将发布                                                     | 抽取模型 |
-| 对话模型 | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | 即将发布                                                     | 海洋模型 |
+| 对话模型 | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/OceanGPT-7b) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/OceanGPT-7b)   | 海洋模型 |
 | 对话模型 | LlaMA2 | KnowLM-13B                | V1.0 | 训练中                                                       | 底座模型 |
 
 
