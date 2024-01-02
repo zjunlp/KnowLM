@@ -34,11 +34,11 @@ All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-
 | Category | Base   | Name                     | Version | Download Link                                                     | Note     |
 | -------- | ------ | ------------------------- | ---- | ------------------------------------------------------------ | -------- |
 | Base Model | LlaMA1 | KnowLM-13B-Base           | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-base-v1.0) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-base-v1.0) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-base-v1.0/) | Base Model |
-| Dialogue Model | LlaMA1 | KnowLM-13B-ZhiXi          | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-zhixi)  <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-zhixi) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-zhixi)| Information Extraction Model |
-| Dialogue Model | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie)  | Information Extraction Model |
+| Dialogue Model | LlaMA1 | KnowLM-13B-ZhiXi          | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-zhixi)  <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-zhixi) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-zhixi)| Information Extraction Model |
+| Dialogue Model | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-ie) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-ie) | Information Extraction Model |
 | Base Model | LlaMA2 | KnowLM-7B-Base            | V1.0 | Coming soon                                                     | Base Model |
 | Dialogue Model | LlaMA2 | KnowLM-7B-IE              | V1.0 | Coming soon                                                     | Information Extraction Model |
-| Dialogue Model | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/OceanGPT-7b) | Ocean Model |
+| Dialogue Model | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/OceanGPT-7b) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/OceanGPT-7b)| Ocean Model |
 | Dialogue Model | LlaMA2 | KnowLM-13B                | V1.0 | Training                                                       | Base Model |
 
 | Instruction Dataset Name                        | Number    | Download Link                                                    | Is it used by ZhiXi | Note                           |
