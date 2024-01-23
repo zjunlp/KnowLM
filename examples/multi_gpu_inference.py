@@ -43,8 +43,11 @@ def get_tokenizer_and_model(base_model:str, dtype:str, allocate:List[int]=None, 
     #     dtype=dtype2torch[dtype],
     #     max_memory=set_limit(allocate)
     # )
-    max_memory = {i:f"{value}GiB" for i, value in enumerate(allocate)}
-    max_memory.update({'cpu': "20GiB"})
+    if allocate:
+        max_memory = {i:f"{value}GiB" for i, value in enumerate(allocate)}
+        max_memory.update({'cpu': "20GiB"})
+    else:
+        max_memory = None
     device_map = infer_auto_device_map(
         model, 
         max_memory=max_memory,
