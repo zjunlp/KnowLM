@@ -800,6 +800,12 @@ If you use our repository, please cite the following related papers:
   journal={arXiv preprint arXiv:2308.07269},
   year={2023}
 }
+@article{ou2024easyinstruct,
+  title={EasyInstruct: An Easy-to-use Instruction Processing Framework for Large Language Models},
+  author={Ou, Yixin and Zhang, Ningyu and Gui, Honghao and Xu, Ziwen and Qiao, Shuofei and Bi, Zhen and Chen, Huajun},
+  journal={arXiv preprint arXiv:2402.03049},
+  year={2024}
+}
 
 @article{yao2023editing,
   title={Editing Large Language Models: Problems, Methods, and Opportunities},
