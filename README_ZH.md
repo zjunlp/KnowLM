@@ -763,19 +763,9 @@ EasyEdit支持了包括但不限于：KN,IKE,MEND,SERAC,ROME等一系列方法�
 
 <h2 id="7">👋7. 其他</h2>
 
-<h3 id="7-1">👨‍👩‍👦7.1 贡献者（排名不分先后）</h3>
+<h3 id="7-1">👨‍👩‍👦7.1 贡献者</h3>
 
-基础模型：Xiang Chen, Jintian Zhang, Xiaozhuan Liang
-
-基础数据：Zhen Bi, Honghao Gui, Jing Chen, Runnan Fang
-
-指令数据与训练：Xiaohan Wang, Shengyu Mao
-
-工具与多模态增强：Shuofei Qiao, Yixin Ou, Lei Li
-
-模型编辑与安全：Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li
-
-测试与演示：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li
+Ningyu Zhang, Haofen Wang, Jintian Zhang, Xiaozhuan Liang, Xiang Chen, Zhen Bi, Honghao Gui, Jing Chen, Runnan Fang, Xiaohan Wang, Shengyu Mao, Shuofei Qiao, Yixin Ou, Lei Li, Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li, Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li, Huajun Chen
 
 
 <h3 id="7-2">📇7.2 引用</h3>
