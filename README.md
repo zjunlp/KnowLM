@@ -768,19 +768,9 @@ Due to time constraints, hardware limitations, and technical reasons, our model 
 
 <h2 id="7">👋7. Others</h2>
 
-<h3 id="7-1">👨‍👩‍👦7.1 Contributors（In Random Order）</h3>
+<h3 id="7-1">👨‍👩‍👦7.1 Contributors</h3>
 
-Pretraining：Xiang Chen, Jintian Zhang, Xiaozhuan Liang
-
-Pretraining Data：Zhen Bi, Honghao Gui, Jing Chen, Runnan Fang
-
-Instruction data and Instruction tuning：Xiaohan Wang, Shengyu Mao
-
-Tool learning and Multimodal：Shuofei Qiao, Yixin Ou, Lei Li
-
-Model Editing and Safety：Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li
-
-Model Testing and Deployment：Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li
+Ningyu Zhang, Haofen Wang, Jintian Zhang, Xiaozhuan Liang, Xiang Chen, Zhen Bi, Honghao Gui, Jing Chen, Runnan Fang, Xiaohan Wang, Shengyu Mao, Shuofei Qiao, Yixin Ou, Lei Li, Yunzhi Yao, Peng Wang, Siyuan Cheng, Bozhong Tian, Mengru Wang, Zhoubo Li, Yinuo Jiang, Yuqi Zhu, Hongbin Ye, Zekun Xi, Xinrong Li, Huajun Chen
 
 
 <h3 id="7-2">📇7.2 Citation</h3>
