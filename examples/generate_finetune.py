@@ -45,6 +45,7 @@ cases = [
 
 def main(
     load_8bit: bool = False,
+    load_4bit: bool = False,
     base_model: str = "../recover",
     max_new_tokens = 512,
     temperature = 0.3,
@@ -67,9 +68,12 @@ def main(
             # allocate = [5,10,8,10] for test
             model, tokenizer = get_tokenizer_and_model(base_model=base_model, dtype="float16", allocate=allocate)
         else:
+            if load_4bit:
+                load_8bit = False
             model = LlamaForCausalLM.from_pretrained(
                 base_model,
                 load_in_8bit=load_8bit,
+                load_in_4bit=load_4bit,
                 torch_dtype=torch.float16,
                 device_map={"": device},
             )
