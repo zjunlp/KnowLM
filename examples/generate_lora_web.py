@@ -37,7 +37,7 @@ def main(
     load_8bit: bool = True,
     load_4bit: bool = False,
     base_model: str = None,
-    model_tag: str = 'zhixi',
+    model_tag: str = None,
     # lora_weights: str = "zjunlp/CaMA-13B-LoRA",
     # prompt_template: str = "finetune/lora/knowlm/templates/alpaca.json",  # The prompt template to use, will default to alpaca.
     server_name: str = "0.0.0.0",  # Allows to listen on all interfaces by providing '0.
@@ -103,11 +103,13 @@ def main(
         #     device_map={"": device},
         # )
 
-
-    if 'oneke' in base_model.lower():
-        model_tag = 'oneke'
-    elif 'knowlm' in base_model.lower():
-        model_tag = 'zhixi'
+    if model_tag == None:
+        if 'oneke' in base_model.lower():
+            model_tag = 'oneke'
+        elif 'knowlm' in base_model.lower():
+            model_tag = 'zhixi'
+        else:
+            assert False, "Please specify the `model_tag`!"
     assert model_tag in  Web.__SUPPORT_MODEL__
     web_config = Web.get_ui(model_tag)
     prompter = Prompter(model_name=model_tag)
@@ -290,5 +292,9 @@ if __name__ == "__main__":
     # single-gpu
     CUDA_VISIBLE_DEVICES=0,1,2,3 python examples/generate_lora_web.py --base_model zjunlp/knowlm-13b-zhixi
 
-    CUDA_VISIBLE_DEVICES=0,1 python examples/generate_lora_web.py --base_model /disk/disk_20T/data/guihh/datasets/modelscope/OneKE --multi_gpu --allocate [16,16]
+    # testing zhixi
+    CUDA_VISIBLE_DEVICES=0,1 python examples/generate_lora_web.py --base_model zjunlp/oneke --multi_gpu --allocate [16,16]
+    
+    # testing oneke
+    CUDA_VISIBLE_DEVICES=0,1 python examples/generate_lora_web.py --base_model zjunlp/zhixi --multi_gpu --allocate [16,16]
     """

@@ -1,7 +1,7 @@
 # multi gpu inference utils
 import torch
 from accelerate import init_empty_weights, infer_auto_device_map, load_checkpoint_and_dispatch
-from transformers import GenerationConfig, LlamaForCausalLM, LlamaTokenizer, LlamaConfig, AutoModelForCausalLM, AutoConfig, AutoTokenizer
+from transformers import GenerationConfig, AutoModelForCausalLM, AutoConfig, AutoTokenizer
 from typing import List
 
 def set_limit(allocate:List[int]=None):
@@ -36,7 +36,7 @@ def get_tokenizer_and_model(base_model:str, dtype:str, allocate:List[int]=None, 
     config.use_cache = use_cache
     with init_empty_weights():
         model = AutoModelForCausalLM.from_config(config)
-    tokenizer = LlamaTokenizer.from_pretrained(base_model)
+    tokenizer = AutoTokenizer.from_pretrained(base_model)
     # device_map = infer_auto_device_map(
     #     model, 
     #     no_split_module_classes=model._no_split_modules, 
