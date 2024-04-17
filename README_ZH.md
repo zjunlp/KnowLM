@@ -46,6 +46,11 @@
 | KnowLM-IE (抽取相关指令数据，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-IE)  | 是           | 由于采用远程监督，因此存在噪音 |
 | KnowLM-Tool (工具学习相关指令数据，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool)  | 否           | 将在下一个版本使用                             |
 
+
+| 指令类型                        | 数量    | 下载地址                                                     | OneKE是否使用 | 说明                           |
+| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
+| IEPileKnowLM-CR  (抽取相关指令数据，中英双语) | 2,000,000 + | [HuggingFace](https://huggingface.co/datasets/zjunlp/iepile) <br/> [WiseModel](https://www.wisemodel.cn/datasets/zjunlp/IEPile) <br/> [ModelScope](https://www.modelscope.cn/datasets/ZJUNLP/IEPile) | 是          |                              |
+
 数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。3. `KnowLM-IE`数据集来源于论文[《InstructIE: A Chinese Instruction-based Information Extraction Dataset》](https://arxiv.org/abs/2305.11527)，github链接位于[此处](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC)。
 
 ## 📬 NEWS
