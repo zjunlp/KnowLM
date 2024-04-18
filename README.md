@@ -60,7 +60,7 @@ All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-
 - \[**June 2023**\] The project name has been changed from `CaMA` to `KnowLM`.
 - \[**June 2023**\] Release the first version of pre-trained weights and the LoRA weights.
 
-## 📍 What's the KnowLM?
+## 📍 Technologies in KnowLM
 <p align="center">
     <br>
     <img src="https://github.com/zjunlp/KnowLM/blob/main/assets/KnowLM-overview.png?raw=true" width="920" height="400"/>
