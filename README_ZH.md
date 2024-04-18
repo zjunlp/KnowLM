@@ -7,23 +7,21 @@
 
 # 知识增强的开源语言大模型框架
 
-<details>
-  <summary><b>项目背景</b></summary>
-随着深度学习技术的快速发展，大型语言模型如ChatGPT在自然语言处理领域已经取得了显著的成就。然而，这些大型模型在学习和理解知识方面仍然存在一些挑战和问题，包括知识更新的困难，以及模型中潜在的错误和偏差等知识谬误问题。KnowLM项目旨在发布开源大模型框架及相应模型权重以助力减轻<b>知识谬误</b>问题。
 
-`本项目一期`发布了基于Llama的针对**知识抽取的智析大模型**。为了提供中文能力且不破坏原来模型的分布，本项目首先<b>（1）使用中文语料首先对LLaMA（13B）进行进一步全量预训练，在尽可能保留原来的英文和代码能力的前提下，进一步提高模型对于中文理解能力和丰富模型的知识储备；</b>接着<b>（2）使用指令数据集对第一步的模型微调，来提高语言模型对于人类抽取指令的理解</b>。
-- ❗请注意本项目仍在优化中，模型权重会定期更新，并迭代支持新功能、新模型！
-
-</details>
+KnowLM是一个知识大语言模型框架，包含了数据处理、模型预训练、模型微调、知识的增强与利用等功能。此外，KnowLM框架开源了一系列可以直接使用的模型，包括[智析](https://huggingface.co/zjunlp/knowlm-13b-zhixi)和[OneKE](http://oneke.openkg.cn/)等。
+- ❗请注意，该项目仍在进行优化和开发中，模型权重将定期更新以支持新功能和模型！
+- ❗如果您对**信息提取/知识提取**感兴趣，请参考[DeepKE](https://github.com/zjunlp/DeepKE)。KnowLM 是一个知识型的大型语言模型框架！
 
 
-**本项目的特点如下：**
+**特性：**
 
-- 围绕知识和大模型，用构建的中英双语预训练语料对大模型如LLaMA进行**全量预训练**
-- 基于**知识图谱转换指令技术**对知识抽取任务，包括NER、RE、IE进行优化，可以使用人类指令来完成信息抽取任务
-- 用构建的中文指令数据集（约1400K条样本），使用LoRA微调，提高模型对于人类指令的理解
-- 开源了预训练模型的权重、指令微调的LoRA权重
-- 开源了**全量预训练脚本**（提供大型语料的转换、构建和加载）和**LoRA指令微调脚本**（支持多机多卡）
+- 支持LLM的预训练和微调的框架
+- 包含了[ZhiXi](https://huggingface.co/zjunlp/knowlm-13b-zhixi)、[KnowLM-IE](https://huggingface.co/zjunlp/knowlm-13b-ie)、 [OneKE](http://oneke.openkg.cn/)、[OceanGPT](https://www.zjukg.org/project/OceanGPT/)等模型
+- 基于[EasyInstruct](https://github.com/zjunlp/EasyInstruct)的指令处理模块
+- 基于RAG（开发中）的知识增强模块
+- 基于[EasyEdit](https://github.com/zjunlp/EasyEdit)的知识编辑模块
+- 模型推理与部署
+
 
 所有权重均已上传🤗HuggingFace，我们构建的数据集也已上传到谷歌网盘。想要快速上手请点击[快速开始](#1-1)。
 
@@ -34,24 +32,20 @@
 | 基础模型 | LlaMA1 | KnowLM-13B-Base           | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-base-v1.0)  <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-base-v1.0) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-base-v1.0) | 底座模型 |
 | 对话模型 | LlaMA1 | KnowLM-13B-ZhiXi          | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-zhixi)  <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-zhixi) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-zhixi) | 抽取模型 |
 | 对话模型 | LlaMA1 | KnowLM-13B-IE             | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/knowlm-13b-ie) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/knowlm-13b-ie) <br/> [ModelScope](https://modelscope.cn/models/ZJUNLP/knowlm-13b-ie) | 抽取模型 |
-| 基础模型 | LlaMA2 | KnowLM-7B-Base            | V1.0 | 即将发布                                                     | 底座模型 |
-| 对话模型 | LlaMA2 | KnowLM-7B-IE              | V1.0 | 即将发布                                                     | 抽取模型 |
-| 对话模型 | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/OceanGPT-7b) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/OceanGPT-7b)   | 海洋模型 |
-| 对话模型 | LlaMA2 | KnowLM-13B                | V1.0 | 训练中                                                       | 底座模型 |
+| 对话模型 | LlaMA2 | OceanGPT                  | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/OceanGPT-7b) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/OceanGPT-7b)   | 海洋模型 |
+| 对话模型 | LlaMA2 | OneKE                     | V1.0 | [HuggingFace](https://huggingface.co/openkg/OneKE)  <br/> [WiseModel](https://modelscope.cn/models/ZJUNLP/OneKE) <br/> [ModelScope](https://wisemodel.cn/models/zjunlp/OneKE) | 抽取模型 |
 
 
-| 指令类型                        | 数量    | 下载地址                                                     | 智析是否使用 | 说明                           |
-| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
-| KnowLM-CR (推理相关指令数据，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-CR) | 是           | 无                             |
-| KnowLM-IE (抽取相关指令数据，中文)         | 281,860 | [谷歌云盘](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-IE)  | 是           | 由于采用远程监督，因此存在噪音 |
-| KnowLM-Tool (工具学习相关指令数据，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool)  | 否           | 将在下一个版本使用                             |
+| 指令类型                        | 数量    | 下载地址                                                     |  说明                           |
+| ------------------------------- | ------- | ------------------------------------------------------------ | ------------------------------ |
+| KnowLM-CR (推理相关指令数据，中英双语) | 202,333 | [谷歌云盘](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-CR) |                       |
+| KnowLM-Tool (工具学习相关指令数据，英文)     | 38,241  | [谷歌云盘](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool)  |                   |
+| OceanBench (Benchmark，English)     | 11,000  |  [HuggingFace](https://huggingface.co/datasets/zjunlp/OceanBench) |  |                          |
+| InstructIE (抽取相关指令数据，中英双语) | 364, 076 | [HuggingFace](https://huggingface.co/datasets/zjunlp/InstructIE) <br/> [WiseModel](https://www.wisemodel.cn/datasets/zjunlp/InstructIE) <br/> [ModelScope](https://www.modelscope.cn/datasets/ZJUNLP/InstructIE) |   由于使用远程监督，因此存在数据噪声                            |
+| IEPile (抽取相关指令数据，中英双语) | 2,000,000 + | [HuggingFace](https://huggingface.co/datasets/zjunlp/iepile) <br/> [WiseModel](https://www.wisemodel.cn/datasets/zjunlp/IEPile) <br/> [ModelScope](https://www.modelscope.cn/datasets/ZJUNLP/IEPile) | 基于现有的33个IE数据集所构建的                             |
 
 
-| 指令类型                        | 数量    | 下载地址                                                     | OneKE是否使用 | 说明                           |
-| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
-| IEPileKnowLM-CR  (抽取相关指令数据，中英双语) | 2,000,000 + | [HuggingFace](https://huggingface.co/datasets/zjunlp/iepile) <br/> [WiseModel](https://www.wisemodel.cn/datasets/zjunlp/IEPile) <br/> [ModelScope](https://www.modelscope.cn/datasets/ZJUNLP/IEPile) | 是          |                              |
-
-数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。3. `KnowLM-IE`数据集来源于论文[《InstructIE: A Chinese Instruction-based Information Extraction Dataset》](https://arxiv.org/abs/2305.11527)，github链接位于[此处](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC)。
+数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。3. `InstructIE`数据集来源于论文[《InstructIE: A Chinese Instruction-based Information Extraction Dataset》](https://arxiv.org/abs/2305.11527)，github链接位于[此处](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC)。
 
 ## 📬 NEWS
 - \[**2024/04**\] 发布中英双语大模型知识抽取框架[OneKE](http://oneke.openkg.cn/)，同时开源基于Chinese-Alpaca-2-13B全参数微调的版本
