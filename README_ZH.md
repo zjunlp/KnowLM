@@ -54,7 +54,8 @@
 数据说明：1. 信息抽取的其他数据源来源于`CoNLL` `ACE` `casis` `DuEE` `People Daily` `DuIE`等；2. `KnowLM-Tool`数据集来源于论文[《Making Language Models Better Tool Learners with Execution Feedback》](https://arxiv.org/abs/2305.13068)，github链接位于[此处](https://github.com/zjunlp/trice)。3. `KnowLM-IE`数据集来源于论文[《InstructIE: A Chinese Instruction-based Information Extraction Dataset》](https://arxiv.org/abs/2305.11527)，github链接位于[此处](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC)。
 
 ## 📬 NEWS
-- \[**2024/02**\] 发布了一个大规模(`0.32B` tokens)高质量**双语**(中文和英文)信息抽取(IE)指令微调数据集，名为 [IEPile](https://huggingface.co/datasets/zjunlp/iepie)。
+- \[**2024/04**\] 发布中英双语大模型知识抽取框架[OneKE](http://oneke.openkg.cn/)，同时开源基于Chinese-Alpaca-2-13B全参数微调的版本
+- \[**2024/02**\] 发布大规模(`0.32B` tokens)**双语**(中文和英文)信息抽取(IE)指令数据集[IEPile](https://huggingface.co/datasets/zjunlp/iepie), 以及基于 `IEPile` 训练的两个模型[baichuan2-13b-iepile-lora](https://huggingface.co/zjunlp/baichuan2-13b-iepile-lora)、[llama2-13b-iepile-lora](https://huggingface.co/zjunlp/llama2-13b-iepile-lora)
 - \[**2023/08**\] 发布完整模型参数，取消了参数合并过程
 - \[**2023/07**\] 发布训练使用的部分指令数据
 - \[**2023/07**\] 支持`LLaMA-2`的指令微调和`vllm`推理
