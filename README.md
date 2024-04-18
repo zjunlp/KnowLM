@@ -8,23 +8,21 @@
 
 # Knowledgeable Large Language Model Framework
 
-<details>
-  <summary><b>Project Background</b></summary>
-With the rapid development of deep learning technology, large language models such as ChatGPT have made substantial strides in the realm of natural language processing. However, these expansive models still encounter several challenges in acquiring and comprehending knowledge, including the difficulty of updating knowledge and potential knowledge discrepancies and biases, collectively known as <b>knowledge fallacies</b>. The KnowLM project endeavors to tackle these issues by launching an open-source large-scale knowledgable language model framework and releasing corresponding models. 
+ 
 
-The project's `initial phase` introduced a knowledge extraction LLM based on LLaMA, dubbed **ZhiXi** (**智析**, which means intelligent analysis of data for knowledge extraction). To integrate the capacity of Chinese understanding into the language models without compromising their inherent knowledge, we firstly <b>(1) use Chinese corpora for the full-scale pre-training with LLaMA (13B), augment the language model's understanding of Chinese and improve its knowledge richness while retaining its original English and code capacities;</b> Then <b>(2) we fine-tune the model obtained from the first step with an instruction dataset, thus bolstering the language model's understanding of human instructions for knowledge extraction.</b>
-- ❗Please note that this project is still undergoing optimization, and the model weights will be regularly updated to support new features and models!
-
-</details>
+KnowLM  is a knowledgeable Large Language Model (LLM) framework, including data processing, model pre-training, fine-tuning, augmentation and utilization with knowledge.   Additionally, KnowLM provides a model zoo featuring readily accessible models like [ZhiXi](https://huggingface.co/zjunlp/knowlm-13b-zhixi) and [OneKE](http://oneke.openkg.cn/), tailored for immediate implementation.
+- ❗Please note that this project is still undergoing optimization and developemnt, and the model weights will be regularly updated to support new features and models!
+- ❗If you are interested in **information extraction/knowledge extraction**, please refer to the [DeepKE](https://github.com/zjunlp/DeepKE). KnowLM is a framework for knowledgeable Large Language Model!
 
 
-**The features of this project are as follows:**
+**Features**
 
-- Centered on knowledge and large models, a **full-scale pre-training** of the large model, such as LLaMA, is conducted using the built Chinese & English pre-training corpus.
-- Based on the technology of **KG2Instructions**, the knowledge extraction tasks, including NER, RE, and IE, are optimized and can be completed using human instructions.
-- Using the built Chinese instruction dataset (approximately 1400K), LoRA fine-tuning is used to enhance the model's understanding of human instructions.
-- The weights of the pre-training model and LoRA's instruction fine-tuning are open-sourced.
-- The **full-scale pre-training code** (providing conversion, construction, and loading of large corpora) and **LoRA instruction fine-tuning code** are open-sourced (support multi-machine multi-GPU).
+- A standard framework for LLM pre-training and fine-tuning.
+- A model zoo including [ZhiXi](https://huggingface.co/zjunlp/knowlm-13b-zhixi), [KnowLM-IE](https://huggingface.co/zjunlp/knowlm-13b-ie), [OneKE](http://oneke.openkg.cn/), and [OceanGPT](https://www.zjukg.org/project/OceanGPT/), along with open-source data.
+- A instruction processing module based on [EasyInstruct](https://github.com/zjunlp/EasyInstruct).
+- A knowlege augmentation module based on RAG (under development).
+- A knowlege editing module based on [EasyEdit](https://github.com/zjunlp/EasyEdit).
+- Model inference and deployment.
 
 
 All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-1) to get started right away!
@@ -39,17 +37,14 @@ All weights and datasets have been uploaded to HuggingFace🤗. Click [here](#1-
 | Dialogue Model | LlaMA2 | KnowLM-7B-Ocean(OceanGPT) | V1.0 | [HuggingFace](https://huggingface.co/zjunlp/OceanGPT-7b) <br/> [WiseModel](https://wisemodel.cn/models/zjunlp/OceanGPT-7b)| Ocean Model |
 | Dialogue Model | LlaMA2 | OneKE                | V1.0 |  [HuggingFace](https://huggingface.co/openkg/OneKE)  <br/> [WiseModel](https://modelscope.cn/models/ZJUNLP/OneKE) <br/> [ModelScope](https://wisemodel.cn/models/zjunlp/OneKE)                                                    | Information Extraction Model |
 
-| Instruction Dataset Name                        | Number    | Download Link                                                    | Is it used by ZhiXi | Note                           |
-| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
-| KnowLM-CR (CoT&Reasoning, Chinese and English) | 202,333 | [Google Drive](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-CR)| Yes           |                              |
-| KnowLM-IE (Information Extraction, Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-IE) | Yes           | Due to using distant supervision, there exists noise. |
-| KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool) | No           | It will be used in the next version.                             |
-| OceanBench (Benchmark，English)     | 11,000  |  [HuggingFace](https://huggingface.co/datasets/zjunlp/OceanBench) | No | |
-
-
-| Instruction Dataset Name                        | Number    | Download Link                                                    | Is it used by OneKE | Note                           |
-| ------------------------------- | ------- | ------------------------------------------------------------ | ------------ | ------------------------------ |
-| IEPileKnowLM-CR  (Information Extraction, Chinese and English) | 2,000,000 + | [HuggingFace](https://huggingface.co/datasets/zjunlp/iepile) <br/> [WiseModel](https://www.wisemodel.cn/datasets/zjunlp/IEPile) <br/> [ModelScope](https://www.modelscope.cn/datasets/ZJUNLP/IEPile) | Yes           |                              |
+| Instruction Dataset Name                        | Number    | Download Link                                                    |  Note                           |
+| ------------------------------- | ------- | ------------------------------------------------------------ | ------------------------------ |
+| KnowLM-CR (CoT&Reasoning, Chinese and English) | 202,333 | [Google Drive](https://drive.google.com/drive/folders/1iJgksjOStk0m9GM0RP9jB6KdNWfJ62Xe?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-CR)|                            |
+| KnowLM-IE (Information Extraction, Chinese)         | 281,860 | [Google Drive](https://drive.google.com/file/d/1WQVD_99_4XoUcoRDWRibZfO5jJdhjTQ1/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-IE) | Due to using distant supervision, there exists noise. |
+| KnowLM-Tool (Tool Learning，English)     | 38,241  | [Google Drive](https://drive.google.com/file/d/1PyzXXv_pr2T-FysnCumWTDzFNCvtLDv2/view?usp=sharing) <br/> [HuggingFace](https://huggingface.co/datasets/zjunlp/KnowLM-Tool) |                              |
+| OceanBench (Benchmark，English)     | 11,000  |  [HuggingFace](https://huggingface.co/datasets/zjunlp/OceanBench) |  |                          |
+| InstructIE (Information Extraction, Chinese and English) | 364, 076 | [HuggingFace](https://huggingface.co/datasets/zjunlp/InstructIE) <br/> [WiseModel](https://www.wisemodel.cn/datasets/zjunlp/InstructIE) <br/> [ModelScope](https://www.modelscope.cn/datasets/ZJUNLP/InstructIE) |   Due to using distant supervision, there exists noise.                            |
+| IEPile (Information Extraction, Chinese and English) | 2,000,000 + | [HuggingFace](https://huggingface.co/datasets/zjunlp/iepile) <br/> [WiseModel](https://www.wisemodel.cn/datasets/zjunlp/IEPile) <br/> [ModelScope](https://www.modelscope.cn/datasets/ZJUNLP/IEPile) | It is constructed based on 33 exsiting IE datasets.                             |
 
 **Data description**: 1. Other data sources for information extraction come from `CoNLL`, `ACE`, `casis`, `DuEE`, `People Daily`, `DuIE`, etc. 2. The `KnowLM-Tool` dataset comes from the paper "[Making Language Models Better Tool Learners with Execution Feedback](https://arxiv.org/abs/2305.13068)" and the [gitHub](https://github.com/zjunlp/trice) can be found here. 3. The `KnowLM-IE` dataset comes from the paper "[InstructIE: A Chinese Instruction-based Information Extraction Dataset](https://arxiv.org/abs/2305.11527)" and the [gitHub](https://github.com/zjunlp/DeepKE/tree/main/example/llm/InstructKGC) can be found here.
 
