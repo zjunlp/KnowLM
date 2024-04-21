@@ -71,7 +71,7 @@ KnowLM是一个知识大语言模型框架，包含了数据处理、模型预�
 
 3.**知识交互**：基于知识动态交互和反馈实现工具组合学习及多智能体协作，解决大模型*具身认知*问题 (**[英文版Tutorial](./pdf/Knowledge_Interaction.pdf)**)
 
-包含三个附属的工具分别为[EasyInstruct](https://github.com/zjunlp/easyinstruct)、[EasyEdit](https://github.com/zjunlp/easyedit)和EasyAgent(开发中)，我们将在近期提供基于KnowLM的知识提示和知识编辑使用案例。
+包含三个附属的模块为[EasyInstruct](https://github.com/zjunlp/easyinstruct)、[EasyDetect](https://github.com/zjunlp/EasyDetect)、[EasyEdit](https://github.com/zjunlp/EasyEdit)以及仍在开发中的工具。
 
 ## 🗂️ 目录
 
