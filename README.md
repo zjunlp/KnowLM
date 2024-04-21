@@ -21,6 +21,7 @@ KnowLM  is a knowledgeable Large Language Model (LLM) framework, including data 
 - A model zoo including [ZhiXi](https://huggingface.co/zjunlp/knowlm-13b-zhixi), [KnowLM-IE](https://huggingface.co/zjunlp/knowlm-13b-ie), [OneKE](http://oneke.openkg.cn/), and [OceanGPT](https://www.zjukg.org/project/OceanGPT/), along with open-source data.
 - A instruction processing module based on [EasyInstruct](https://github.com/zjunlp/EasyInstruct).
 - A knowlege augmentation module based on RAG (under development).
+- A hallucination detection module for based on [EasyDetect](https://github.com/zjunlp/EasyDetect).
 - A knowlege editing module based on [EasyEdit](https://github.com/zjunlp/EasyEdit).
 - Model inference and deployment.
 
@@ -74,7 +75,7 @@ This is an overview of the `KnowLM`, which mainly consists of three technical fe
 
 **Knowledge Interaction**: It enables dynamic knowledge interaction and feedback to achieve tool-based learning and multi-agent collaboration, resolving the problem of *embodiment cognition* in LLMs (**[English Tutorial](./pdf/Knowledge_Interaction.pdf)**).
 
-The tools corresponding to these three technologies are [EasyInstruct](https://github.com/zjunlp/easyinstruct), [EasyEdit](https://github.com/zjunlp/easyedit), and EasyAgent (under development). We will soon provide use cases for knowledge prompting and knowledge editing based on the `KnowLM`framework.
+The modules related to these three technologies are [EasyInstruct](https://github.com/zjunlp/easyinstruct), [EasyDetect](https://github.com/zjunlp/EasyDetect), [EasyEdit](https://github.com/zjunlp/EasyEdit). We provide use cases for those modules based on the `KnowLM`framework.
 
 ## 🗂️ Contents
 
