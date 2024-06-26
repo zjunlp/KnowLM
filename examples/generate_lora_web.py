@@ -140,7 +140,7 @@ def main(
         # **kwargs,
     ):
         kwargs = {}
-        assert len(web_config['var_name']) == len(args), f"{en(web_config['var_name'])} == {len(args)}"
+        assert len(web_config['var_name']) == len(args), f"{len(web_config['var_name'])} == {len(args)}"
         for key, value in zip(web_config['var_name'], args):
             kwargs[key] = value
         print(kwargs)
