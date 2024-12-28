@@ -147,7 +147,7 @@ docker run -it zjunlp/knowlm:v.1 /bin/bash
 
    The result in section `2.2` can be obtained.
 
-3. If you want to reproduce the results in `section 2.3`(**[general ablities cases](#23-general-ablities-cases)**), please run the following command:
+3. If you want to reproduce the results in `section 2.3`(**[general abilities cases](#23-general-abilities-cases)**), please run the following command:
 
    ```shell
    python examples/generate_lora.py --base_model zjunlp/knowlm-13b-zhixi --run_general_cases
